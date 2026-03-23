@@ -16,8 +16,21 @@
                         <i class="fas fa-home"></i> Dashboard
                     </a>
                 </li>
-
-              
+               <li class="{{ request()->routeIs('admin.website-details.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.website-details.index') }}">
+                        <i class="fas fa-globe"></i> Website Details
+                    </a>
+                </li>
+                <li class="{{ request()->routeIs('admin.faqs.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.faqs.index') }}">
+                        <i class="fas fa-question-circle"></i> FAQs
+                    </a>
+                </li>
+                <li class="{{ request()->routeIs('admin.testimonials.*') ? 'active' : '' }}">
+    <a href="{{ route('admin.testimonials.index') }}">
+        <i class="fas fa-star"></i> Testimonials
+    </a>
+</li>
             </ul>
         </nav>
     </div>

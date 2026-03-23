@@ -1,311 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+{{-- resources/views/welcome.blade.php --}}
+@extends('layouts.app')
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- CSRF Token for Laravel forms -->
-  <meta name="csrf-token" content="{{ csrf_token() }}">
+@section('title', 'Grand - Event and Conference Template | Laravel Edition')
 
-  <title>Grand - Event and Conference Template | Laravel Edition</title>
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
-  <!-- Icon -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/fonts/line-icons.css') }}">
-  <!-- Slicknav -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/slicknav.css') }}">
-  <!-- Nivo Lightbox -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/nivo-lightbox.css') }}">
-  <!-- Animate -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animate.css') }}">
-  <!-- Main Style -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }}">
-  <!-- Responsive Style -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
-
-  <!-- fix: added missing responsive meta + inline style corrections for layout -->
-  <style>
-    /* Book Event Button Styling */
-    .book-event-btn {
-      padding: 10px 24px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 14px;
-      transition: all 0.3s ease;
-      background: linear-gradient(135deg, #ff6a00 0%, #ee0979 100%);
-      border: none;
-      color: #fff;
-      box-shadow: 0 4px 15px rgba(238, 9, 121, 0.3);
-    }
-    
-    .book-event-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(238, 9, 121, 0.4);
-      color: #fff;
-    }
-    
-    .book-event-btn i {
-      margin-right: 8px;
-      font-size: 16px;
-    }
-    
-    /* Mobile menu button styling */
-    .mobile-book-btn {
-      margin-top: 15px;
-      padding: 10px 15px;
-    }
-    
-    .mobile-book-btn .btn {
-      background: linear-gradient(135deg, #ff6a00 0%, #ee0979 100%);
-      border: none;
-      color: #fff;
-      border-radius: 50px;
-      padding: 12px;
-      font-weight: 600;
-    }
-    .navbar-expand-lg .navbar-nav{
-      margin-top:15px !important;
-    }
-    /* gallery fix: ensure col classes consistent */
-    .gallery-box .img-thumb img {
-      width: 100%;
-    }
-    /* fix spacing */
-    .schedule-tab-title ul.nav-tabs {
-      display: block;
-    }
-    .price-block-wrapper {
-      margin-bottom: 30px;
-    }
-    /* sponsor button alignment */
-    #sponsors .text-center .btn-common {
-      margin-top: 30px;
-    }
-    /* fix missing hover for lightbox */
-    .gallery-box .overlay-box {
-      cursor: pointer;
-    }
-    /* ensure countdown timer responsive */
-    #clock {
-      font-size: 2rem;
-      font-weight: 700;
-    }
-    @media (max-width: 768px) {
-      #clock {
-        font-size: 1.2rem;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- Header Area wrapper Starts -->
-  <header id="header-wrap">
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar"
-            aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="icon-menu"></span>
-            <span class="icon-menu"></span>
-            <span class="icon-menu"></span>
-          </button>
-          <a href="{{ url('/') }}" class="navbar-brand"><img src="{{ asset('assets/img/logoo.png') }}" alt="Grand Event"></a>
-        </div>
-        <div class="collapse navbar-collapse" id="main-navbar">
-          <ul class="navbar-nav mr-auto w-100 justify-content-end">
-            <li class="nav-item active">
-              <a class="nav-link" href="#header-wrap">
-                Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#services">
-                Why&nbsp;Us
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#schedules">
-                Clients
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#team">
-                Gallery
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#gallery">
-                Services
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#faq">
-                Faq
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#sponsors">
-                Testimonials
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#pricing">
-                Contact
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#google-map-area">
-                Pricing
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Mobile Menu Start -->
-      <ul class="mobile-menu">
-        <li>
-          <a class="page-scrool" href="#header-wrap">Home</a>
-        </li>
-        <li>
-          <a class="page-scrool" href="#services">Why&nbsp;Us</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#schedules">Clients</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#team">Gallery</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#gallery">Services</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#faq">Faq</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#sponsors">Testimonials</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#pricing">Contact</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#google-map-area">Pricing</a>
-        </li>
-      </ul>
-      <!-- Mobile Menu End -->
-
-    </nav>
-
-    <!-- Main Carousel Section Start -->
-    <div id="main-slide" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#main-slide" data-slide-to="0" class="active"></li>
-        <li data-target="#main-slide" data-slide-to="1"></li>
-        <li data-target="#main-slide" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-  
-  <div class="carousel-item active position-relative">
-    <img class="d-block w-100" src="{{ asset('assets/img/slider/slide1.jpg') }}" alt="First slide">
-    
-    <div class="overlay"></div>
-
-    <div class="carousel-caption d-md-block">
-      <p class="fadeInUp wow" data-wow-delay=".6s">Global Grand Event on Digital Design</p>
-      <h1 class="wow fadeInDown heading" data-wow-delay=".4s">Design Thinking Conference</h1>
-      <a href="#" class="fadeInLeft wow btn btn-common btn-lg" data-wow-delay=".6s">Get Ticket</a>
-      <a href="#" class="fadeInRight wow btn btn-border btn-lg" data-wow-delay=".6s">Explore More</a>
-    </div>
-  </div>
-
-  <div class="carousel-item position-relative">
-    <img class="d-block w-100" src="{{ asset('assets/img/slider/slide2.jpg') }}" alt="Second slide">
-    
-    <div class="overlay"></div>
-
-    <div class="carousel-caption d-md-block">
-      <p class="fadeInUp wow" data-wow-delay=".6s">Global Grand Event on Digital Design</p>
-      <h1 class="wow bounceIn heading" data-wow-delay=".7s">22 Amazing Speakers</h1>
-      <a href="#" class="fadeInUp wow btn btn-border btn-lg" data-wow-delay=".8s">Learn More</a>
-    </div>
-  </div>
-
-  <div class="carousel-item position-relative">
-    <img class="d-block w-100" src="{{ asset('assets/img/slider/slide3.jpg') }}" alt="Third slide">
-    
-    <div class="overlay"></div>
-
-    <div class="carousel-caption d-md-block">
-      <p class="fadeInUp wow" data-wow-delay=".6s">Global Grand Event on Digital Design</p>
-      <h1 class="wow fadeInUp heading" data-wow-delay=".6s">Book Your Seat Now!</h1>
-      <a href="#" class="fadeInUp wow btn btn-common btn-lg" data-wow-delay=".8s">Explore</a>
-    </div>
-  </div>
-
-</div>
-<style>
-  .carousel-item {
-  position: relative;
-}
-
-.carousel-item img {
-  height: 100vh;
-  object-fit: cover;
-  filter: brightness(60%); /* makes image darker */
-}
-
-/* Overlay */
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* dark layer */
-  z-index: 1;
-}
-
-/* Text above overlay */
-.carousel-caption {
-  z-index: 2;
-}
-
-/* Improve text readability */
-.carousel-caption h1,
-.carousel-caption p {
-  color: #fff;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.7);
-}
-
-</style>
-      <a class="carousel-control-prev" href="#main-slide" role="button" data-slide="prev">
-        <span class="carousel-control" aria-hidden="true"><i class="lni-chevron-left"></i></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#main-slide" role="button" data-slide="next">
-        <span class="carousel-control" aria-hidden="true"><i class="lni-chevron-right"></i></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-    <!-- Main Carousel Section End -->
-
-  </header>
-  <!-- Header Area wrapper End -->
-
+@section('content')
   <!-- Services Section Start -->
-  <section id="services" class="services section-padding">
+  <section id="whyus" class="services section-padding">
     <div class="container">
       <div class="row">
         <div class="col-12">
           <div class="section-title-header text-center">
-            <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Why You Choose Us?</h1>
-            <p class="wow fadeInDown" data-wow-delay="0.2s">Global Grand Event on Digital Design</p>
+            <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Why Us?</h1>
+            <p class="wow fadeInDown" data-wow-delay="0.2s">At Eventex Solutions, we deliver end-to-end event management with precision, creativity, and professionalism. From corporate events to live streaming, photography, and complete setup, our team ensures every detail is handled flawlessly. Based in Ghaziabad, we combine modern technology with innovative execution to create seamless and memorable experiences—on time, within budget, and beyond expectations.</p>
           </div>
         </div>
       </div>
@@ -317,8 +23,8 @@
               <i class="lni-heart"></i>
             </div>
             <div class="services-content">
-              <h3><a href="#">Get Inspired</a></h3>
-              <p>Lorem ipsum dolor sit amet, consectetuer commodo ligula eget dolor.</p>
+              <h3><a href="#">Elevate Your Corporate Events</a></h3>
+              <p>Seamless planning, premium execution, and unforgettable experiences</p>
             </div>
           </div>
         </div>
@@ -329,8 +35,8 @@
               <i class="lni-gallery"></i>
             </div>
             <div class="services-content">
-              <h3><a href="#">Meet New Faces</a></h3>
-              <p>Lorem ipsum dolor sit amet, consectetuer commodo ligula eget dolor.</p>
+              <h3><a href="#">Capture. Stream. Impress.</a></h3>
+              <p>High-end production, multi-camera setups, and flawless live coverage.</p>
             </div>
           </div>
         </div>
@@ -387,9 +93,8 @@
   </section>
   <!-- Services Section End -->
 
-
   <!-- About Section Start -->
-  <section id="about" class="section-padding">
+{{--  <section id="about" class="section-padding">
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -432,9 +137,375 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
   <!-- About Section End -->
 
+  
+  <!-- Clients Section Start -->
+<section id="clients" class="section-padding text-center">
+  <div class="container">
+
+    <!-- Title -->
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title-header">
+          <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Our Clients</h1>
+          <p class="wow fadeInDown" data-wow-delay="0.2s">
+            Trusted by brands for delivering exceptional event experiences
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clients Grid -->
+    <div class="row">
+
+      <!-- Row 1 -->
+      <div class="col-md-3 col-sm-6 mb-4">
+        <div class="client-box">
+          <img src="{{ asset('assets/img/sponsors/logo-01.png') }}" alt="">
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6 mb-4">
+        <div class="client-box">
+          <img src="{{ asset('assets/img/sponsors/logo-02.png') }}" alt="">
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6 mb-4">
+        <div class="client-box">
+          <img src="{{ asset('assets/img/sponsors/logo-03.png') }}" alt="">
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6 mb-4">
+        <div class="client-box">
+          <img src="{{ asset('assets/img/sponsors/logo-04.png') }}" alt="">
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="col-md-3 col-sm-6 mb-4">
+        <div class="client-box">
+          <img src="{{ asset('assets/img/sponsors/logo-01.png') }}" alt="">
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6 mb-4">
+        <div class="client-box">
+          <img src="{{ asset('assets/img/sponsors/logo-02.png') }}" alt="">
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6 mb-4">
+        <div class="client-box">
+          <img src="{{ asset('assets/img/sponsors/logo-03.png') }}" alt="">
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6 mb-4">
+        <div class="client-box">
+          <img src="{{ asset('assets/img/sponsors/logo-04.png') }}" alt="">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- Clients Section End -->
+<style>
+  .client-box {
+  position: relative;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Logo */
+.client-box img {
+  max-width: 120px;
+  transition: 0.3s;
+}
+
+.client-box:hover img {
+  transform: scale(1.05);
+}
+
+/* Snake Border */
+.client-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(90deg, transparent, #ff4da6, transparent);
+  background-size: 300% 300%;
+  animation: snakeBorder 3s linear infinite;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+/* Animation */
+@keyframes snakeBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+</style>
+  
+  <!-- Gallary Section Start -->
+  <section id="gallery" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="section-title-header text-center">
+            <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">our event gallery</h1>
+            <p class="wow fadeInDown" data-wow-delay="0.2s">Global Grand Event on Digital Design</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-lg-4">
+          <div class="gallery-box">
+            <div class="img-thumb">
+              <img class="img-fluid" src="{{ asset('assets/img/gallery/img-1.jpg') }}" alt="">
+            </div>
+            <div class="overlay-box text-center">
+              <a class="lightbox" href="{{ asset('assets/img/gallery/img-1.jpg') }}">
+                <i class="lni-plus"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-4">
+          <div class="gallery-box">
+            <div class="img-thumb">
+              <img class="img-fluid" src="{{ asset('assets/img/gallery/img-2.jpg') }}" alt="">
+            </div>
+            <div class="overlay-box text-center">
+              <a class="lightbox" href="{{ asset('assets/img/gallery/img-2.jpg') }}">
+                <i class="lni-plus"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-4">
+          <div class="gallery-box">
+            <div class="img-thumb">
+              <img class="img-fluid" src="{{ asset('assets/img/gallery/img-3.jpg') }}" alt="">
+            </div>
+            <div class="overlay-box text-center">
+              <a class="lightbox" href="{{ asset('assets/img/gallery/img-3.jpg') }}">
+                <i class="lni-plus"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-4">
+          <div class="gallery-box">
+            <div class="img-thumb">
+              <img class="img-fluid" src="{{ asset('assets/img/gallery/img-4.jpg') }}" alt="">
+            </div>
+            <div class="overlay-box text-center">
+              <a class="lightbox" href="{{ asset('assets/img/gallery/img-4.jpg') }}">
+                <i class="lni-plus"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-4">
+          <div class="gallery-box">
+            <div class="img-thumb">
+              <img class="img-fluid" src="{{ asset('assets/img/gallery/img-5.jpg') }}" alt="">
+            </div>
+            <div class="overlay-box text-center">
+              <a class="lightbox" href="{{ asset('assets/img/gallery/img-5.jpg') }}">
+                <i class="lni-plus"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-4">
+          <div class="gallery-box">
+            <div class="img-thumb">
+              <img class="img-fluid" src="{{ asset('assets/img/gallery/img-6.jpg') }}" alt="">
+            </div>
+            <div class="overlay-box text-center">
+              <a class="lightbox" href="{{ asset('assets/img/gallery/img-6.jpg') }}">
+                <i class="lni-plus"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-3">
+        <div class="col-xs-12">
+          <a href="#" class="btn btn-common">Browse All</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Gallary Section End -->
+
+  <!-- Services Section Start -->
+<section id="services" class="section-padding text-center">
+  <div class="container">
+
+    <!-- Section Title -->
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title-header text-center">
+          <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Our Services</h1>
+          <p class="wow fadeInDown" data-wow-delay="0.2s">
+            Complete Event Solutions for Corporate, Private & Live Experiences
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services Cards -->
+    <div class="row">
+
+      <!-- Service 1 -->
+      <div class="col-sm-6 col-md-6 col-lg-4">
+        <div class="service-item wow fadeInUp" data-wow-delay="0.2s">
+          <div class="service-icon">
+            <i class="lni lni-briefcase"></i>
+          </div>
+          <div class="info-text">
+            <h3>Corporate Events</h3>
+            <p>Professional planning and execution for meetings, conferences, and business events.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="col-sm-6 col-md-6 col-lg-4">
+        <div class="service-item wow fadeInUp" data-wow-delay="0.4s">
+          <div class="service-icon">
+            <i class="lni lni-video"></i>
+          </div>
+          <div class="info-text">
+            <h3>Live Streaming</h3>
+            <p>High-quality live streaming with multi-camera setup and seamless virtual connectivity.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="col-sm-6 col-md-6 col-lg-4">
+        <div class="service-item wow fadeInUp" data-wow-delay="0.6s">
+          <div class="service-icon">
+            <i class="lni lni-camera"></i>
+          </div>
+          <div class="info-text">
+            <h3>Photography & Videography</h3>
+            <p>Capture every moment with cinematic videos and professional photography.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="col-sm-6 col-md-6 col-lg-4">
+        <div class="service-item wow fadeInUp" data-wow-delay="0.8s">
+          <div class="service-icon">
+            <i class="lni lni-paint-roller"></i>
+          </div>
+          <div class="info-text">
+            <h3>Stage & Decoration</h3>
+            <p>Creative themes, lighting, and elegant setups tailored to your event.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 5 -->
+      <div class="col-sm-6 col-md-6 col-lg-4">
+        <div class="service-item wow fadeInUp" data-wow-delay="1s">
+          <div class="service-icon">
+<i class="lni lni-user"></i>
+          </div>
+          <div class="info-text">
+            <h3>Private & Cultural Events</h3>
+            <p>From parties to cultural functions, we create memorable experiences.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 6 -->
+      <div class="col-sm-6 col-md-6 col-lg-4">
+        <div class="service-item wow fadeInUp" data-wow-delay="1.2s">
+          <div class="service-icon">
+            <i class="lni lni-mic"></i>
+          </div>
+          <div class="info-text">
+            <h3>Sound & Technical Setup</h3>
+            <p>Advanced audio, lighting, and LED solutions for flawless execution.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA Button -->
+    <a href="tel:+917011864373" class="btn btn-common mt-4 wow fadeInUp" data-wow-delay="1.4s">
+  <i class="lni lni-phone"></i> Call Now: 7011864373
+</a>
+
+
+
+  </div>
+</section>
+<!-- Services Section End -->
+
+<style>
+  .btn i {
+  color: #fff;
+  margin-right: 8px;
+}
+
+  .service-item {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.service-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.service-icon {
+  font-size: 50px;
+  color: #ff4da6;
+  margin-bottom: 15px;
+}
+
+.info-text h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.info-text p {
+  font-size: 14px;
+  color: #666;
+}
+
+</style>
   <!-- Counter Area Start-->
   <section class="counter-section section-padding">
     <div class="container">
@@ -476,8 +547,145 @@
   </section>
   <!-- Counter Area End-->
 
+  <!-- Ask Question Section Start -->
+  <section id="faq" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="section-title-header text-center">
+            <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Ask Question?</h1>
+            <p class="wow fadeInDown" data-wow-delay="0.2s">Global Grand Event on Digital Design</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+          <div class="accordion" id="accordionFaqLeft">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <div class="header-title" data-toggle="collapse" data-target="#questionOne" aria-expanded="true"
+                  aria-controls="collapseOne">
+                  <i class="lni-pencil"></i> How to make a new event?
+                </div>
+              </div>
+              <div id="questionOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionFaqLeft">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <div class="header-title" data-toggle="collapse" data-target="#questionTwo" aria-expanded="false"
+                  aria-controls="questionTwo">
+                  <i class="lni-pencil"></i> Which payment methods do you accept?
+                </div>
+              </div>
+              <div id="questionTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionFaqLeft">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <div class="header-title" data-toggle="collapse" data-target="#questionThree" aria-expanded="false"
+                  aria-controls="questionThree">
+                  <i class="lni-pencil"></i> Which document can i bring to meeting?
+                </div>
+              </div>
+              <div id="questionThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionFaqLeft">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingFour">
+                <div class="header-title" data-toggle="collapse" data-target="#questionFour" aria-expanded="false"
+                  aria-controls="questionFour">
+                  <i class="lni-pencil"></i> Who can join at the live event venue?
+                </div>
+              </div>
+              <div id="questionFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionFaqLeft">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+          <div class="accordion" id="accordionFaqRight">
+            <div class="card">
+              <div class="card-header" id="headingOne2">
+                <div class="header-title" data-toggle="collapse" data-target="#questionOne2" aria-expanded="false"
+                  aria-controls="collapseOne">
+                  <i class="lni-pencil"></i> How to make a new event?
+                </div>
+              </div>
+              <div id="questionOne2" class="collapse" aria-labelledby="headingOne2" data-parent="#accordionFaqRight">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingTwo2">
+                <div class="header-title" data-toggle="collapse" data-target="#questionTwo2" aria-expanded="false"
+                  aria-controls="questionTwo">
+                  <i class="lni-pencil"></i> Which payment methods do you accept?
+                </div>
+              </div>
+              <div id="questionTwo2" class="collapse" aria-labelledby="headingTwo2" data-parent="#accordionFaqRight">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingFive">
+                <div class="header-title" data-toggle="collapse" data-target="#questionFive" aria-expanded="false"
+                  aria-controls="questionFive">
+                  <i class="lni-pencil"></i>How to set price?
+                </div>
+              </div>
+              <div id="questionFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionFaqRight">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingSix">
+                <div class="header-title" data-toggle="collapse" data-target="#questionSix" aria-expanded="false"
+                  aria-controls="questionSix">
+                  <i class="lni-pencil"></i> What our price list?
+                </div>
+              </div>
+              <div id="questionSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionFaqRight">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Ask Question Section End -->
+
   <!-- Schedule Section Start -->
-  <section id="schedules" class="schedule section-padding">
+  <section id="testimonials" class="schedule section-padding">
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -756,423 +964,7 @@
     </div>
   </section>
   <!-- Schedule Section End -->
-
-  <!-- Team Section Start -->
-  <section id="team" class="section-padding text-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="section-title-header text-center">
-            <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Whos Speaking</h1>
-            <p class="wow fadeInDown" data-wow-delay="0.2s">Global Grand Event on Digital Design</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-4">
-          <div class="team-item wow fadeInUp" data-wow-delay="0.2s">
-            <div class="team-img">
-              <img class="img-fluid" src="{{ asset('assets/img/team/team-01.jpg') }}" alt="">
-              <div class="team-overlay">
-                <div class="overlay-social-icon text-center">
-                  <ul class="social-icons">
-                    <li><a href="#"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-linkedin-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-behance" aria-hidden="true"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="info-text">
-              <h3><a href="#">JONATHON DOE</a></h3>
-              <p>Product Designer, Tesla</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-6 col-lg-4">
-          <div class="team-item wow fadeInUp" data-wow-delay="0.4s">
-            <div class="team-img">
-              <img class="img-fluid" src="{{ asset('assets/img/team/team-02.jpg') }}" alt="">
-              <div class="team-overlay">
-                <div class="overlay-social-icon text-center">
-                  <ul class="social-icons">
-                    <li><a href="#"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-linkedin-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-behance" aria-hidden="true"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="info-text">
-              <h3><a href="#">Patric Green</a></h3>
-              <p>Front-end Developer, Dropbox</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-6 col-lg-4">
-          <div class="team-item wow fadeInUp" data-wow-delay="0.6s">
-            <div class="team-img">
-              <img class="img-fluid" src="{{ asset('assets/img/team/team-03.jpg' ) }}" alt="">
-              <div class="team-overlay">
-                <div class="overlay-social-icon text-center">
-                  <ul class="social-icons">
-                    <li><a href="#"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-linkedin-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-behance" aria-hidden="true"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="info-text">
-              <h3><a href="#">Paul Kowalsy</a></h3>
-              <p>Lead Designer, TNW</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-6 col-lg-4">
-          <div class="team-item wow fadeInUp" data-wow-delay="0.8s">
-            <div class="team-img">
-              <img class="img-fluid" src="{{ asset('assets/img/team/team-04.jpg') }}" alt="">
-              <div class="team-overlay">
-                <div class="overlay-social-icon text-center">
-                  <ul class="social-icons">
-                    <li><a href="#"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-linkedin-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-behance" aria-hidden="true"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="info-text">
-              <h3><a href="#">Jhon Doe</a></h3>
-              <p>Back-end Developer, ASUS</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-6 col-lg-4">
-          <div class="team-item wow fadeInUp" data-wow-delay="1s">
-            <div class="team-img">
-              <img class="img-fluid" src="{{ asset('assets/img/team/team-05.jpg') }}" alt="">
-              <div class="team-overlay">
-                <div class="overlay-social-icon text-center">
-                  <ul class="social-icons">
-                    <li><a href="#"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-linkedin-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-behance" aria-hidden="true"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="info-text">
-              <h3><a href="#">Daryl Dixon</a></h3>
-              <p>Full-stack Developer, Google</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-6 col-lg-4">
-          <div class="team-item wow fadeInUp" data-wow-delay="1.2s">
-            <div class="team-img">
-              <img class="img-fluid" src="{{ asset('assets/img/team/team-06.jpg') }}" alt="">
-              <div class="team-overlay">
-                <div class="overlay-social-icon text-center">
-                  <ul class="social-icons">
-                    <li><a href="#"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-linkedin-filled" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="lni-behance" aria-hidden="true"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="info-text">
-              <h3><a href="#">Chris Adams</a></h3>
-              <p>UI Designer, Apple</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a href="speakers.html" class="btn btn-common mt-30 wow fadeInUp" data-wow-delay="1.9s">All Speakers</a>
-    </div>
-  </section>
-  <!-- Team Section End -->
-
-  <!-- Gallary Section Start -->
-  <section id="gallery" class="section-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="section-title-header text-center">
-            <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">our event gallery</h1>
-            <p class="wow fadeInDown" data-wow-delay="0.2s">Global Grand Event on Digital Design</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 col-sm-6 col-lg-4">
-          <div class="gallery-box">
-            <div class="img-thumb">
-              <img class="img-fluid" src="{{ asset('assets/img/gallery/img-1.jpg') }}" alt="">
-            </div>
-            <div class="overlay-box text-center">
-              <a class="lightbox" href="{{ asset('assets/img/gallery/img-1.jpg') }}">
-                <i class="lni-plus"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-sm-6 col-lg-4">
-          <div class="gallery-box">
-            <div class="img-thumb">
-              <img class="img-fluid" src="{{ asset('assets/img/gallery/img-2.jpg') }}" alt="">
-            </div>
-            <div class="overlay-box text-center">
-              <a class="lightbox" href="{{ asset('assets/img/gallery/img-2.jpg') }}">
-                <i class="lni-plus"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-sm-6 col-lg-4">
-          <div class="gallery-box">
-            <div class="img-thumb">
-              <img class="img-fluid" src="{{ asset('assets/img/gallery/img-3.jpg') }}" alt="">
-            </div>
-            <div class="overlay-box text-center">
-              <a class="lightbox" href="{{ asset('assets/img/gallery/img-3.jpg') }}">
-                <i class="lni-plus"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-sm-6 col-lg-4">
-          <div class="gallery-box">
-            <div class="img-thumb">
-              <img class="img-fluid" src="{{ asset('assets/img/gallery/img-4.jpg') }}" alt="">
-            </div>
-            <div class="overlay-box text-center">
-              <a class="lightbox" href="{{ asset('assets/img/gallery/img-4.jpg') }}">
-                <i class="lni-plus"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-sm-6 col-lg-4">
-          <div class="gallery-box">
-            <div class="img-thumb">
-              <img class="img-fluid" src="{{ asset('assets/img/gallery/img-5.jpg') }}" alt="">
-            </div>
-            <div class="overlay-box text-center">
-              <a class="lightbox" href="{{ asset('assets/img/gallery/img-5.jpg') }}">
-                <i class="lni-plus"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-sm-6 col-lg-4">
-          <div class="gallery-box">
-            <div class="img-thumb">
-              <img class="img-fluid" src="{{ asset('assets/img/gallery/img-6.jpg') }}" alt="">
-            </div>
-            <div class="overlay-box text-center">
-              <a class="lightbox" href="{{ asset('assets/img/gallery/img-6.jpg') }}">
-                <i class="lni-plus"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row justify-content-center mt-3">
-        <div class="col-xs-12">
-          <a href="#" class="btn btn-common">Browse All</a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Gallary Section End -->
-
-  <!-- Ask Question Section Start -->
-  <section id="faq" class="section-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="section-title-header text-center">
-            <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Ask Question?</h1>
-            <p class="wow fadeInDown" data-wow-delay="0.2s">Global Grand Event on Digital Design</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
-          <div class="accordion" id="accordionFaqLeft">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <div class="header-title" data-toggle="collapse" data-target="#questionOne" aria-expanded="true"
-                  aria-controls="collapseOne">
-                  <i class="lni-pencil"></i> How to make a new event?
-                </div>
-              </div>
-              <div id="questionOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionFaqLeft">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header" id="headingTwo">
-                <div class="header-title" data-toggle="collapse" data-target="#questionTwo" aria-expanded="false"
-                  aria-controls="questionTwo">
-                  <i class="lni-pencil"></i> Which payment methods do you accept?
-                </div>
-              </div>
-              <div id="questionTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionFaqLeft">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header" id="headingThree">
-                <div class="header-title" data-toggle="collapse" data-target="#questionThree" aria-expanded="false"
-                  aria-controls="questionThree">
-                  <i class="lni-pencil"></i> Which document can i bring to meeting?
-                </div>
-              </div>
-              <div id="questionThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionFaqLeft">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header" id="headingFour">
-                <div class="header-title" data-toggle="collapse" data-target="#questionFour" aria-expanded="false"
-                  aria-controls="questionFour">
-                  <i class="lni-pencil"></i> Who can join at the live event venue?
-                </div>
-              </div>
-              <div id="questionFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionFaqLeft">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
-          <div class="accordion" id="accordionFaqRight">
-            <div class="card">
-              <div class="card-header" id="headingOne2">
-                <div class="header-title" data-toggle="collapse" data-target="#questionOne2" aria-expanded="false"
-                  aria-controls="collapseOne">
-                  <i class="lni-pencil"></i> How to make a new event?
-                </div>
-              </div>
-              <div id="questionOne2" class="collapse" aria-labelledby="headingOne2" data-parent="#accordionFaqRight">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header" id="headingTwo2">
-                <div class="header-title" data-toggle="collapse" data-target="#questionTwo2" aria-expanded="false"
-                  aria-controls="questionTwo">
-                  <i class="lni-pencil"></i> Which payment methods do you accept?
-                </div>
-              </div>
-              <div id="questionTwo2" class="collapse" aria-labelledby="headingTwo2" data-parent="#accordionFaqRight">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header" id="headingFive">
-                <div class="header-title" data-toggle="collapse" data-target="#questionFive" aria-expanded="false"
-                  aria-controls="questionFive">
-                  <i class="lni-pencil"></i>How to set price?
-                </div>
-              </div>
-              <div id="questionFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionFaqRight">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header" id="headingSix">
-                <div class="header-title" data-toggle="collapse" data-target="#questionSix" aria-expanded="false"
-                  aria-controls="questionSix">
-                  <i class="lni-pencil"></i> What our price list?
-                </div>
-              </div>
-              <div id="questionSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionFaqRight">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Ask Question Section End -->
-
-  <!-- Sponsors Section Start -->
-  <section id="sponsors" class="section-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="section-title-header text-center">
-            <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Sponsores</h1>
-            <p class="wow fadeInDown" data-wow-delay="0.2s">Global Grand Event on Digital Design</p>
-          </div>
-        </div>
-      </div>
-      <div class="row mb-30 text-center wow fadeInDown" data-wow-delay="0.3s">
-        <div class="col-md-3 col-sm-3 col-xs-12">
-          <div class="spnsors-logo">
-            <a href="#"><img class="img-fluid" src="{{ asset('assets/img/sponsors/logo-01.png') }}" alt="sponsor"></a>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-3 col-xs-12">
-          <div class="spnsors-logo">
-            <a href="#"><img class="img-fluid" src="{{ asset('assets/img/sponsors/logo-02.png') }}" alt="sponsor"></a>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-3 col-xs-12">
-          <div class="spnsors-logo">
-            <a href="#"><img class="img-fluid" src="{{ asset('assets/img/sponsors/logo-03.png') }}" alt="sponsor"></a>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-3 col-xs-12">
-          <div class="spnsors-logo">
-            <a href="#"><img class="img-fluid" src="{{ asset('assets/img/sponsors/logo-04.png') }}" alt="sponsor"></a>
-          </div>
-        </div>
-        <div class="col-12 text-center">
-          <a href="#" class="btn btn-common">become a sponsor</a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Sponsors Section End -->
+   
 
   <!-- Ticket Pricing Area Start -->
   <section id="pricing" class="section-padding">
@@ -1266,8 +1058,9 @@
   </section>
   <!-- Ticket Pricing Area End -->
 
-  <!-- Event Slides Section Start -->
-  <section id="event-slides" class="section-padding">
+ 
+ <!-- Event Slides Section Start -->
+  <section id="contact" class="section-padding">
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -1300,7 +1093,7 @@
   <!-- Event Slides Section End -->
 
   <!-- Blog Section Start -->
-  <section id="blog" class="section-padding">
+{{--  <section id="blog" class="section-padding">
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -1377,130 +1170,6 @@
         </div>
       </div>
     </div>
-  </section>
+  </section>  --}}
   <!-- Blog Section End -->
-
-  <!-- Footer Section Start -->
-  <footer class="footer-area section-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.2s">
-          <h3><img src="{{ asset('assets/img/logo.png') }}" alt="Grand"></h3>
-          <p>
-            Aorem ipsum dolor sit amet elit sed lum tempor incididunt ut labore el dolore alg minim veniam quis nostrud
-            ncididunt.
-          </p>
-        </div>
-        <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.4s">
-          <h3>QUICK LINKS</h3>
-          <ul>
-            <li><a href="#">About Conference</a></li>
-            <li><a href="#">Our Speakers</a></li>
-            <li><a href="#">Event Shedule</a></li>
-            <li><a href="#">Latest News</a></li>
-            <li><a href="#">Event Photo Gallery</a></li>
-          </ul>
-        </div>
-        <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.6s">
-          <h3>RECENT POSTS</h3>
-          <ul class="image-list">
-            <li>
-              <figure class="overlay">
-                <img class="img-fluid" src="{{ asset('assets/img/art/a1.jpg') }}" alt="">
-              </figure>
-              <div class="post-content">
-                <h6 class="post-title"> <a href="blog-single.html">Lorem ipsm dolor sumit.</a> </h6>
-                <div class="meta"><span class="date">October 12, 2018</span></div>
-              </div>
-            </li>
-            <li>
-              <figure class="overlay">
-                <img class="img-fluid" src="{{ asset('assets/img/art/a2.jpg') }}" alt="">
-              </figure>
-              <div class="post-content">
-                <h6 class="post-title"><a href="blog-single.html">Lorem ipsm dolor sumit.</a></h6>
-                <div class="meta"><span class="date">October 12, 2018</span></div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.8s">
-          <h3>SUBSCRIBE US</h3>
-          <div class="widget">
-            <div class="newsletter-wrapper">
-              <form method="post" id="subscribe-form" name="subscribe-form" class="validate">
-                <div class="form-group is-empty">
-                  <input type="email" value="" name="Email" class="form-control" id="EMAIL" placeholder="Your email"
-                    required="">
-                  <button type="submit" name="subscribe" id="subscribes" class="btn btn-common sub-btn"><i
-                      class="lni-pointer"></i></button>
-                  <div class="clearfix"></div>
-                </div>
-              </form>
-            </div>
-          </div>
-          <!-- /.widget -->
-          <div class="widget">
-            <h5 class="widget-title">FOLLOW US ON</h5>
-            <ul class="footer-social">
-              <li><a class="facebook" href="#"><i class="lni-facebook-filled"></i></a></li>
-              <li><a class="twitter" href="#"><i class="lni-twitter-filled"></i></a></li>
-              <li><a class="linkedin" href="#"><i class="lni-linkedin-filled"></i></a></li>
-              <li><a class="google-plus" href="#"><i class="lni-google-plus"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- Footer Section End -->
-
-  <div id="copyright">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="site-info">
-            <p>© Designed and Developed by <a href="http://uideck.com" rel="nofollow">UIdeck</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Go to Top Link -->
-  <a href="#" class="back-to-top">
-    <i class="lni-chevron-up"></i>
-  </a>
-
-  <div id="preloader">
-    <div class="sk-circle">
-      <div class="sk-circle1 sk-child"></div>
-      <div class="sk-circle2 sk-child"></div>
-      <div class="sk-circle3 sk-child"></div>
-      <div class="sk-circle4 sk-child"></div>
-      <div class="sk-circle5 sk-child"></div>
-      <div class="sk-circle6 sk-child"></div>
-      <div class="sk-circle7 sk-child"></div>
-      <div class="sk-circle8 sk-child"></div>
-      <div class="sk-circle9 sk-child"></div>
-      <div class="sk-circle10 sk-child"></div>
-      <div class="sk-circle11 sk-child"></div>
-      <div class="sk-circle12 sk-child"></div>
-    </div>
-  </div>
-
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="{{ asset('assets/js/jquery-min.js') }}"></script>
-  <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-  <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
-  <script src="{{ asset('assets/js/jquery.nav.js') }}"></script>
-  <script src="{{ asset('assets/js/jquery.easing.min.js') }}"></script>
-  <script src="{{ asset('assets/js/wow.js') }}"></script>
-  <script src="{{ asset('assets/js/jquery.slicknav.js') }}"></script>
-  <script src="{{ asset('assets/js/nivo-lightbox.js') }}"></script>
-  <script src="{{ asset('assets/js/main.js') }}"></script>
- 
-</body>
-
-</html>
+@endsection

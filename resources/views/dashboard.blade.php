@@ -18,26 +18,26 @@
         </div>
         <div class="tile-label">Profile</div>
     </a>
-    <a href="" class="tile">
-        <div class="tile-icon">
+<a href="{{ route('admin.website-details.index') }}" class="tile">
+            <div class="tile-icon">
             <i class="fas fa-globe"></i>
         </div>
         <div class="tile-label">Website Details</div>
     </a>
 
-    <a href="" class="tile">
-        <div class="tile-icon">
-            <i class="fas fa-envelope-open-text"></i>
-        </div>
-        <div class="tile-label">Contact Forms</div>
-    </a>
+   <a href="{{ route('admin.faqs.index') }}" class="tile">
+    <div class="tile-icon">
+        <i class="fas fa-question-circle"></i>
+    </div>
+    <div class="tile-label">FAQs</div>
+</a>
 
-    <a href="" class="tile">
-        <div class="tile-icon">
-            <i class="fas fa-comments"></i>
-        </div>
-        <div class="tile-label">Testimonials</div>
-    </a>
+    <a href="{{ route('admin.testimonials.index') }}" class="tile">
+    <div class="tile-icon">
+        <i class="fas fa-star"></i>
+    </div>
+    <div class="tile-label">Testimonials</div>
+</a>
 
     <a href="" class="tile">
         <div class="tile-icon">
