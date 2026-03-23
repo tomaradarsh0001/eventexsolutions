@@ -8,7 +8,7 @@
   <!-- CSRF Token for Laravel forms -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>@yield('title', 'Eventex - India's Leading Event Management Company')</title>
+  <title>@yield('title', 'Eventex - India\'s Leading Event Management Company')</title>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
@@ -19,14 +19,13 @@
   <!-- Nivo Lightbox -->
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/nivo-lightbox.css') }}">
   <!-- Animate -->
-   <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
+  <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animate.css') }}">
   <!-- Main Style -->
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }}">
   <!-- Responsive Style -->
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
-  <!-- fix: added missing responsive meta + inline style corrections for layout -->
   <style>
     /* Book Event Button Styling */
     .book-event-btn {
@@ -66,37 +65,77 @@
       padding: 12px;
       font-weight: 600;
     }
-    .navbar-expand-lg .navbar-nav{
-      margin-top:15px !important;
+    
+    /* Fix navbar margin */
+    .navbar-expand-lg .navbar-nav {
+      margin-top: 15px !important;
     }
-    /* gallery fix: ensure col classes consistent */
+    
+    /* Gallery fix: ensure col classes consistent */
     .gallery-box .img-thumb img {
       width: 100%;
     }
-    /* fix spacing */
+    
+    /* Fix spacing */
     .schedule-tab-title ul.nav-tabs {
       display: block;
     }
+    
     .price-block-wrapper {
       margin-bottom: 30px;
     }
-    /* sponsor button alignment */
+    
+    /* Sponsor button alignment */
     #sponsors .text-center .btn-common {
       margin-top: 30px;
     }
-    /* fix missing hover for lightbox */
+    
+    /* Fix missing hover for lightbox */
     .gallery-box .overlay-box {
       cursor: pointer;
     }
-    /* ensure countdown timer responsive */
+    
+    /* Ensure countdown timer responsive */
     #clock {
       font-size: 2rem;
       font-weight: 700;
     }
+    
     @media (max-width: 768px) {
       #clock {
         font-size: 1.2rem;
       }
+    }
+    
+    /* Carousel styles - moved from inline */
+    .carousel-item {
+      position: relative;
+    }
+
+    .carousel-item img {
+      height: 100vh;
+      object-fit: cover;
+      filter: brightness(60%);
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .carousel-caption {
+      z-index: 2;
+    }
+
+    .carousel-caption h1,
+    .carousel-caption p {
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
     }
   </style>
   
@@ -119,7 +158,9 @@
             <span class="icon-menu"></span>
             <span class="icon-menu"></span>
           </button>
-          <a href="{{ url('/') }}" class="navbar-brand"><img src="{{ asset('assets/img/logoo.png') }}" alt="Grand Event"></a>
+          <a href="{{ url('/') }}" class="navbar-brand">
+            <img src="{{ asset('assets/img/logoo.png') }}" alt="Grand Event">
+          </a>
         </div>
         <div class="collapse navbar-collapse" id="main-navbar">
           <ul class="navbar-nav mr-auto w-100 justify-content-end">
@@ -158,7 +199,7 @@
                 Testimonials
               </a>
             </li>
-             <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="#pricing">
                 Pricing
               </a>
@@ -175,10 +216,10 @@
       <!-- Mobile Menu Start -->
       <ul class="mobile-menu">
         <li>
-          <a class="page-scrool" href="#header-wrap">Home</a>
+          <a class="page-scroll" href="#header-wrap">Home</a>
         </li>
         <li>
-          <a class="page-scrool" href="#whyus">Why&nbsp;Us</a>
+          <a class="page-scroll" href="#whyus">Why&nbsp;Us</a>
         </li>
         <li>
           <a class="page-scroll" href="#clients">Clients</a>
@@ -198,7 +239,7 @@
         <li>
           <a class="page-scroll" href="#pricing">Pricing</a>
         </li>
-         <li>
+        <li>
           <a class="page-scroll" href="#contact">Contact</a>
         </li>
       </ul>
@@ -247,37 +288,7 @@
         </div>
 
       </div>
-      <style>
-        .carousel-item {
-          position: relative;
-        }
-
-        .carousel-item img {
-          height: 100vh;
-          object-fit: cover;
-          filter: brightness(60%);
-        }
-
-        .overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.5);
-          z-index: 1;
-        }
-
-        .carousel-caption {
-          z-index: 2;
-        }
-
-        .carousel-caption h1,
-        .carousel-caption p {
-          color: #fff;
-          text-shadow: 0 2px 10px rgba(0,0,0,0.7);
-        }
-      </style>
+      
       <a class="carousel-control-prev" href="#main-slide" role="button" data-slide="prev">
         <span class="carousel-control" aria-hidden="true"><i class="lni-chevron-left"></i></span>
         <span class="sr-only">Previous</span>
@@ -304,8 +315,7 @@
         <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.2s">
           <h3><img src="{{ asset('assets/img/logo.png') }}" alt="Grand"></h3>
           <p>
-            Aorem ipsum dolor sit amet elit sed lum tempor incididunt ut labore el dolore alg minim veniam quis nostrud
-            ncididunt.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
           </p>
         </div>
         <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.4s">
@@ -313,7 +323,7 @@
           <ul>
             <li><a href="#">About Conference</a></li>
             <li><a href="#">Our Speakers</a></li>
-            <li><a href="#">Event Shedule</a></li>
+            <li><a href="#">Event Schedule</a></li>
             <li><a href="#">Latest News</a></li>
             <li><a href="#">Event Photo Gallery</a></li>
           </ul>
@@ -326,7 +336,7 @@
                 <img class="img-fluid" src="{{ asset('assets/img/art/a1.jpg') }}" alt="">
               </figure>
               <div class="post-content">
-                <h6 class="post-title"> <a href="blog-single.html">Lorem ipsm dolor sumit.</a> </h6>
+                <h6 class="post-title"> <a href="blog-single.html">Lorem ipsum dolor sit amet.</a> </h6>
                 <div class="meta"><span class="date">October 12, 2018</span></div>
               </div>
             </li>
@@ -335,7 +345,7 @@
                 <img class="img-fluid" src="{{ asset('assets/img/art/a2.jpg') }}" alt="">
               </figure>
               <div class="post-content">
-                <h6 class="post-title"><a href="blog-single.html">Lorem ipsm dolor sumit.</a></h6>
+                <h6 class="post-title"><a href="blog-single.html">Lorem ipsum dolor sit amet.</a></h6>
                 <div class="meta"><span class="date">October 12, 2018</span></div>
               </div>
             </li>
@@ -348,7 +358,7 @@
               <form method="post" id="subscribe-form" name="subscribe-form" class="validate">
                 @csrf
                 <div class="form-group is-empty">
-                  <input type="email" value="" name="Email" class="form-control" id="EMAIL" placeholder="Your email"
+                  <input type="email" value="" name="email" class="form-control" id="EMAIL" placeholder="Your email"
                     required="">
                   <button type="submit" name="subscribe" id="subscribes" class="btn btn-common sub-btn"><i
                       class="lni-pointer"></i></button>
