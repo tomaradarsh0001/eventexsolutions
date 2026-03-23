@@ -8,7 +8,7 @@
   <!-- CSRF Token for Laravel forms -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>@yield('title', 'Grand - Event and Conference Template | Laravel Edition')</title>
+  <title>@yield('title', 'Eventex - India's Leading Event Management Company')</title>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
