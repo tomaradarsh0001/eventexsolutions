@@ -12,7 +12,7 @@
                     <span class="icon-menu"></span>
                     <span class="icon-menu"></span>
                 </button>
-                <a href="{{ url('/') }}" class="navbar-brand"><img src="{{ asset('assets/img/logo.png') }}" alt="Grand"></a>
+                <a href="{{ url('/') }}" class="navbar-brand"><img src="{{ asset('assets/img/logoo.png') }}" alt="Grand"></a>
             </div>
             <div class="collapse navbar-collapse" id="main-navbar">
                 <ul class="navbar-nav mr-auto w-100 justify-content-end">

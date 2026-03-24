@@ -27,10 +27,15 @@
                     </a>
                 </li>
                 <li class="{{ request()->routeIs('admin.testimonials.*') ? 'active' : '' }}">
-    <a href="{{ route('admin.testimonials.index') }}">
-        <i class="fas fa-star"></i> Testimonials
-    </a>
-</li>
+                    <a href="{{ route('admin.testimonials.index') }}">
+                        <i class="fas fa-star"></i> Testimonials
+                    </a>
+                </li>
+                 <li class="{{ request()->routeIs('admin.whyus.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.whyus.index') }}">
+                        <i class="fas fa-question"></i> Why Us
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

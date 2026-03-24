@@ -41,9 +41,9 @@
 
     <a href="" class="tile">
         <div class="tile-icon">
-            <i class="fas fa-file-alt"></i>
+            <i class="fas fa-award"></i>
         </div>
-        <div class="tile-label">Submissions</div>
+        <div class="tile-label">Why Us</div>
     </a>
 
     <a href="" class="tile">

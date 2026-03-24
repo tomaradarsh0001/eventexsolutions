@@ -4,8 +4,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebsiteDetailController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\WhyUsController;
 
 use Illuminate\Support\Facades\Route;
+use App\Models\WhyUs;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +20,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    $whyus = WhyUs::with('items')->first();
+    return view('welcome', compact('whyus'));
 });
 
 Route::get('/dashboard', function () {
@@ -67,7 +71,17 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::post('testimonials/{testimonial}/toggle-status', [TestimonialController::class, 'toggleStatus'])->name('testimonials.toggle-status');
 });
 
+Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
 
+    Route::get('/admin/whyus', [WhyUsController::class, 'index'])->name('whyus.index');
+    Route::get('/admin/whyus/create', [WhyUsController::class, 'create'])->name('whyus.create');
+    Route::post('/admin/whyus/store', [WhyUsController::class, 'store'])->name('whyus.store');
+    Route::get('/admin/whyus/edit', [WhyUsController::class, 'edit'])->name('whyus.edit');
+    Route::post('/admin/whyus/update', [WhyUsController::class, 'update'])->name('whyus.update');
+    Route::delete('/admin/whyus/delete', [App\Http\Controllers\WhyUsController::class, 'destroy'])->name('whyus.destroy');
+    Route::put('/admin/whyus/update', [WhyUsController::class, 'update'])->name('whyus.update');
+
+});
 // Public routes
 
 });

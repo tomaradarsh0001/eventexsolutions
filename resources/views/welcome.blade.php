@@ -15,29 +15,25 @@
     <div class="carousel-item active">
       <img class="d-block w-100" src="{{ asset('assets/img/slider/slider1.jpg') }}" alt="First slide">
       <div class="carousel-caption d-md-block">
-        <p class="fadeInUp wow" data-wow-delay=".6s">Global Grand Event on Digital Design</p>
-        <h1 class="wow fadeInDown heading" data-wow-delay=".4s">Design Thinking Conference</h1>
-        <a href="{{ route('dashboard') }}" class="fadeInLeft wow btn btn-common btn-lg" data-wow-delay=".6s">Get
-          Ticket</a>
-        <a href="{{ route('dashboard') }}" class="fadeInRight wow btn btn-border btn-lg" data-wow-delay=".6s">Explore
-          More</a>
+        <p class="fadeInUp wow" data-wow-delay=".6s">Elevating Corporate Events to Excellence</p>
+        <h1 class="wow fadeInDown heading" data-wow-delay=".4s">Seamless planning, flawless execution, and impactful experiences.</h1>
+        <a href="{{ route('dashboard') }}" class="fadeInLeft wow btn btn-common btn-lg" data-wow-delay=".6s">Enquire for Event</a>
       </div>
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="{{ asset('assets/img/slider/slider2.jpg') }}" alt="Second slide">
       <div class="carousel-caption d-md-block">
-        <p class="fadeInUp wow" data-wow-delay=".6s">Global Grand Event on Digital Design</p>
-        <h1 class="wow bounceIn heading" data-wow-delay=".7s">22 Amazing Speakers</h1>
-        <a href="{{ route('dashboard') }}" class="fadeInUp wow btn btn-border btn-lg" data-wow-delay=".8s">Learn
-          More</a>
+        <p class="fadeInUp wow" data-wow-delay=".6s">Turning Moments into Grand Celebrations</p>
+        <h1 class="wow bounceIn heading" data-wow-delay=".7s">From private parties to large-scale events, we make every moment unforgettable.</h1>
+        <a href="{{ route('dashboard') }}" class="fadeInUp wow btn btn-border btn-lg" data-wow-delay=".8s">Enquire for Event</a>
       </div>
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="{{ asset('assets/img/slider/slider3.jpg') }}" alt="Third slide">
       <div class="carousel-caption d-md-block">
-        <p class="fadeInUp wow" data-wow-delay=".6s">Global Grand Event on Digital Design</p>
-        <h1 class="wow fadeInUp heading" data-wow-delay=".6s">Book Your Seat Now!</h1>
-        <a href="{{ route('register') }}" class="fadeInUp wow btn btn-common btn-lg" data-wow-delay=".8s">Explore</a>
+        <p class="fadeInUp wow" data-wow-delay=".6s">Powering Events with Cutting-Edge Technology</p>
+        <h1 class="wow fadeInUp heading" data-wow-delay=".6s">Live streaming, virtual conferences, and high-quality event production.</h1>
+        <a href="{{ route('register') }}" class="fadeInUp wow btn btn-common btn-lg" data-wow-delay=".8s">Enquire for Event</a>
       </div>
     </div>
   </div>
@@ -60,88 +56,34 @@
       <div class="col-12">
         <div class="section-title-header text-center">
           <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Why Us?</h1>
-          <p class="wow fadeInDown" data-wow-delay="0.2s">At Eventex Solutions, we deliver end-to-end event management
-            with precision, creativity, and professionalism. From corporate events to live streaming, photography, and
-            complete setup, our team ensures every detail is handled flawlessly. Based in Ghaziabad, we combine modern
-            technology with innovative execution to create seamless and memorable experiences—on time, within budget,
-            and beyond expectations.</p>
+        <p class="wow fadeInDown" data-wow-delay="0.2s">
+          {{ $whyus->whyus_paragraph ?? '' }}
+        </p>
+
         </div>
       </div>
     </div>
-    <div class="row services-wrapper">
-      <!-- Services item -->
+  <div class="row services-wrapper">
+  @if($whyus && $whyus->items)
+    @foreach($whyus->items as $index => $item)
       <div class="col-md-6 col-lg-4 col-xs-12 padding-none">
-        <div class="services-item wow fadeInDown" data-wow-delay="0.2s">
+        <div class="services-item wow fadeInDown" data-wow-delay="{{ 0.2 * ($index + 1) }}s">
+          
           <div class="icon">
-            <i class="lni-heart"></i>
+            <i class="{{ $item->icon }}"></i>
           </div>
+
           <div class="services-content">
-            <h3><a href="#">Elevate Your Corporate Events</a></h3>
-            <p>Seamless planning, premium execution, and unforgettable experiences</p>
+            <h3><a href="#">{{ $item->title }}</a></h3>
+            <p>{{ $item->description }}</p>
           </div>
+
         </div>
       </div>
-      <!-- Services item -->
-      <div class="col-md-6 col-lg-4 col-xs-12 padding-none">
-        <div class="services-item wow fadeInDown" data-wow-delay="0.4s">
-          <div class="icon">
-            <i class="lni-gallery"></i>
-          </div>
-          <div class="services-content">
-            <h3><a href="#">Capture. Stream. Impress.</a></h3>
-            <p>High-end production, multi-camera setups, and flawless live coverage.</p>
-          </div>
-        </div>
-      </div>
-      <!-- Services item -->
-      <div class="col-md-6 col-lg-4 col-xs-12 padding-none">
-        <div class="services-item wow fadeInDown" data-wow-delay="0.6s">
-          <div class="icon">
-            <i class="lni-envelope"></i>
-          </div>
-          <div class="services-content">
-            <h3><a href="#">Fresh Tech Insights</a></h3>
-            <p>Lorem ipsum dolor sit amet, consectetuer commodo ligula eget dolor.</p>
-          </div>
-        </div>
-      </div>
-      <!-- Services item -->
-      <div class="col-md-6 col-lg-4 col-xs-12 padding-none">
-        <div class="services-item wow fadeInDown" data-wow-delay="0.8s">
-          <div class="icon">
-            <i class="lni-cup"></i>
-          </div>
-          <div class="services-content">
-            <h3><a href="#">Networking Session</a></h3>
-            <p>Lorem ipsum dolor sit amet, consectetuer commodo ligula eget dolor.</p>
-          </div>
-        </div>
-      </div>
-      <!-- Services item -->
-      <div class="col-md-6 col-lg-4 col-xs-12 padding-none">
-        <div class="services-item wow fadeInDown" data-wow-delay="1s">
-          <div class="icon">
-            <i class="lni-user"></i>
-          </div>
-          <div class="services-content">
-            <h3><a href="#">Global Event</a></h3>
-            <p>Lorem ipsum dolor sit amet, consectetuer commodo ligula eget dolor.</p>
-          </div>
-        </div>
-      </div>
-      <!-- Services item -->
-      <div class="col-md-6 col-lg-4 col-xs-12 padding-none">
-        <div class="services-item wow fadeInDown" data-wow-delay="1.2s">
-          <div class="icon">
-            <i class="lni-bubble"></i>
-          </div>
-          <div class="services-content">
-            <h3><a href="#">Free Swags</a></h3>
-            <p>Lorem ipsum dolor sit amet, consectetuer commodo ligula eget dolor.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    @endforeach
+  @endif
+</div>
+
   </div>
 </section>
 <!-- Services Section End -->
