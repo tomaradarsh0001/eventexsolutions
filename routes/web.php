@@ -5,6 +5,9 @@ use App\Http\Controllers\WebsiteDetailController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\WhyUsController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\EventEnquiryController;
+use App\Http\Controllers\ContactController;
 
 use Illuminate\Support\Facades\Route;
 use App\Models\WhyUs;
@@ -30,6 +33,27 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// In your routes file (web.php)
+
+Route::post('/enquire', [EventEnquiryController::class, 'store'])->name('enquire.store');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/admin/contacts', [ContactController::class, 'index'])->name('admin.contacts.index');
+Route::get('/admin/contacts/{id}', [ContactController::class, 'show'])->name('admin.contacts.show');
+Route::post('/admin/contacts/{id}/read', [ContactController::class, 'markAsRead'])->name('admin.contacts.read');
+Route::delete('/admin/contacts/{id}', [ContactController::class, 'destroy'])->name('admin.contacts.destroy');
+
+// ✅ Admin routes should be INSIDE auth middleware
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/enquiries', [EventEnquiryController::class, 'index'])->name('enquiries.index');
+    Route::get('/enquiries/{id}', [EventEnquiryController::class, 'show'])->name('enquiries.show');
+    Route::put('/enquiries/{id}/status', [EventEnquiryController::class, 'updateStatus'])->name('enquiries.update-status');
+    Route::delete('/enquiries/{id}', [EventEnquiryController::class, 'destroy'])->name('enquiries.destroy');
+    Route::post('/enquiries/bulk-action', [EventEnquiryController::class, 'bulkAction'])->name('enquiries.bulk-action');
+    
+    // Add these missing routes
+    Route::patch('/enquiries/{id}/mark-read', [EventEnquiryController::class, 'markRead'])->name('enquiries.mark-read');
+    Route::patch('/enquiries/{id}/mark-unread', [EventEnquiryController::class, 'markUnread'])->name('enquiries.mark-unread');
+});
 Route::middleware('auth')->group(function () {
    Route::prefix('admin')->name('admin.')->group(function () {
     // Website Details Routes
@@ -82,7 +106,23 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::put('/admin/whyus/update', [WhyUsController::class, 'update'])->name('whyus.update');
 
 });
-// Public routes
+
+
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    
+    Route::get('services', [ServiceController::class, 'index'])->name('services.index');
+    Route::get('services/create', [ServiceController::class, 'create'])->name('services.create');
+    Route::post('services', [ServiceController::class, 'store'])->name('services.store');
+    Route::get('services/{service}', [ServiceController::class, 'show'])->name('services.show');
+    Route::get('services/{service}/edit', [ServiceController::class, 'edit'])->name('services.edit');
+    Route::put('services/{service}', [ServiceController::class, 'update'])->name('services.update');
+    Route::delete('services/{service}', [ServiceController::class, 'destroy'])->name('services.destroy');
+    Route::post('services/update-order', [ServiceController::class, 'updateOrder'])->name('services.update-order');
+    Route::post('services/bulk-delete', [ServiceController::class, 'bulkDelete'])->name('services.bulk-delete');
+    Route::post('services/{service}/toggle-status', [ServiceController::class, 'toggleStatus'])->name('services.toggle-status');
+    Route::post('services/{service}/duplicate', [ServiceController::class, 'duplicate'])->name('services.duplicate');
+});
+
 
 });
 

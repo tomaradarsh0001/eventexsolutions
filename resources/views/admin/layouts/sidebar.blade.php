@@ -36,6 +36,18 @@
                         <i class="fas fa-question"></i> Why Us
                     </a>
                 </li>
+               <li class="{{ request()->routeIs('admin.enquiries.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.enquiries.index') }}">
+                        <i class="fas fa-envelope-open-text"></i> Event Enquiries
+                    </a>
+                </li>
+                <li class="{{ request()->routeIs('admin.contacts.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.contacts.index') }}">
+                        <i class="fas fa-address-book"></i> Contact Forms
+                    </a>
+                </li>
+
+
             </ul>
         </nav>
     </div>

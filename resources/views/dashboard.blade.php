@@ -39,26 +39,31 @@
     <div class="tile-label">Testimonials</div>
 </a>
 
-    <a href="" class="tile">
+    <a href="{{ route('admin.whyus.index') }}" class="tile">
         <div class="tile-icon">
             <i class="fas fa-award"></i>
         </div>
         <div class="tile-label">Why Us</div>
     </a>
 
-    <a href="" class="tile">
-        <div class="tile-icon">
-            <i class="fas fa-hand-holding-heart"></i>
-        </div>
-        <div class="tile-label">Causes</div>
-    </a>
+   <a href="{{ route('admin.enquiries.index') }}" 
+   class="tile {{ request()->routeIs('admin.enquiries.*') ? 'active' : '' }}">
+    
+    <div class="tile-icon">
+        <i class="fas fa-envelope-open-text"></i>
+    </div>
 
-    <a href="" class="tile">
-        <div class="tile-icon">
-            <i class="fas fa-donate"></i>
-        </div>
-        <div class="tile-label">Direct Donations (QR)</div>
-    </a>
+    <div class="tile-label">Event Enquiries</div>
+</a>
+
+
+   <a href="{{ route('admin.contacts.index') }}" class="tile">
+    <div class="tile-icon">
+        <i class="fas fa-address-book"></i>
+    </div>
+    <div class="tile-label">Contact Forms</div>
+</a>
+
 
     <a href="" class="tile">
         <div class="tile-icon">
