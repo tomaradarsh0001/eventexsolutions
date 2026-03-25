@@ -103,7 +103,7 @@
 @endphp
 
 @if($services->count() > 0)
-<section class="services-section">
+<section class="services-section" id="services-section">
     <div class="container">
         <div class="section-header">
             <h2>Our Services</h2>
@@ -841,7 +841,885 @@
     }
 </style>
 
-<section class="relative min-h-screen flex items-center py-10 md:py-10 overflow-hidden">
+
+{{--gallery section--}}
+
+{{-- resources/views/welcome.blade.php --}}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+
+    
+    /* Gallery Section Styles */
+    .gallery-section {
+        padding: 80px 0;
+        background: linear-gradient(135deg, #fff5f5 0%, #ffffff 50%, #fff0f0 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .gallery-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(236, 72, 153, 0.03) 0%, transparent 70%);
+        transform: rotate(45deg);
+        pointer-events: none;
+    }
+    
+    .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    /* Section Header */
+    .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+    }
+    
+    .section-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #ec489a 0%, #f43f5e 100%);
+        color: white;
+        padding: 6px 20px;
+        border-radius: 100px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(236, 72, 153, 0.2);
+    }
+    
+    .section-title {
+        font-size: 48px;
+        font-weight: 800;
+        background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 20px;
+    }
+    
+    .section-subtitle {
+        font-size: 18px;
+        color: #64748b;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+    
+    /* Gallery Grid */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+    
+    /* Gallery Card */
+    .gallery-card {
+        background: white;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+        position: relative;
+    }
+    
+    .gallery-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(236, 72, 153, 0.15);
+    }
+    
+    /* Media Container - Carousel */
+    .media-container {
+        position: relative;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+        background: #f1f5f9;
+    }
+    
+    .carousel-slider {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        height: 100%;
+    }
+    
+    .carousel-slide {
+        min-width: 100%;
+        height: 100%;
+        position: relative;
+        flex-shrink: 0;
+    }
+    
+    .carousel-slide img,
+    .carousel-slide video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    /* Carousel Navigation */
+    .carousel-nav {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        z-index: 3;
+    }
+    
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .carousel-dot.active {
+        background: #ec489a;
+        width: 24px;
+        border-radius: 4px;
+    }
+    
+    .carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        color: white;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 3;
+        transition: all 0.3s ease;
+        opacity: 0;
+    }
+    
+    .gallery-card:hover .carousel-arrow {
+        opacity: 1;
+    }
+    
+    .carousel-arrow:hover {
+        background: rgba(236, 72, 153, 0.8);
+        transform: translateY(-50%) scale(1.1);
+    }
+    
+    .carousel-arrow.prev {
+        left: 10px;
+    }
+    
+    .carousel-arrow.next {
+        right: 10px;
+    }
+    
+    .carousel-arrow .material-icons {
+        font-size: 20px;
+    }
+    
+    /* Media Type Badge */
+    .media-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(10px);
+        padding: 8px 12px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: white;
+        font-size: 12px;
+        font-weight: 500;
+        z-index: 4;
+    }
+    
+    .media-badge .material-icons {
+        font-size: 16px;
+    }
+    
+    /* Play Button Overlay for Videos */
+    .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        cursor: pointer;
+        z-index: 2;
+    }
+    
+    .media-container:hover .video-overlay {
+        opacity: 1;
+    }
+    
+    .play-button {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #ec489a, #f43f5e);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+    }
+    
+    .play-button:hover {
+        transform: scale(1.1);
+    }
+    
+    .play-button .material-icons {
+        font-size: 32px;
+        color: white;
+    }
+    
+    /* Transparent Overlay for Event Details */
+    .event-details-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.6), transparent);
+        padding: 30px 20px 20px;
+        color: white;
+        z-index: 3;
+        transform: translateY(0);
+        transition: all 0.3s ease;
+    }
+    
+    .gallery-card:hover .event-details-overlay {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7), transparent);
+    }
+    
+    .event-name-overlay {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .event-date-overlay {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        opacity: 0.9;
+        margin-bottom: 8px;
+    }
+    
+    .event-date-overlay .material-icons {
+        font-size: 14px;
+    }
+    
+    .event-description-overlay {
+        font-size: 13px;
+        line-height: 1.5;
+        opacity: 0.9;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    
+    .media-count-overlay {
+        display: flex;
+        gap: 12px;
+        margin-top: 12px;
+        padding-top: 8px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        font-size: 12px;
+    }
+    
+    .media-count-overlay-item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    
+    .media-count-overlay-item .material-icons {
+        font-size: 14px;
+    }
+    
+    /* Hide original card content */
+    .card-content {
+        display: none;
+    }
+    
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 9999;
+        backdrop-filter: blur(10px);
+    }
+    
+    .modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .modal-content {
+        max-width: 90vw;
+        max-height: 90vh;
+        position: relative;
+    }
+    
+    .modal-media {
+        max-width: 100%;
+        max-height: 85vh;
+        object-fit: contain;
+        border-radius: 12px;
+    }
+    
+    .close-modal {
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    
+    .close-modal:hover {
+        background: rgba(236, 72, 153, 0.8);
+        transform: rotate(90deg);
+    }
+    
+    /* More Button */
+    .more-button-container {
+        text-align: center;
+        margin-top: 40px;
+    }
+    
+    .more-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: linear-gradient(135deg, #ec489a, #f43f5e);
+        color: white;
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 16px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+        border: none;
+        cursor: pointer;
+    }
+    
+    .more-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(236, 72, 153, 0.4);
+    }
+    
+    .more-button .material-icons {
+        font-size: 20px;
+        transition: transform 0.3s ease;
+    }
+    
+    .more-button:hover .material-icons {
+        transform: translateX(5px);
+    }
+    
+    /* No Data Message */
+    .no-data {
+        text-align: center;
+        padding: 60px;
+        background: white;
+        border-radius: 24px;
+        color: #64748b;
+    }
+    
+    .no-data .material-icons {
+        font-size: 64px;
+        color: #ec489a;
+        margin-bottom: 20px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .gallery-section {
+            padding: 50px 0;
+        }
+        
+        .section-title {
+            font-size: 32px;
+        }
+        
+        .gallery-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .event-name-overlay {
+            font-size: 18px;
+        }
+        
+        .carousel-arrow {
+            opacity: 0.5;
+        }
+    }
+</style>
+
+<!-- Gallery Section -->
+<section class="gallery-section" id="gallery">
+    <div class="container">
+
+           <div class="section-header">
+            <h2>Event Gallery</h2>
+            <p>Explore our collection of memorable events and precious moments</p>
+        </div>
+        
+        <div class="gallery-grid" id="galleryGrid">
+            @forelse($galleryEvents as $event)
+                @php
+                    $allMedia = collect();
+                    
+                    // Add images to media collection
+                    foreach($event->images as $image) {
+                        $allMedia->push([
+                            'type' => 'image',
+                            'path' => Storage::url($image->path),
+                            'id' => $image->id
+                        ]);
+                    }
+                    
+                    // Add videos to media collection
+                    foreach($event->videos as $video) {
+                        $allMedia->push([
+                            'type' => 'video',
+                            'path' => Storage::url($video->path),
+                            'id' => $video->id
+                        ]);
+                    }
+                    
+                    $hasMultipleMedia = $allMedia->count() > 1;
+                @endphp
+                
+                @if($allMedia->count() > 0)
+                    <div class="gallery-card" data-event-id="{{ $event->id }}">
+                        <div class="media-container">
+                            <div class="carousel-slider" data-autoplay="{{ $hasMultipleMedia ? 'true' : 'false' }}">
+                                <div class="carousel-track">
+                                    @foreach($allMedia as $index => $media)
+                                        <div class="carousel-slide" data-index="{{ $index }}" data-type="{{ $media['type'] }}" data-path="{{ $media['path'] }}">
+                                            @if($media['type'] == 'image')
+                                                <img src="{{ $media['path'] }}" alt="{{ $event->name }}" loading="lazy">
+                                            @else
+                                                <video preload="none">
+                                                    <source src="{{ $media['path'] }}" type="video/mp4">
+                                                </video>
+                                                <div class="video-overlay" data-video-src="{{ $media['path'] }}">
+                                                    <div class="play-button">
+                                                        <span class="material-icons">play_arrow</span>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    @endforeach
+                                </div>
+                                
+                                @if($hasMultipleMedia)
+                                    <div class="carousel-nav"></div>
+                                    <div class="carousel-arrow prev">
+                                        <span class="material-icons">chevron_left</span>
+                                    </div>
+                                    <div class="carousel-arrow next">
+                                        <span class="material-icons">chevron_right</span>
+                                    </div>
+                                @endif
+                            </div>
+                            
+                            <span class="media-badge">
+                                @if($event->images->count() > 0 && $event->videos->count() > 0)
+                                    <span class="material-icons">photo_library</span>
+                                    {{ $allMedia->count() }} Media
+                                @elseif($event->images->count() > 0)
+                                    <span class="material-icons">photo</span>
+                                    {{ $event->images->count() }} Photo{{ $event->images->count() != 1 ? 's' : '' }}
+                                @else
+                                    <span class="material-icons">videocam</span>
+                                    {{ $event->videos->count() }} Video{{ $event->videos->count() != 1 ? 's' : '' }}
+                                @endif
+                            </span>
+                            
+                            <!-- Transparent Overlay for Event Details -->
+                            <div class="event-details-overlay">
+                             {{--   <div class="event-name-overlay">
+                                    {{ $event->name }}
+                                </div>
+                                @if($event->event_date)
+                                    <div class="event-date-overlay">
+                                        <span class="material-icons">event</span>
+                                        <span>{{ \Carbon\Carbon::parse($event->event_date)->format('F d, Y') }}</span>
+                                    </div>
+                                @endif
+                                @if($event->description)
+                                    <div class="event-description-overlay">
+                                        {{ Str::limit($event->description, 100) }}
+                                    </div>
+                                @endif  --}}
+                                <div class="media-count-overlay">
+                                    @if($event->images->count() > 0)
+                                        <div class="media-count-overlay-item">
+                                            <span class="material-icons">photo</span>
+                                            <span>{{ $event->images->count() }} {{ $event->name }}</span>
+                                        </div>
+                                    @endif
+                                    @if($event->videos->count() > 0)
+                                        <div class="media-count-overlay-item">
+                                            <span class="material-icons">videocam</span>
+                                            <span>{{ $event->videos->count() }}{{ $event->name }}</span>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Hidden original content (kept for reference) -->
+                        <div class="card-content" style="display: none;">
+                          {{--  <h3 class="event-name">{{ $event->name }}</h3>--}}
+                            @if($event->event_date)
+                                <div class="event-date">
+                                    <span class="material-icons">event</span>
+                                    <span>{{ \Carbon\Carbon::parse($event->event_date)->format('F d, Y') }}</span>
+                                </div>
+                            @endif
+                            @if($event->description)
+                                <p class="event-description">{{ $event->description }}</p>
+                            @endif
+                            <div class="media-count">
+                                <div class="media-count-item">
+                                    <span class="material-icons">photo</span>
+                                    <span>{{ $event->images->count() }} Photos </span>
+                                </div>
+                                <div class="media-count-item">
+                                    <span class="material-icons">videocam</span>
+                                    <span>{{ $event->videos->count() }} Videos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @empty
+                <div class="no-data">
+                    <span class="material-icons">photo_library</span>
+                    <h3>No Gallery Items Yet</h3>
+                    <p>Check back soon for our latest events and memories!</p>
+                </div>
+            @endforelse
+        </div>
+        
+        @if(isset($galleryEvents) && $galleryEvents->count() > 0)
+            <div class="more-button-container">
+                <a href="{{ route('gallery.all') }}" class="more-button">
+                    <span>View All Events</span>
+                    <span class="material-icons">arrow_forward</span>
+                </a>
+            </div>
+        @endif
+    </div>
+</section>
+
+<!-- Modal -->
+<div id="mediaModal" class="modal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeModal()">
+            <span class="material-icons">close</span>
+        </button>
+        <img id="modalImage" class="modal-media" style="display: none;">
+        <video id="modalVideo" class="modal-media" controls style="display: none;"></video>
+        <div id="modalInfo" class="modal-info"></div>
+    </div>
+</div>
+
+<script>
+    // Initialize all carousels
+    function initCarousels() {
+        document.querySelectorAll('.carousel-slider').forEach((slider, sliderIndex) => {
+            const track = slider.querySelector('.carousel-track');
+            const slides = slider.querySelectorAll('.carousel-slide');
+            const prevBtn = slider.querySelector('.prev');
+            const nextBtn = slider.querySelector('.next');
+            const nav = slider.querySelector('.carousel-nav');
+            const autoplay = slider.dataset.autoplay === 'true';
+            
+            if (!track || slides.length === 0) return;
+            
+            let currentIndex = 0;
+            let autoplayInterval = null;
+            const slideCount = slides.length;
+            
+            // Create navigation dots
+            if (nav && slideCount > 1) {
+                for (let i = 0; i < slideCount; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('carousel-dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToSlide(i));
+                    nav.appendChild(dot);
+                }
+            }
+            
+            function updateDots() {
+                if (!nav) return;
+                const dots = nav.querySelectorAll('.carousel-dot');
+                dots.forEach((dot, i) => {
+                    if (i === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            function goToSlide(index) {
+                if (index < 0) index = 0;
+                if (index >= slideCount) index = slideCount - 1;
+                currentIndex = index;
+                const offset = -currentIndex * 100;
+                track.style.transform = `translateX(${offset}%)`;
+                updateDots();
+                resetAutoplay();
+            }
+            
+            function nextSlide() {
+                if (currentIndex + 1 < slideCount) {
+                    goToSlide(currentIndex + 1);
+                } else {
+                    goToSlide(0);
+                }
+            }
+            
+            function prevSlide() {
+                if (currentIndex - 1 >= 0) {
+                    goToSlide(currentIndex - 1);
+                } else {
+                    goToSlide(slideCount - 1);
+                }
+            }
+            
+            function startAutoplay() {
+                if (!autoplay || slideCount <= 1) return;
+                if (autoplayInterval) clearInterval(autoplayInterval);
+                autoplayInterval = setInterval(() => {
+                    nextSlide();
+                }, 3000);
+            }
+            
+            function resetAutoplay() {
+                if (!autoplay || slideCount <= 1) return;
+                if (autoplayInterval) clearInterval(autoplayInterval);
+                startAutoplay();
+            }
+            
+            function stopAutoplay() {
+                if (autoplayInterval) {
+                    clearInterval(autoplayInterval);
+                    autoplayInterval = null;
+                }
+            }
+            
+            // Event listeners
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    prevSlide();
+                });
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    nextSlide();
+                });
+            }
+            
+            // Pause autoplay on hover
+            const card = slider.closest('.gallery-card');
+            if (card) {
+                card.addEventListener('mouseenter', () => {
+                    if (autoplay) stopAutoplay();
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    if (autoplay) startAutoplay();
+                });
+            }
+            
+            // Start autoplay if enabled
+            if (autoplay && slideCount > 1) {
+                startAutoplay();
+            }
+            
+            // Store carousel controls on the element for later use
+            slider.carouselControls = {
+                goToSlide,
+                nextSlide,
+                prevSlide,
+                stopAutoplay,
+                startAutoplay
+            };
+        });
+    }
+    
+    // Gallery card click handler for modal
+    document.querySelectorAll('.gallery-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Prevent if clicking on video overlay, play button, or carousel controls
+            if (e.target.closest('.video-overlay') || 
+                e.target.closest('.play-button') ||
+                e.target.closest('.carousel-arrow') ||
+                e.target.closest('.carousel-dot')) {
+                return;
+            }
+            
+            // Get all media from this card
+            const slides = this.querySelectorAll('.carousel-slide');
+            if (slides.length > 0) {
+                // For now, open the current visible slide
+                const activeSlide = this.querySelector('.carousel-slide');
+                if (activeSlide) {
+                    const mediaType = activeSlide.dataset.type;
+                    const mediaPath = activeSlide.dataset.path;
+                    
+                    if (mediaType === 'image') {
+                        openModalWithImage(mediaPath);
+                    } else if (mediaType === 'video') {
+                        openModalWithVideo(mediaPath);
+                    }
+                }
+            }
+        });
+        
+        // Handle video overlay click
+        const videoOverlays = card.querySelectorAll('.video-overlay');
+        videoOverlays.forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const videoSrc = this.dataset.videoSrc;
+                if (videoSrc) {
+                    openModalWithVideo(videoSrc);
+                }
+            });
+        });
+    });
+    
+    function openModalWithImage(src) {
+        const modal = document.getElementById('mediaModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalVideo = document.getElementById('modalVideo');
+        
+        modalImage.style.display = 'block';
+        modalVideo.style.display = 'none';
+        modalImage.src = src;
+        modal.classList.add('active');
+    }
+    
+    function openModalWithVideo(src) {
+        const modal = document.getElementById('mediaModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalVideo = document.getElementById('modalVideo');
+        
+        modalImage.style.display = 'none';
+        modalVideo.style.display = 'block';
+        modalVideo.src = src;
+        modalVideo.load();
+        modal.classList.add('active');
+        modalVideo.play();
+    }
+    
+    function closeModal() {
+        const modal = document.getElementById('mediaModal');
+        const modalVideo = document.getElementById('modalVideo');
+        
+        modal.classList.remove('active');
+        if (modalVideo) {
+            modalVideo.pause();
+            modalVideo.src = '';
+        }
+    }
+    
+    // Close modal on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+    
+    // Close modal on background click
+    document.getElementById('mediaModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+    
+    // Initialize carousels when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        initCarousels();
+    });
+    
+    // Re-initialize carousels for dynamically loaded content (if using AJAX)
+    if (typeof Livewire !== 'undefined') {
+        Livewire.hook('message.processed', () => {
+            initCarousels();
+        });
+    }
+</script>
+
+
+{{--Book Event--}}
+<section class="relative min-h-screen flex items-center py-10 md:py-10 overflow-hidden" id="bookevent">
      <div class="container">
         <div class="section-header">
             <h2>Event Enquiry</h2>
@@ -1288,9 +2166,271 @@ function eventForm() {
     }
 }
 </script>
-{{-- resources/views/partials/contact-form.blade.php --}}
 
-<div class="modern-contact-section mt-5 mb-5">
+
+  <!-- Ask Question Section Start -->
+  <section id="faq" class="section-padding ">
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-12">
+                 <div class="section-header">
+            <h2>FAQs</h2>
+            <p>Discover what we offer to help your business grow</p>
+        </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Left Side FAQs -->
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+                <div class="accordion" id="leftAccordion">
+                    @if(isset($leftFaqs) && $leftFaqs->count() > 0)
+                        @foreach($leftFaqs as $faq)
+                            <div class="card">
+                                <div class="card-header" id="headingLeft{{ $faq->id }}">
+                                    <div class="header-title" data-toggle="collapse" 
+                                         data-target="#collapseLeft{{ $faq->id }}" 
+                                         aria-expanded="false"
+                                         aria-controls="collapseLeft{{ $faq->id }}">
+                                        <i class="lni-pencil"></i> {{ $faq->question }}
+                                    </div>
+                                </div>
+                                <div id="collapseLeft{{ $faq->id }}" 
+                                     class="collapse" 
+                                     aria-labelledby="headingLeft{{ $faq->id }}" 
+                                     data-parent="#leftAccordion">
+                                    <div class="card-body">
+                                        {!! nl2br(e($faq->answer)) !!}
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="alert alert-info">
+                            No FAQs available.
+                        </div>
+                    @endif
+                </div>
+            </div>
+
+            <!-- Right Side FAQs -->
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+                <div class="accordion" id="rightAccordion">
+                    @if(isset($rightFaqs) && $rightFaqs->count() > 0)
+                        @foreach($rightFaqs as $faq)
+                            <div class="card">
+                                <div class="card-header" id="headingRight{{ $faq->id }}">
+                                    <div class="header-title" data-toggle="collapse" 
+                                         data-target="#collapseRight{{ $faq->id }}" 
+                                         aria-expanded="false"
+                                         aria-controls="collapseRight{{ $faq->id }}">
+                                        <i class="lni-pencil"></i> {{ $faq->question }}
+                                    </div>
+                                </div>
+                                <div id="collapseRight{{ $faq->id }}" 
+                                     class="collapse" 
+                                     aria-labelledby="headingRight{{ $faq->id }}" 
+                                     data-parent="#rightAccordion">
+                                    <div class="card-body">
+                                        {!! nl2br(e($faq->answer)) !!}
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="alert alert-info">
+                            No FAQs available.
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  <!-- Ask Question Section End -->
+
+  <section class="testimonials-section" id="testimonials">
+  <style>
+    .testimonials-section {
+      background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonials-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,20,147,0.08) 0%, rgba(255,20,147,0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .testimonials-section::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(220,20,60,0.08) 0%, rgba(220,20,60,0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #db2777 0%, #e11d48 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+
+    .testimonial-card {
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 35px -12px rgba(219,39,119,0.15) !important;
+    }
+
+    .avatar-ring {
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover .avatar-ring {
+      box-shadow: 0 0 0 4px rgba(219,39,119,0.2), 0 0 0 8px rgba(225,29,72,0.1);
+    }
+    
+    /* Fallback avatar styling */
+    .avatar-fallback {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #db2777, #e11d48);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      font-weight: 600;
+      border: 2px solid white;
+    }
+  </style>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <div style="max-width: 1280px; margin: 0 auto; padding: 80px 24px; position: relative; z-index: 2; font-family: 'Inter', sans-serif;">
+    
+    <!-- Section Header with Pink/Red accents -->
+    <div style="text-align: center; margin-bottom: 64px;">
+      <div style="display: inline-flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+        <div style="width: 40px; height: 2px; background: linear-gradient(90deg, #db2777, #e11d48); border-radius: 2px;"></div>
+        <span style="font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; background: linear-gradient(135deg, #db2777, #e11d48); -webkit-background-clip: text; background-clip: text; color: transparent;">Testimonials</span>
+        <div style="width: 40px; height: 2px; background: linear-gradient(90deg, #e11d48, #db2777); border-radius: 2px;"></div>
+      </div>
+      <h2 style="font-size: 2.5rem; font-weight: 700; margin: 0 0 16px 0; color: #1e1e2f; letter-spacing: -0.02em;">
+        What <span class="gradient-text">Our Clients</span> Say
+      </h2>
+      <p style="font-size: 1.1rem; color: #5a5a6e; max-width: 600px; margin: 0 auto; line-height: 1.5;">
+        Real experiences from people who transformed their journey with us
+      </p>
+    </div>
+
+    <!-- Two Testimonials Grid - Dynamic from Database -->
+    @if($testimonials->count() > 0)
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 1000px; margin: 0 auto;">
+      
+      @foreach($testimonials as $testimonial)
+      <!-- Testimonial {{ $loop->iteration }} -->
+      <div class="testimonial-card" style="background: white; border-radius: 32px; padding: 32px; box-shadow: 0 12px 30px rgba(0,0,0,0.05); border: 1px solid rgba(219,39,119,0.1); display: flex; flex-direction: column;">
+        <!-- Quote icon decoration -->
+        <div style="margin-bottom: 20px;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 18H12V24H18V30H12V36H6V24C6 18.5 10.5 14 16 14H18V18ZM36 18H30V24H36V30H30V36H24V24C24 18.5 28.5 14 34 14H36V18Z" fill="url(#paint{{ $loop->index }}_linear)"/>
+            <defs>
+              <linearGradient id="paint{{ $loop->index }}_linear" x1="6" y1="14" x2="42" y2="36" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#db2777"/>
+                <stop offset="1" stop-color="#e11d48"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        
+        <!-- Text -->
+        <p style="font-size: 1.1rem; line-height: 1.6; color: #2d2d3a; margin-bottom: 28px; flex-grow: 1; font-weight: 400;">
+          "{{ $testimonial->review_text }}"
+        </p>
+        
+        <!-- Author info with image and details -->
+        <div style="display: flex; align-items: center; gap: 16px; border-top: 1px solid #f0eef3; padding-top: 24px; margin-top: auto;">
+          <div class="avatar-ring" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #fff0f3, #ffe4e9); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;">
+            @if($testimonial->image)
+              <img src="{{ asset('storage/testimonials/' . $testimonial->image) }}" alt="{{ $testimonial->name }}" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid white;">
+            @else
+              <div class="avatar-fallback">
+                {{ strtoupper(substr($testimonial->name, 0, 1)) }}
+              </div>
+            @endif
+          </div>
+          <div>
+            <h4 style="margin: 0 0 4px 0; font-size: 1.1rem; font-weight: 700; color: #1e1e2f;">{{ $testimonial->name }}</h4>
+            @if($testimonial->designation)
+              <p style="margin: 0 0 4px 0; font-size: 0.85rem; color: #e11d48; font-weight: 500;">{{ $testimonial->designation }}</p>
+            @endif
+            <div style="display: flex; align-items: center; gap: 6px; margin-top: 4px;">
+              <span class="material-icons" style="font-size: 14px; color: #db2777;">schedule</span>
+              <span style="font-size: 0.75rem; color: #8a8a9e;">
+                @if($testimonial->date)
+                  {{ \Carbon\Carbon::parse($testimonial->date)->diffForHumans() }}
+                @else
+                  {{ $testimonial->created_at->diffForHumans() }}
+                @endif
+              </span>
+            </div>
+            <!-- Star Rating Display -->
+            @if($testimonial->rating)
+            <div style="display: flex; align-items: center; gap: 2px; margin-top: 4px;">
+              @for($i = 1; $i <= 5; $i++)
+                @if($i <= $testimonial->rating)
+                  <span class="material-icons" style="font-size: 14px; color: #ffc107;">star</span>
+                @else
+                  <span class="material-icons" style="font-size: 14px; color: #e4e5e9;">star_border</span>
+                @endif
+              @endfor
+            </div>
+            @endif
+          </div>
+        </div>
+      </div>
+      @endforeach
+      
+    </div>
+    @else
+    <!-- Fallback when no testimonials exist -->
+    <div style="text-align: center; padding: 60px 20px;">
+      <p style="color: #5a5a6e; font-size: 1.1rem;">No testimonials available yet. Check back soon!</p>
+    </div>
+    @endif
+
+    <!-- Decorative pink/red dots -->
+    <div style="text-align: center; margin-top: 48px;">
+      <div style="display: inline-flex; gap: 12px;">
+        <div style="width: 8px; height: 8px; border-radius: 50%; background: #db2777; opacity: 0.6;"></div>
+        <div style="width: 8px; height: 8px; border-radius: 50%; background: #e11d48; opacity: 0.8;"></div>
+        <div style="width: 8px; height: 8px; border-radius: 50%; background: #db2777;"></div>
+        <div style="width: 8px; height: 8px; border-radius: 50%; background: #e11d48; opacity: 0.6;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modern-contact-section mt-5 mb-5" id="contactus">
      <div class="container">
         <div class="section-header">
             <h2>Contact Us</h2>
@@ -1909,613 +3049,6 @@ function showAlert(message, type) {
     // Scroll to alert
     alertDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
-</script>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<style>
-    * {
-        font-family: 'Inter', sans-serif;
-    }
-    
-    .gallery-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 2rem;
-    }
-    
-    /* Header Section */
-    .header-section {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 24px;
-        padding: 2rem;
-        margin-bottom: 2rem;
-        color: white;
-    }
-    
-    .header-title {
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        color: white;
-    }
-    
-    .header-subtitle {
-        opacity: 0.9;
-        margin-bottom: 0;
-        color: white;
-    }
-    
-    /* Stats Grid */
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-    }
-    
-    .stat-card {
-        background: white;
-        border-radius: 20px;
-        padding: 1.5rem;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-        border-left: 4px solid #667eea;
-    }
-    
-    .stat-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    }
-    
-    .stat-icon {
-        font-size: 2rem;
-        color: #667eea;
-        margin-bottom: 1rem;
-    }
-    
-    .stat-number {
-        font-size: 2.5rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 0.5rem;
-    }
-    
-    .stat-label {
-        color: #6b7280;
-        font-size: 0.875rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    
-    /* Events Grid */
-    .events-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-        gap: 2rem;
-        margin-bottom: 2rem;
-    }
-    
-    .event-card {
-        background: white;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-    }
-    
-    .event-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    }
-    
-    .event-header {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: 1.5rem;
-        color: white;
-    }
-    
-    .event-header h3 {
-        margin: 0;
-        font-size: 1.25rem;
-        font-weight: 700;
-    }
-    
-    .event-date {
-        font-size: 0.75rem;
-        opacity: 0.9;
-        margin-top: 0.5rem;
-    }
-    
-    .event-body {
-        padding: 1.5rem;
-    }
-    
-    .media-section {
-        margin-bottom: 1.5rem;
-    }
-    
-    .media-section h4 {
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: #667eea;
-        margin-bottom: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    
-    .media-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.75rem;
-    }
-    
-    .media-item {
-        position: relative;
-        border-radius: 12px;
-        overflow: hidden;
-        cursor: pointer;
-        aspect-ratio: 1;
-    }
-    
-    .media-item img,
-    .media-item video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-    }
-    
-    .media-item:hover img,
-    .media-item:hover video {
-        transform: scale(1.1);
-    }
-    
-    .media-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    .media-item:hover .media-overlay {
-        opacity: 1;
-    }
-    
-    .media-overlay i {
-        color: white;
-        font-size: 1.5rem;
-    }
-    
-    .view-more {
-        margin-top: 0.5rem;
-        text-align: center;
-    }
-    
-    .btn-link {
-        background: none;
-        border: none;
-        color: #667eea;
-        font-size: 0.75rem;
-        cursor: pointer;
-        padding: 0.25rem 0.5rem;
-        transition: all 0.3s ease;
-    }
-    
-    .btn-link:hover {
-        color: #764ba2;
-        text-decoration: underline;
-    }
-    
-    .event-footer {
-        padding: 1rem 1.5rem;
-        border-top: 1px solid #e5e7eb;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1rem;
-        font-weight: 500;
-        border-radius: 10px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        text-decoration: none;
-        border: none;
-        font-size: 0.875rem;
-    }
-    
-    .btn-primary {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-    }
-    
-    .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 15px -3px rgba(102, 126, 234, 0.3);
-    }
-    
-    .btn-outline {
-        border: 2px solid #e5e7eb;
-        background: white;
-        color: #374151;
-    }
-    
-    .btn-outline:hover {
-        border-color: #667eea;
-        color: #667eea;
-        transform: translateY(-2px);
-    }
-    
-    .btn-danger {
-        background: #ef4444;
-        color: white;
-    }
-    
-    .btn-danger:hover {
-        background: #dc2626;
-        transform: translateY(-2px);
-    }
-    
-    .btn-sm {
-        padding: 0.375rem 0.875rem;
-        font-size: 0.75rem;
-    }
-    
-    /* Modal Styles */
-    .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        z-index: 2000;
-        justify-content: center;
-        align-items: center;
-        animation: fadeIn 0.3s ease;
-    }
-    
-    .modal-content {
-        max-width: 90vw;
-        max-height: 90vh;
-        position: relative;
-    }
-    
-    .modal-content img,
-    .modal-content video {
-        max-width: 100%;
-        max-height: 90vh;
-        border-radius: 12px;
-    }
-    
-    .modal-close {
-        position: absolute;
-        top: -40px;
-        right: 0;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 2rem;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-    }
-    
-    .modal-close:hover {
-        transform: rotate(90deg);
-    }
-    
-    .modal-caption {
-        position: absolute;
-        bottom: -40px;
-        left: 0;
-        right: 0;
-        text-align: center;
-        color: white;
-        font-size: 0.875rem;
-    }
-    
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-    
-    /* Empty State */
-    .empty-state {
-        text-align: center;
-        padding: 4rem;
-        background: #f9fafb;
-        border-radius: 16px;
-    }
-    
-    .empty-state i {
-        font-size: 4rem;
-        color: #9ca3af;
-        margin-bottom: 1rem;
-    }
-    
-    .empty-state h4 {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: #374151;
-        margin-bottom: 0.5rem;
-    }
-    
-    .empty-state p {
-        color: #6b7280;
-        margin-bottom: 1.5rem;
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-        .gallery-container {
-            padding: 1rem;
-        }
-        
-        .events-grid {
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-        
-        .media-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        
-        .header-section {
-            padding: 1.5rem;
-        }
-    }
-</style>
-
-<div class="gallery-container">
-    <!-- Header Section -->
-    <div class="header-section">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-            <div>
-                <h1 class="header-title">Gallery Management</h1>
-                <p class="header-subtitle">Manage photos and videos from your events</p>
-            </div>
-            <a href="{{ route('admin.gallery.create') }}" class="btn btn-primary">
-                <i class="fas fa-plus"></i>
-                Add New Event
-            </a>
-        </div>
-    </div>
-
-    @if(session('success'))
-    <div class="alert alert-success">
-        <i class="fas fa-check-circle"></i>
-        {{ session('success') }}
-    </div>
-    @endif
-
-    <!-- Statistics Cards -->
-    <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-icon">
-                <i class="fas fa-calendar-alt"></i>
-            </div>
-            <div class="stat-number">{{ $events->count() }}</div>
-            <div class="stat-label">Total Events</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-icon">
-                <i class="fas fa-images"></i>
-            </div>
-            <div class="stat-number">{{ $totalImages }}</div>
-            <div class="stat-label">Total Photos</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-icon">
-                <i class="fas fa-video"></i>
-            </div>
-            <div class="stat-number">{{ $totalVideos }}</div>
-            <div class="stat-label">Total Videos</div>
-        </div>
-    </div>
-
-    @if($events->count() > 0)
-    <!-- Events Grid -->
-    <div class="events-grid">
-        @foreach($events as $event)
-        <div class="event-card">
-            <div class="event-header">
-                <h3>{{ $event->name }}</h3>
-                @if($event->event_date)
-                <div class="event-date">
-                    <i class="fas fa-calendar-alt"></i>
-                    {{ \Carbon\Carbon::parse($event->event_date)->format('F d, Y') }}
-                </div>
-                @endif
-            </div>
-            <div class="event-body">
-                @if($event->description)
-                <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 1rem;">
-                    {{ Str::limit($event->description, 100) }}
-                </p>
-                @endif
-                
-                <!-- Images Section -->
-                @if($event->images->count() > 0)
-                <div class="media-section">
-                    <h4>
-                        <i class="fas fa-images"></i>
-                        Photos ({{ $event->images->count() }})
-                    </h4>
-                    <div class="media-grid">
-                        @foreach($event->images->take(3) as $image)
-                        <div class="media-item" onclick="openMedia('{{ asset('storage/' . $image->path) }}', 'image', '{{ $image->title ?? $event->name }}')">
-                            <img src="{{ asset('storage/' . $image->path) }}" alt="{{ $image->title ?? $event->name }}">
-                            <div class="media-overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                    @if($event->images->count() > 3)
-                    <div class="view-more">
-                        <a href="{{ route('admin.gallery.event', $event->id) }}" class="btn-link">
-                            + {{ $event->images->count() - 3 }} more photos
-                        </a>
-                    </div>
-                    @endif
-                </div>
-                @endif
-                
-                <!-- Videos Section -->
-                @if($event->videos->count() > 0)
-                <div class="media-section">
-                    <h4>
-                        <i class="fas fa-video"></i>
-                        Videos ({{ $event->videos->count() }})
-                    </h4>
-                    <div class="media-grid">
-                        @foreach($event->videos->take(3) as $video)
-                        <div class="media-item" onclick="openMedia('{{ asset('storage/' . $video->path) }}', 'video', '{{ $video->title ?? $event->name }}')">
-                            <video src="{{ asset('storage/' . $video->path) }}"></video>
-                            <div class="media-overlay">
-                                <i class="fas fa-play-circle"></i>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                    @if($event->videos->count() > 3)
-                    <div class="view-more">
-                        <a href="{{ route('admin.gallery.event', $event->id) }}" class="btn-link">
-                            + {{ $event->videos->count() - 3 }} more videos
-                        </a>
-                    </div>
-                    @endif
-                </div>
-                @endif
-            </div>
-            <div class="event-footer">
-                <a href="{{ route('admin.gallery.event', $event->id) }}" class="btn btn-outline btn-sm">
-                    <i class="fas fa-eye"></i>
-                    View All Media
-                </a>
-                <div style="display: flex; gap: 0.5rem;">
-                    <a href="{{ route('admin.gallery.edit', $event->id) }}" class="btn btn-outline btn-sm">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    <button onclick="deleteEvent({{ $event->id }})" class="btn btn-outline btn-sm" style="border-color: #fee2e2; color: #ef4444;">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        @endforeach
-    </div>
-    
-    <!-- Pagination -->
-    @if(method_exists($events, 'links'))
-    <div style="margin-top: 2rem;">
-        {{ $events->links() }}
-    </div>
-    @endif
-    @else
-    <!-- Empty State -->
-    <div class="empty-state">
-        <i class="fas fa-camera"></i>
-        <h4>No Events Found</h4>
-        <p>Start adding events to showcase your gallery photos and videos.</p>
-        <a href="{{ route('admin.gallery.create') }}" class="btn btn-primary">
-            <i class="fas fa-plus"></i>
-            Create Your First Event
-        </a>
-    </div>
-    @endif
-</div>
-
-<!-- Media Modal -->
-<div id="mediaModal" class="modal">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeMediaModal()">
-            <i class="fas fa-times"></i>
-        </button>
-        <div id="mediaContainer"></div>
-        <div class="modal-caption" id="mediaCaption"></div>
-    </div>
-</div>
-@endsection
-
-@push('scripts')
-<script>
-    function openMedia(src, type, caption) {
-        const mediaContainer = document.getElementById('mediaContainer');
-        const mediaCaption = document.getElementById('mediaCaption');
-        
-        if (type === 'image') {
-            mediaContainer.innerHTML = `<img src="${src}" alt="${caption}">`;
-        } else {
-            mediaContainer.innerHTML = `<video controls autoplay><source src="${src}" type="video/mp4">Your browser does not support the video tag.</video>`;
-        }
-        
-        mediaCaption.textContent = caption;
-        document.getElementById('mediaModal').style.display = 'flex';
-    }
-    
-    function closeMediaModal() {
-        document.getElementById('mediaModal').style.display = 'none';
-        document.getElementById('mediaContainer').innerHTML = '';
-    }
-    
-    function deleteEvent(id) {
-        if (confirm('Are you sure you want to delete this event and all its media? This action cannot be undone.')) {
-            fetch(`/admin/gallery/${id}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    location.reload();
-                } else {
-                    alert('Failed to delete event');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Failed to delete event');
-            });
-        }
-    }
-    
-    // Close modal on escape key
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            closeMediaModal();
-        }
-    });
-    
-    // Close modal on click outside
-    window.onclick = function(event) {
-        const modal = document.getElementById('mediaModal');
-        if (event.target === modal) {
-            closeMediaModal();
-        }
-    }
 </script>
 
 @endsection

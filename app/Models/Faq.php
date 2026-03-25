@@ -57,4 +57,5 @@ class Faq extends Model
             'right' => $faqs->where('side', 'right')
         ];
     }
+    
 }

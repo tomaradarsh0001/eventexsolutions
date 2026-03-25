@@ -23,10 +23,39 @@
                     </li>
                     <li class="nav-item {{ request()->is('/') ? '' : '' }}">
                         <a class="nav-link" href="{{ url('/') }}#about">
-                            About
+                            Why&nbsp;Us
                         </a>
                     </li>
-                   
+                     <li class="nav-item {{ request()->is('/') ? '' : '' }}">
+                        <a class="nav-link" href="{{ url('/') }}#services-section">
+                            Services
+                        </a>
+                    </li>
+                    <li class="nav-item {{ request()->is('/') ? '' : '' }}">
+                        <a class="nav-link" href="{{ url('/') }}#gallery">
+                            Gallery
+                        </a>
+                    </li>
+                    <li class="nav-item {{ request()->is('/') ? '' : '' }}">
+                        <a class="nav-link" href="{{ url('/') }}#bookevent">
+                            Book Event
+                        </a>
+                    </li>
+                     <li class="nav-item {{ request()->is('/') ? '' : '' }}">
+                        <a class="nav-link" href="{{ url('/') }}#faq">
+                            FAQ
+                        </a>
+                    </li>
+                     <li class="nav-item {{ request()->is('/') ? '' : '' }}">
+                        <a class="nav-link" href="{{ url('/') }}#testimonials">
+                            Testimonials
+                        </a>
+                    </li>
+                     <li class="nav-item {{ request()->is('/') ? '' : '' }}">
+                        <a class="nav-link" href="{{ url('/') }}#contactus">
+                            Contact
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

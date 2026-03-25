@@ -160,9 +160,21 @@ class FaqController extends Controller
      * Display FAQs on frontend
      */
     public function publicIndex()
-    {
-        $groupedFaqs = Faq::getGroupedBySide();
-        
-        return view('frontend.faqs.index', compact('groupedFaqs'));
-    }
+{
+    // Get active FAQs grouped by side, ordered by order and id
+    $leftFaqs = Faq::where('is_active', true)
+        ->where('side', 'left')
+        ->orderBy('order', 'asc')
+        ->orderBy('id', 'asc')
+        ->get();
+    
+    $rightFaqs = Faq::where('is_active', true)
+        ->where('side', 'right')
+        ->orderBy('order', 'asc')
+        ->orderBy('id', 'asc')
+        ->get();
+    
+    return view('welcome', compact('leftFaqs', 'rightFaqs'));
+}
+
 }

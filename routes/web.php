@@ -8,9 +8,11 @@ use App\Http\Controllers\WhyUsController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\EventEnquiryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\GalleryController;
 
 use Illuminate\Support\Facades\Route;
 use App\Models\WhyUs;
+use App\Models\Event;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,13 +24,66 @@ use App\Models\WhyUs;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-
 Route::get('/', function () {
     $whyus = WhyUs::with('items')->first();
-    return view('welcome', compact('whyus'));
+    
+    // Fixed: Properly eager load relationships with whereHas conditions
+    $galleryEvents = Event::with(['images', 'videos'])
+        ->where(function($query) {
+            $query->whereHas('images', function($q) {
+                $q->where('is_active', true);
+            })
+            ->orWhereHas('videos', function($q) {
+                $q->where('is_active', true);
+            });
+        })
+        ->orderBy('event_date', 'desc')
+        ->orderBy('created_at', 'desc')
+        ->take(6)
+        ->get();
+    
+    // Fetch FAQs
+    $leftFaqs = App\Models\Faq::where('is_active', true)
+        ->where('side', 'left')
+        ->orderBy('order', 'asc')
+        ->orderBy('id', 'asc')
+        ->get();
+    
+    $rightFaqs = App\Models\Faq::where('is_active', true)
+        ->where('side', 'right')
+        ->orderBy('order', 'asc')
+        ->orderBy('id', 'asc')
+        ->get();
+    
+    // Fetch latest 2 active testimonials
+    $testimonials = App\Models\Testimonial::where('is_active', true)
+        ->orderBy('created_at', 'desc')
+        ->take(2)
+        ->get();
+    
+    return view('welcome', compact('whyus', 'galleryEvents', 'leftFaqs', 'rightFaqs', 'testimonials'));
 });
 
+// API route for loading more galleries (optional)
+Route::get('/api/gallery/load-more', [GalleryController::class, 'publicGallery'])->name('api.gallery.load-more');
+
+// Gallery all page route
+Route::get('/gallery', function () {
+    $events = Event::with(['images', 'videos'])
+        ->where(function($query) {
+            $query->whereHas('images', function($q) {
+                $q->where('is_active', true);
+            })
+            ->orWhereHas('videos', function($q) {
+                $q->where('is_active', true);
+            });
+        })
+        ->orderBy('event_date', 'desc')
+        ->orderBy('created_at', 'desc')
+        ->paginate(12);
+    
+    return view('gallery.all', compact('events'));
+})->name('gallery.all');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -41,6 +96,22 @@ Route::get('/admin/contacts', [ContactController::class, 'index'])->name('admin.
 Route::get('/admin/contacts/{id}', [ContactController::class, 'show'])->name('admin.contacts.show');
 Route::post('/admin/contacts/{id}/read', [ContactController::class, 'markAsRead'])->name('admin.contacts.read');
 Route::delete('/admin/contacts/{id}', [ContactController::class, 'destroy'])->name('admin.contacts.destroy');
+
+// routes/web.php
+// routes/web.php
+
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    // Gallery Routes
+    Route::prefix('gallery')->name('admin.gallery.')->group(function () {
+        Route::get('/', [GalleryController::class, 'index'])->name('index');
+        Route::get('/create', [GalleryController::class, 'create'])->name('create');
+        Route::post('/', [GalleryController::class, 'store'])->name('store');
+        Route::get('/event/{id}', [GalleryController::class, 'show'])->name('event');
+        Route::get('/{id}/edit', [GalleryController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [GalleryController::class, 'update'])->name('update');
+        Route::delete('/{id}', [GalleryController::class, 'destroy'])->name('destroy');
+    });
+});
 
 // ✅ Admin routes should be INSIDE auth middleware
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
