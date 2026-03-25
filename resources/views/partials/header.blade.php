@@ -61,15 +61,35 @@
         </div>
 
         <!-- Mobile Menu Start -->
-        <ul class="mobile-menu">
-            <li>
-                <a class="page-scrool" href="{{ url('/') }}#header-wrap">Home</a>
-            </li>
-            <li>
-                <a class="page-scrool" href="{{ url('/') }}#about">About</a>
-            </li>
-        
-        </ul>
+        <!-- Mobile Menu Start -->
+<ul class="mobile-menu">
+    <li>
+        <a class="page-scroll" href="{{ url('/') }}#header-wrap">Home</a>
+    </li>
+    <li>
+        <a class="page-scroll" href="{{ url('/') }}#about">Why Us</a>
+    </li>
+    <li>
+        <a class="page-scroll" href="{{ url('/') }}#services-section">Services</a>
+    </li>
+    <li>
+        <a class="page-scroll" href="{{ url('/') }}#gallery">Gallery</a>
+    </li>
+    <li>
+        <a class="page-scroll" href="{{ url('/') }}#bookevent">Book Event</a>
+    </li>
+    <li>
+        <a class="page-scroll" href="{{ url('/') }}#faq">FAQ</a>
+    </li>
+    <li>
+        <a class="page-scroll" href="{{ url('/') }}#testimonials">Testimonials</a>
+    </li>
+    <li>
+        <a class="page-scroll" href="{{ url('/') }}#contactus">Contact</a>
+    </li>
+</ul>
+<!-- Mobile Menu End -->
+
         <!-- Mobile Menu End -->
     </nav>
     <!-- Navbar End -->

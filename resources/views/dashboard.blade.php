@@ -64,19 +64,13 @@
     <div class="tile-label">Contact Forms</div>
 </a>
 
-
-    <a href="" class="tile">
+    <a href="{{ route('admin.gallery.index') }}" class="tile">
         <div class="tile-icon">
-            <i class="fas fa-money-bill-wave"></i>
+            <i class="fas fa-camera"></i>
         </div>
-        <div class="tile-label">PhonePe Donations</div>
+        <div class="tile-label">Gallery</div>
     </a>
-   <a href="" class="tile">
-    <div class="tile-icon">
-        <i class="fas fa-credit-card"></i>
-    </div>
-    <div class="tile-label">Razorpay Donations</div>
-</a>
+  
     <!-- Logout Tile -->
     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="tile">
         <div class="tile-icon logout-icon">

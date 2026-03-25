@@ -46,7 +46,11 @@
                         <i class="fas fa-address-book"></i> Contact Forms
                     </a>
                 </li>
-
+<li class="{{ request()->routeIs('admin.gallery.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.gallery.index') }}">
+                        <i class="fas fa-camera"></i> Gallery
+                    </a>
+                </li>
 
             </ul>
         </nav>
