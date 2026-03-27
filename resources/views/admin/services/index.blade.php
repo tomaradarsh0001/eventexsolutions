@@ -215,7 +215,7 @@
     <div class="header-section">
         <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
             <div>
-                <h1 class="header-title">Services Management</h1>
+                <h1 class="header-title text-white">Services Management</h1>
                 <p class="header-subtitle">Manage your services with icons and bullet points</p>
             </div>
             <a href="{{ route('services.create') }}" class="btn btn-primary">
@@ -317,6 +317,7 @@
                         </tr>
                     </thead>
                     <tbody>
+           
                         @foreach($services as $service)
                         <tr>
                             <td>
@@ -330,9 +331,11 @@
                                 @endforeach
                             </td>
                             <td>
-                                <span class="badge {{ $service->is_active ? 'badge-success' : 'badge-secondary' }}">
-                                    {{ $service->is_active ? 'Active' : 'Inactive' }}
-                                </span>
+                              <span class="badge {{ $service->is_active ? 'bg-success' : 'bg-danger' }} px-3 py-2">
+    {{ $service->is_active ? 'Active' : 'Inactive' }}
+</span>
+
+
                             </td>
                             <td>
                                 <a href="{{ route('services.edit', $service->id) }}" class="btn btn-sm btn-outline">

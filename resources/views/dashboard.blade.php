@@ -25,7 +25,15 @@
         <div class="tile-label">Website Details</div>
     </a>
 
-   <a href="{{ route('admin.faqs.index') }}" class="tile">
+   <a href="{{ route('services.index') }}" class="tile">
+    <div class="tile-icon">
+        <i class="fas fa-concierge-bell"></i>
+    </div>
+    <div class="tile-label">Services</div>
+</a>
+
+
+ <a href="{{ route('admin.faqs.index') }}" class="tile">
     <div class="tile-icon">
         <i class="fas fa-question-circle"></i>
     </div>

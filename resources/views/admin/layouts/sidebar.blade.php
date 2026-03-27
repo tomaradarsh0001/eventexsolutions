@@ -21,7 +21,13 @@
                         <i class="fas fa-globe"></i> Website Details
                     </a>
                 </li>
-                <li class="{{ request()->routeIs('admin.faqs.*') ? 'active' : '' }}">
+            <li class="{{ request()->routeIs('services.*') ? 'active' : '' }}">
+    <a href="{{ route('services.index') }}">
+        <i class="fas fa-concierge-bell"></i> Services
+    </a>
+</li>
+
+                  <li class="{{ request()->routeIs('admin.faqs.*') ? 'active' : '' }}">
                     <a href="{{ route('admin.faqs.index') }}">
                         <i class="fas fa-question-circle"></i> FAQs
                     </a>
