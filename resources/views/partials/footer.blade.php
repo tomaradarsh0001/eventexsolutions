@@ -164,7 +164,7 @@
             <div class="row align-items-center">
                 <div class="col-md-12 text-center">
                     <div class="copyright-text">
-                        <p>&copy; {{ date('Y') }} Eventex Solution. All rights reserved. | Designed with <i class="lni-heart" style="color: #ff3366;"></i> for unforgettable experiences</p>
+                        <p>&copy; {{ date('Y') }} Eventex Solution. All rights reserved. | Designed by Adarsh with <i class="lni-heart" style="color: #ff3366;"></i> for unforgettable experiences</p>
                     </div>
                 </div>
             </div>

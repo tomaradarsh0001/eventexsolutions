@@ -114,7 +114,7 @@
     <div class="container">
         <div class="section-header">
             <h2>Our Services</h2>
-            <p>Discover what we offer to help your business grow</p>
+            <p>Discover what we offer for our clients.</p>
         </div>
 
         <div class="swiper services-swiper">
@@ -1730,7 +1730,7 @@
      <div class="container">
         <div class="section-header">
             <h2>Event Enquiry</h2>
-            <p>Discover what we offer to help your business grow</p>
+            <p>Fill the form and submit to enquire about more</p>
         </div>
     {{-- Decorative Background --}}
     <div class="absolute inset-0 z-0">
@@ -2252,7 +2252,7 @@ function eventForm() {
             <div class="col-12">
                  <div class="section-header">
             <h2>FAQs</h2>
-            <p>Discover what we offer to help your business grow</p>
+            <p>Here are some Frequently asked quesitions by our clients.</p>
         </div>
             </div>
         </div>
@@ -2511,7 +2511,7 @@ function eventForm() {
      <div class="container">
         <div class="section-header">
             <h2>Contact Us</h2>
-            <p>Discover what we offer to help your business grow</p>
+            <p>Contact us with the following details or fill the form below</p>
         </div>
     <style>
         * {
