@@ -86,6 +86,34 @@
         letter-spacing: 0.5px;
     }
     
+    /* Alert Styles */
+    .alert {
+        padding: 1rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        animation: slideIn 0.3s ease;
+    }
+    
+    .alert-success {
+        background: #f0fdf4;
+        border-left: 4px solid #22c55e;
+        color: #166534;
+    }
+    
+    @keyframes slideIn {
+        from {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
     /* Events Grid */
     .events-grid {
         display: grid;
@@ -205,6 +233,8 @@
         cursor: pointer;
         padding: 0.25rem 0.5rem;
         transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
     }
     
     .btn-link:hover {
@@ -269,6 +299,75 @@
     .btn-sm {
         padding: 0.375rem 0.875rem;
         font-size: 0.75rem;
+    }
+    
+    /* Custom Pagination Styles - Fixed */
+    .pagination-wrapper {
+        margin-top: 3rem;
+        padding: 1rem 0;
+        text-align: center;
+        clear: both;
+        width: 100%;
+    }
+    
+    .custom-pagination {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        background: transparent;
+        border-radius: 12px;
+    }
+    
+    .custom-pagination li {
+        display: inline-block;
+        margin: 0;
+    }
+    
+    .custom-pagination li a,
+    .custom-pagination li span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        height: 40px;
+        padding: 0 12px;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        color: #374151;
+        font-weight: 500;
+        font-size: 0.875rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+    
+    .custom-pagination li a:hover {
+        background: #f3f4f6;
+        border-color: #667eea;
+        color: #667eea;
+        transform: translateY(-2px);
+    }
+    
+    .custom-pagination li.active span {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-color: #667eea;
+        color: white;
+        cursor: default;
+    }
+    
+    .custom-pagination li.disabled span {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background: #f9fafb;
+    }
+    
+    .custom-pagination li.disabled span:hover {
+        transform: none;
     }
     
     /* Modal Styles */
@@ -374,6 +473,38 @@
         .header-section {
             padding: 1.5rem;
         }
+        
+        .custom-pagination li a,
+        .custom-pagination li span {
+            min-width: 36px;
+            height: 36px;
+            padding: 0 8px;
+            font-size: 0.75rem;
+        }
+        
+        .custom-pagination li a:first-child,
+        .custom-pagination li span:first-child {
+            padding: 0 10px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .custom-pagination {
+            gap: 0.35rem;
+        }
+        
+        .custom-pagination li a,
+        .custom-pagination li span {
+            min-width: 32px;
+            height: 32px;
+            padding: 0 6px;
+            font-size: 0.7rem;
+        }
+        
+        .custom-pagination li a:first-child,
+        .custom-pagination li span:first-child {
+            padding: 0 8px;
+        }
     }
 </style>
 @endpush
@@ -432,7 +563,7 @@
         @foreach($events as $event)
         <div class="event-card">
             <div class="event-header">
-                <h3>{{ $event->name }}</h3>
+                <h3 class="text-white">{{ $event->name }}</h3>
                 @if($event->event_date)
                 <div class="event-date">
                     <i class="fas fa-calendar-alt"></i>
@@ -519,11 +650,9 @@
         @endforeach
     </div>
     
-    <!-- Pagination -->
-    @if(method_exists($events, 'links'))
-    <div style="margin-top: 2rem;">
-        {{ $events->links() }}
-    </div>
+    <!-- Pagination - Using custom view -->
+    @if(method_exists($events, 'links') && $events->hasPages())
+        {{ $events->links('vendor.pagination.custom') }}
     @endif
     @else
     <!-- Empty State -->
