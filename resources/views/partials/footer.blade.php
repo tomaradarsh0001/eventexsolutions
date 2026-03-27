@@ -4,25 +4,78 @@
     <div class="footer-top">
         <div class="container">
             <div class="row">
-                <!-- Company Info Column -->
-                <div class="col-md-6 col-lg-4 col-sm-12 mb-4 mb-lg-0 wow fadeInUp" data-wow-delay="0.2s">
+                <!-- First Column: Logo Only -->
+                <div class="col-md-6 col-lg-2 col-sm-12 mb-4 mb-lg-0 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="footer-widget">
-                        <div class="footer-logo mb-2">
-                            <img src="{{ asset('assets/img/logoo.png') }}" alt="Eventex Solution" class="img-fluid footer-logo-img">
-                        </div>
-                        <p class="tagline mb-3">Creating Unforgettable Experiences, One Event at a Time</p>
-                        <p class="footer-description">
-                            Eventex Solution is your premier partner for exceptional event management. We transform visions into reality with creativity, precision, and passion.
-                        </p>
-                        <div class="contact-info mt-3">
-                            <p><i class="lni-map-marker"></i> 123 Business Street, City, Country</p>
-                            <p><i class="lni-phone"></i> +1 234 567 8900</p>
-                            <p><i class="lni-envelope"></i> info@eventexsolution.com</p>
+                        {{-- Logo --}}
+                        <div class="footer-logo">
+                            <img src="{{ asset('assets/img/logoo.png') }}" 
+                                 alt="{{ $website->website_name ?? 'Eventex Solution' }}" 
+                                 class="img-fluid footer-logo-img">
                         </div>
                     </div>
                 </div>
 
-                <!-- Quick Links Column -->
+                <!-- Second Column: Tagline, Description, Contact Info -->
+                <div class="col-md-6 col-lg-4 col-sm-12 mb-4 mb-lg-0 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="footer-widget">
+                        {{-- Tagline --}}
+                        <p class="tagline mb-3">
+                            Creating Unforgettable Experiences with Evenetex
+                        </p>
+
+                        {{-- Description --}}
+                        <p class="footer-description mb-3">
+                            {{ $website->website_name ?? 'Eventex Solution' }} is your premier partner for exceptional event management. 
+                            We transform visions into reality with creativity, precision, and passion.
+                        </p>
+
+                        {{-- Contact Info --}}
+                        <div class="contact-info">
+                            {{-- Address --}}
+                            <p>
+                                <i class="lni-map-marker"></i> 
+                                {{ $website->address ?? 'No Address Available' }}
+                            </p>
+
+                            {{-- Phones (Single Line with Comma) --}}
+                            @php
+                                $phones = array_filter([
+                                    $website->phone_number_1 ?? null,
+                                    $website->phone_number_2 ?? null,
+                                    $website->phone_number_3 ?? null,
+                                ]);
+                            @endphp
+
+                            @if(count($phones))
+                                <p>
+                                    <i class="lni-phone"></i> 
+                                    @foreach($phones as $phone)
+                                        <a href="tel:{{ $phone }}">
+                                            {{ $phone }}
+                                        </a>@if(!$loop->last), @endif
+                                    @endforeach
+                                </p>
+                            @else
+                                <p>
+                                    <i class="lni-phone"></i> No Phone Available
+                                </p>
+                            @endif
+
+                            {{-- Email --}}
+                            @if(!empty($website->email))
+                                <p>
+                                    <i class="lni-envelope"></i> 
+                                    <a href="mailto:{{ $website->email }}">
+                                        {{ $website->email }}
+                                    </a>
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third Column: Quick Links -->
                 <div class="col-md-6 col-lg-2 col-sm-6 mb-4 mb-lg-0 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="footer-widget">
                         <h4 class="widget-title">QUICK LINKS</h4>
@@ -36,8 +89,8 @@
                     </div>
                 </div>
 
-                <!-- Useful Links Column -->
-                <div class="col-md-6 col-lg-2 col-sm-6 mb-4 mb-lg-0 wow fadeInUp" data-wow-delay="0.6s">
+                <!-- Fourth Column: Useful Links -->
+                <div class="col-md-6 col-lg-2 col-sm-6 mb-4 mb-lg-0 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="footer-widget">
                         <h4 class="widget-title">USEFUL LINKS</h4>
                         <ul class="footer-links">
@@ -50,20 +103,55 @@
                     </div>
                 </div>
 
-                <!-- Newsletter & Social Column -->
-                <div class="col-md-6 col-lg-4 col-sm-12 wow fadeInUp" data-wow-delay="0.8s">
+                <!-- Fifth Column: Social Links -->
+                <div class="col-md-6 col-lg-2 col-sm-12 wow fadeInUp" data-wow-delay="0.6s">
                     <div class="footer-widget">
-                        
-                        
-                        <div class="social-section mt-4">
-                            <h4 class="widget-title">FOLLOW US ON</h4>
-                            <ul class="footer-social">
-                                <li><a href="#" class="social-link facebook" target="_blank"><i class="lni-facebook-filled"></i></a></li>
-                                <li><a href="#" class="social-link twitter" target="_blank"><i class="lni-twitter-filled"></i></a></li>
-                                <li><a href="#" class="social-link instagram" target="_blank"><i class="lni-instagram-filled"></i></a></li>
-                                <li><a href="#" class="social-link linkedin" target="_blank"><i class="lni-linkedin-filled"></i></a></li>
-                            </ul>
-                        </div>
+                        <h4 class="widget-title">FOLLOW US</h4>
+                        <ul class="footer-social">
+                            {{-- Facebook --}}
+                            @if(!empty($website->facebook_link))
+                            <li>
+                                <a href="{{ $website->facebook_link }}" target="_blank"
+                                   style="background-color:#1877F2;"
+                                   class="social-link facebook">
+                                    <i class="lni-facebook-filled"></i>
+                                </a>
+                            </li>
+                            @endif
+
+                            {{-- Instagram --}}
+                            @if(!empty($website->instagram_link))
+                            <li>
+                                <a href="{{ $website->instagram_link }}" target="_blank"
+                                   style="background: linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);"
+                                   class="social-link instagram">
+                                    <i class="lni-instagram-filled"></i>
+                                </a>
+                            </li>
+                            @endif
+
+                            {{-- LinkedIn --}}
+                            @if(!empty($website->linkedin_link))
+                            <li>
+                                <a href="{{ $website->linkedin_link }}" target="_blank"
+                                   style="background-color:#0A66C2;"
+                                   class="social-link linkedin">
+                                    <i class="lni-linkedin-filled"></i>
+                                </a>
+                            </li>
+                            @endif
+
+                            {{-- WhatsApp --}}
+                            @if(!empty($website->whatsapp_link))
+                            <li>
+                                <a href="{{ $website->whatsapp_link }}" target="_blank"
+                                   style="background-color:#25D366;"
+                                   class="social-link whatsapp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </li>
+                            @endif
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -113,15 +201,15 @@
     margin-bottom: 30px;
 }
 
-/* Logo Styling - Smaller */
+/* Logo Styling - Larger Size */
 .footer-logo-img {
-    max-height: 45px;
+    max-height: 100px;
     width: auto;
     transition: all 0.3s ease;
 }
 
 .footer-logo-img:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
 /* Tagline Styling */
@@ -225,76 +313,27 @@
     margin-right: 8px;
 }
 
-.newsletter-text {
-    color: #b0b0c0;
-    font-size: 14px;
-    margin-bottom: 15px;
-}
-
-.newsletter-form .input-group {
-    display: flex;
-    gap: 10px;
-}
-
-.newsletter-form .form-control {
-    flex: 1;
-    padding: 12px 15px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    color: #ffffff;
-    font-size: 14px;
-    transition: all 0.3s ease;
-}
-
-.newsletter-form .form-control:focus {
-    outline: none;
-    border-color: #ff3366;
-    background: rgba(255, 51, 102, 0.1);
-}
-
-.newsletter-form .form-control::placeholder {
-    color: #6c6c8a;
-}
-
-.btn-subscribe {
-    padding: 0 20px;
-    background: linear-gradient(135deg, #ff3366, #ff6b3d);
-    border: none;
-    border-radius: 8px;
-    color: #ffffff;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-subscribe:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
-}
-
-.social-section {
-    margin-top: 25px;
-}
-
+/* Social Links - In a Single Line */
 .footer-social {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
+    gap: 15px;
+    flex-wrap: nowrap;
 }
 
 .footer-social li {
     display: inline-block;
+    flex-shrink: 0;
 }
 
 .social-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     color: #ffffff;
@@ -308,23 +347,19 @@
 }
 
 .social-link.facebook:hover {
-    background: #1877f2;
-}
-
-.social-link.twitter:hover {
-    background: #1da1f2;
+    background: #1877f2 !important;
 }
 
 .social-link.instagram:hover {
-    background: #e4405f;
+    background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7) !important;
 }
 
 .social-link.linkedin:hover {
-    background: #0077b5;
+    background: #0A66C2 !important;
 }
 
-.social-link.youtube:hover {
-    background: #ff0000;
+.social-link.whatsapp:hover {
+    background: #25D366 !important;
 }
 
 /* Copyright Area */
@@ -359,7 +394,16 @@
     }
     
     .footer-logo-img {
-        max-height: 40px;
+        max-height: 80px;
+    }
+    
+    .footer-social {
+        gap: 12px;
+    }
+    
+    .social-link {
+        width: 38px;
+        height: 38px;
     }
 }
 
@@ -374,6 +418,16 @@
     
     .tagline {
         font-size: 13px;
+    }
+    
+    /* On mobile, first column logo will be centered */
+    .col-sm-12:first-child {
+        text-align: center;
+    }
+    
+    .footer-social {
+        flex-wrap: wrap;
+        gap: 12px;
     }
 }
 
@@ -392,12 +446,12 @@
     }
     
     .social-link {
-        width: 32px;
-        height: 32px;
+        width: 36px;
+        height: 36px;
     }
     
     .footer-logo-img {
-        max-height: 35px;
+        max-height: 70px;
     }
     
     .tagline {

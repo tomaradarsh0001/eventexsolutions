@@ -1739,85 +1739,155 @@
             
             {{-- Left Column - Contact Information --}}
             <div class="fade-in-up">
-                <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm mb-6">
-                    <span class="relative flex h-3 w-3">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
-                    </span>
-                    <span class="text-sm font-medium text-gray-700">Enquire for Event</span>
-                </div>
-                
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                    <span class="bg-gradient-to-r from-red-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                        Plan Your Dream
-                    </span>
-                    <br>
-                    <span class="text-gray-800">Event With Us</span>
-                </h2>
-                
-                <p class="text-lg text-gray-600 mb-10 leading-relaxed">
-                    Whether it's a wedding, corporate gathering, or special celebration, 
-                    our team is here to bring your vision to life. Reach out to us and 
-                    let's create something extraordinary together.
-                </p>
-                
-                <div class="space-y-6">
-                    <div class="flex items-center group cursor-pointer" onclick="window.location.href='mailto:events@yourcompany.com'">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                            <i class="fas fa-envelope text-white text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-sm font-semibold text-red-600 uppercase tracking-wider">Email Us</p>
-                            <a href="mailto:events@yourcompany.com" class="text-gray-800 text-lg font-medium hover:text-indigo-600 transition-colors">
-                                events@yourcompany.com
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center group cursor-pointer" onclick="window.location.href='tel:+1234567890'">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-red-600 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                            <i class="fas fa-phone-alt text-white text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-sm font-semibold text-red-600 uppercase tracking-wider">Call Us</p>
-                            <a href="tel:+1234567890" class="text-gray-800 text-lg font-medium hover:text-purple-600 transition-colors">
-                                +1 (234) 567-8900
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center shadow-lg">
-                            <i class="fas fa-map-marker-alt text-white text-xl"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-sm font-semibold text-red-600 uppercase tracking-wider">Office Location</p>
-                            <p class="text-gray-800 text-lg font-medium">
-                                123 Event Avenue, Suite 100<br>
-                                New York, NY 10001
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-10 pt-6 border-t border-gray-200">
-                    <p class="text-sm text-gray-500 mb-4">Follow us for inspiration</p>
-                    <div class="flex gap-3">
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all duration-300 shadow-sm hover:shadow-md">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all duration-300 shadow-sm hover:shadow-md">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all duration-300 shadow-sm hover:shadow-md">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all duration-300 shadow-sm hover:shadow-md">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
+
+    {{-- Top Badge --}}
+    <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm mb-6">
+        <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+        </span>
+        <span class="text-sm font-medium text-gray-700">Enquire for Event</span>
+    </div>
+
+    {{-- Heading --}}
+    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+        <span class="bg-gradient-to-r from-red-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            Plan Your Dream
+        </span>
+        <br>
+        <span class="text-gray-800">Event With Us</span>
+    </h2>
+
+    {{-- Description --}}
+    <p class="text-lg text-gray-600 mb-10 leading-relaxed">
+        Whether it's a wedding, corporate gathering, or special celebration, 
+        our team is here to bring your vision to life. Reach out to us and 
+        let's create something extraordinary together.
+    </p>
+
+    {{-- Contact Info --}}
+    <div class="space-y-6">
+
+        {{-- Email --}}
+        <div class="flex items-center group cursor-pointer" 
+             onclick="window.location.href='mailto:{{ $website->email ?? '' }}'">
+
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                <i class="fas fa-envelope text-white text-xl"></i>
             </div>
+
+            <div class="ml-4">
+                <p class="text-sm font-semibold text-red-600 uppercase tracking-wider">Email Us</p>
+
+                <a href="mailto:{{ $website->email ?? '' }}" 
+                   class="text-gray-800 text-lg font-medium hover:text-indigo-600 transition-colors">
+                    {{ $website->email ?? 'No Email Available' }}
+                </a>
+            </div>
+        </div>
+
+     {{-- Phone --}}
+<div class="flex items-center group">
+    
+    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-red-600 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+        <i class="fas fa-phone-alt text-white text-xl"></i>
+    </div>
+
+    <div class="ml-4">
+        <p class="text-sm font-semibold text-red-600 uppercase tracking-wider">Call Us</p>
+
+        @php
+            $phones = array_filter([
+                $website->phone_number_1 ?? null,
+                $website->phone_number_2 ?? null,
+                $website->phone_number_3 ?? null,
+            ]);
+        @endphp
+
+        @if(count($phones))
+            <p class="text-gray-800 text-lg font-medium">
+                @foreach($phones as $index => $phone)
+                    <a href="tel:{{ $phone }}" class="hover:text-purple-600 transition-colors">
+                        {{ $phone }}
+                    </a>
+                    @if(!$loop->last)
+                        , 
+                    @endif
+                @endforeach
+            </p>
+        @else
+            <p class="text-gray-500">No Phone Available</p>
+        @endif
+    </div>
+
+</div>
+
+
+        {{-- Address --}}
+        <div class="flex items-center">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center shadow-lg">
+                <i class="fas fa-map-marker-alt text-white text-xl"></i>
+            </div>
+
+            <div class="ml-4">
+                <p class="text-sm font-semibold text-red-600 uppercase tracking-wider">Office Location</p>
+
+                <p class="text-gray-800 text-lg font-medium">
+                    {!! nl2br(e($website->address ?? 'No Address Available')) !!}
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    {{-- Social Media --}}
+    <div class="mt-10 pt-6 border-t border-gray-200">
+        <p class="text-sm text-gray-500 mb-4">Follow us for inspiration</p>
+
+        <div class="flex gap-3">
+
+    {{-- Facebook --}}
+    @if(!empty($website->facebook_link))
+    <a href="{{ $website->facebook_link }}" target="_blank"
+       style="background-color:#1877F2;"
+       class="w-10 h-10 rounded-full flex items-center justify-center text-white shadow-md hover:opacity-90">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    @endif
+
+    {{-- Instagram --}}
+    @if(!empty($website->instagram_link))
+    <a href="{{ $website->instagram_link }}" target="_blank"
+       style="background: linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);"
+       class="w-10 h-10 rounded-full flex items-center justify-center text-white shadow-md hover:opacity-90">
+        <i class="fab fa-instagram"></i>
+    </a>
+    @endif
+
+    {{-- LinkedIn --}}
+    @if(!empty($website->linkedin_link))
+    <a href="{{ $website->linkedin_link }}" target="_blank"
+       style="background-color:#0A66C2;"
+       class="w-10 h-10 rounded-full flex items-center justify-center text-white shadow-md hover:opacity-90">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+    @endif
+
+    {{-- WhatsApp --}}
+    @if(!empty($website->whatsapp_link))
+    <a href="{{ $website->whatsapp_link }}" target="_blank"
+       style="background-color:#25D366;"
+       class="w-10 h-10 rounded-full flex items-center justify-center text-white shadow-md hover:opacity-90">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    @endif
+
+</div>
+
+    </div>
+
+</div>
+
             
             {{-- Right Column - Form Card with Enhanced Logging --}}
             <div class="fade-in-up" style="animation-delay: 0.2s;">
@@ -1843,7 +1913,7 @@
                                     type="text" 
                                     x-model="formData.name"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200"
-                                    placeholder="John Doe"
+                                    placeholder="Shubh Tomar"
                                     required>
                                 <template x-if="errors.name">
                                     <p class="text-red-500 text-xs mt-1" x-text="errors.name"></p>
@@ -1859,7 +1929,7 @@
                                     type="email" 
                                     x-model="formData.email"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200"
-                                    placeholder="john@example.com"
+                                    placeholder="username@mail.com"
                                     required>
                                 <template x-if="errors.email">
                                     <p class="text-red-500 text-xs mt-1" x-text="errors.email"></p>
@@ -1875,7 +1945,7 @@
                                     type="tel" 
                                     x-model="formData.phone"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200"
-                                    placeholder="+1 (234) 567-8900"
+                                    placeholder="9956748900"
                                     required>
                                 <template x-if="errors.phone">
                                     <p class="text-red-500 text-xs mt-1" x-text="errors.phone"></p>
@@ -2815,7 +2885,7 @@ function eventForm() {
                     <label for="name">
                         <i>👤</i> Full Name *
                     </label>
-                    <input type="text" id="name" name="name" placeholder="John Doe">
+                    <input type="text" id="name" name="name" placeholder="Shubh Tomar">
                     <div id="name-error" class="error-message"></div>
                 </div>
 
@@ -2823,7 +2893,7 @@ function eventForm() {
                     <label for="email">
                         <i>📧</i> Email Address *
                     </label>
-                    <input type="email" id="email" name="email" placeholder="john@example.com">
+                    <input type="email" id="email" name="email" placeholder="username@mail.com">
                     <div id="email-error" class="error-message"></div>
                 </div>
 
@@ -2831,7 +2901,7 @@ function eventForm() {
                     <label for="mobile">
                         <i>📱</i> Mobile Number *
                     </label>
-                    <input type="tel" id="mobile" name="mobile" placeholder="+1 234 567 8900">
+                    <input type="tel" id="mobile" name="mobile" placeholder="9988448900">
                     <div id="mobile-error" class="error-message"></div>
                 </div>
 
@@ -2851,78 +2921,170 @@ function eventForm() {
 
         <!-- Right Side - Contact Information -->
         <div class="info-side">
-            <div class="info-header">
-                <h3>Contact Information</h3>
-                <p>We're here to help! Reach out to us through any of these channels.</p>
-            </div>
+    
+    {{-- Header --}}
+    <div class="info-header">
+        <h3>Contact Information</h3>
+        <p>We're here to help! Reach out to us through any of these channels.</p>
+    </div>
 
-            <div class="contact-info">
-                <div class="info-item">
-                    <div class="info-icon">
-                        <span>📍</span>
-                    </div>
-                    <div class="info-content">
-                        <h4>Visit Us</h4>
-                        <p>123 Business Avenue<br>Suite 100<br>New York, NY 10001</p>
-                    </div>
-                </div>
+    <div class="contact-info space-y-6">
 
-                <div class="info-item">
-                    <div class="info-icon">
-                        <span>📧</span>
-                    </div>
-                    <div class="info-content">
-                        <h4>Email Us</h4>
-                        <p><a href="mailto:info@company.com">info@company.com</a></p>
-                        <p><a href="mailto:support@company.com">support@company.com</a></p>
-                    </div>
-                </div>
+    {{-- Address --}}
+    <div class="info-item flex items-start gap-4">
 
-                <div class="info-item">
-                    <div class="info-icon">
-                        <span>📱</span>
-                    </div>
-                    <div class="info-content">
-                        <h4>Call Us</h4>
-                        <p><a href="tel:+12345678900">+1 (234) 567-8900</a></p>
-                        <p><a href="tel:+12345678901">+1 (234) 567-8901</a></p>
-                    </div>
-                </div>
+        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md"
+             style="background-color:white; transition:0.3s; line-height:0;"
+             onmouseover="this.style.backgroundColor='#ef4444'; this.querySelector('i').style.color='white';"
+             onmouseout="this.style.backgroundColor='white'; this.querySelector('i').style.color='#ef4444';">
 
-                <div class="info-item">
-                    <div class="info-icon">
-                        <span>⏰</span>
-                    </div>
-                    <div class="info-content">
-                        <h4>Business Hours</h4>
-                        <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="social-links">
-                <a href="#" class="social-link">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.99h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.99C18.343 21.128 22 16.991 22 12z"/>
-                    </svg>
-                </a>
-                <a href="#" class="social-link">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 0021.337-4.062c2.73-4.992 2.197-10.895 2.197-10.895 0-.157.008-.314.025-.471.954-.689 1.78-1.548 2.434-2.527z"/>
-                    </svg>
-                </a>
-                <a href="#" class="social-link">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
-                    </svg>
-                </a>
-                <a href="#" class="social-link">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451c.979 0 1.771-.773 1.771-1.729V1.729C24 .774 23.204 0 22.225 0z"/>
-                    </svg>
-                </a>
-            </div>
+            <i class="fas fa-map-marker-alt"
+               style="color:#ef4444; font-size:18px; display:flex; align-items:center; justify-content:center;"></i>
         </div>
+
+        <div>
+            <h4>Visit Us</h4>
+            <p class="text-white">
+                {!! nl2br(e($website->address ?? 'No Address Available')) !!}
+            </p>
+        </div>
+    </div>
+
+    {{-- Email --}}
+    <div class="info-item flex items-start gap-4">
+
+        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md"
+             style="background-color:white; transition:0.3s; line-height:0;"
+             onmouseover="this.style.backgroundColor='#3b82f6'; this.querySelector('i').style.color='white';"
+             onmouseout="this.style.backgroundColor='white'; this.querySelector('i').style.color='#3b82f6';">
+
+            <i class="fas fa-envelope"
+               style="color:#3b82f6; font-size:18px; display:flex; align-items:center; justify-content:center;"></i>
+        </div>
+
+        <div>
+            <h4>Email Us</h4>
+
+            @if(!empty($website->email))
+                <p class="text-white">
+                    <a href="mailto:{{ $website->email }}">
+                        {{ $website->email }}
+                    </a>
+                </p>
+            @else
+                <p>No Email Available</p>
+            @endif
+        </div>
+    </div>
+
+    {{-- Phones --}}
+    <div class="info-item flex items-start gap-4">
+
+        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md"
+             style="background-color:white; transition:0.3s; line-height:0;"
+             onmouseover="this.style.backgroundColor='#22c55e'; this.querySelector('i').style.color='white';"
+             onmouseout="this.style.backgroundColor='white'; this.querySelector('i').style.color='#22c55e';">
+
+            <i class="fas fa-phone-alt"
+               style="color:#22c55e; font-size:18px; display:flex; align-items:center; justify-content:center;"></i>
+        </div>
+
+        <div>
+            <h4>Call Us :-</h4>
+
+            @php
+                $phones = array_filter([
+                    $website->phone_number_1 ?? null,
+                    $website->phone_number_2 ?? null,
+                    $website->phone_number_3 ?? null,
+                ]);
+            @endphp
+
+            @if(count($phones))
+                <p class="text-white">
+                    @foreach($phones as $phone)
+                        <a href="tel:{{ $phone }}">
+                            {{ $phone }}
+                        </a>@if(!$loop->last), @endif
+                    @endforeach
+                </p>
+            @else
+                <p>No Phone Available</p>
+            @endif
+        </div>
+    </div>
+
+    {{-- Business Hours --}}
+    <div class="info-item flex items-start gap-4">
+
+        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md"
+             style="background-color:white; transition:0.3s; line-height:0;"
+             onmouseover="this.style.backgroundColor='#a855f7'; this.querySelector('i').style.color='white';"
+             onmouseout="this.style.backgroundColor='white'; this.querySelector('i').style.color='#a855f7';">
+
+            <i class="fas fa-clock"
+               style="color:#a855f7; font-size:18px; display:flex; align-items:center; justify-content:center;"></i>
+        </div>
+
+        <div>
+            <h4>Business Hours</h4>
+            <p class="text-white">
+                Monday - Friday: 9:00 AM - 6:00 PM<br>
+                Saturday: 10:00 AM - 4:00 PM<br>
+                Sunday: Closed
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    {{-- Social Links --}}
+   <div class="social-links flex gap-3">
+
+    {{-- Facebook --}}
+    <a href="{{ $website->facebook_link ?: '#' }}" target="_blank"
+       style="background-color:white; color:#1877F2; transition: all 0.3s ease;"
+       onmouseover="this.style.backgroundColor='#1877F2'; this.style.color='white';"
+       onmouseout="this.style.backgroundColor='white'; this.style.color='#1877F2';"
+       class="w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+
+    {{-- Instagram --}}
+    <a href="{{ $website->instagram_link ?: '#' }}" target="_blank"
+       style="background-color:white; color:#e1306c; transition: all 0.3s ease;"
+       onmouseover="this.style.background='linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)'; this.style.color='white';"
+       onmouseout="this.style.background='white'; this.style.color='#e1306c';"
+       class="w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+        <i class="fab fa-instagram"></i>
+    </a>
+
+    {{-- LinkedIn --}}
+    <a href="{{ $website->linkedin_link ?: '#' }}" target="_blank"
+       style="background-color:white; color:#0A66C2; transition: all 0.3s ease;"
+       onmouseover="this.style.backgroundColor='#0A66C2'; this.style.color='white';"
+       onmouseout="this.style.backgroundColor='white'; this.style.color='#0A66C2';"
+       class="w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+
+    {{-- WhatsApp --}}
+    <a href="{{ $website->whatsapp_link ?: '#' }}" target="_blank"
+       style="background-color:white; color:#25D366; transition: all 0.3s ease;"
+       onmouseover="this.style.backgroundColor='#25D366'; this.style.color='white';"
+       onmouseout="this.style.backgroundColor='white'; this.style.color='#25D366';"
+       class="w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</div>
+
+
+
+</div>
+
     </div>
     </div>
 </div>
