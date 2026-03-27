@@ -17,7 +17,7 @@
       <div class="carousel-caption d-md-block">
         <p class="fadeInUp wow" data-wow-delay=".6s">Elevating Corporate Events to Excellence</p>
         <h1 class="wow fadeInDown heading" data-wow-delay=".4s">Seamless planning, flawless execution, and impactful experiences.</h1>
-        <a href="{{ route('dashboard') }}" class="fadeInLeft wow btn btn-common btn-lg" data-wow-delay=".6s">Enquire for Event</a>
+        <a class="fadeInLeft wow btn btn-common btn-lg" data-wow-delay=".6s" href="#bookevent">Enquire for Event</a>
       </div>
     </div>
     <div class="carousel-item">
@@ -25,7 +25,7 @@
       <div class="carousel-caption d-md-block">
         <p class="fadeInUp wow" data-wow-delay=".6s">Turning Moments into Grand Celebrations</p>
         <h1 class="wow bounceIn heading" data-wow-delay=".7s">From private parties to large-scale events, we make every moment unforgettable.</h1>
-        <a href="{{ route('dashboard') }}" class="fadeInUp wow btn btn-border btn-lg" data-wow-delay=".8s">Enquire for Event</a>
+        <a href="#bookevent" class="fadeInUp wow btn btn-border btn-lg" data-wow-delay=".8s">Enquire for Event</a>
       </div>
     </div>
     <div class="carousel-item">
@@ -33,7 +33,7 @@
       <div class="carousel-caption d-md-block">
         <p class="fadeInUp wow" data-wow-delay=".6s">Powering Events with Cutting-Edge Technology</p>
         <h1 class="wow fadeInUp heading" data-wow-delay=".6s">Live streaming, virtual conferences, and high-quality event production.</h1>
-        <a href="{{ route('register') }}" class="fadeInUp wow btn btn-common btn-lg" data-wow-delay=".8s">Enquire for Event</a>
+        <a href="#bookevent" class="fadeInUp wow btn btn-common btn-lg" data-wow-delay=".8s">Enquire for Event</a>
       </div>
     </div>
   </div>
@@ -56,7 +56,7 @@
       <div class="col-12">
         <div class="section-title-header text-center">
           <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Why Us?</h1>
-        <p class="wow fadeInDown" data-wow-delay="0.2s">
+        <p class="wow fadeInDown parafont" data-wow-delay="0.2s">
           {{ $whyus->whyus_paragraph ?? '' }}
         </p>
 
@@ -72,10 +72,17 @@
           <div class="icon">
             <i class="{{ $item->icon }}"></i>
           </div>
-
+<style>
+    .parafont{
+        font-size: 18px !important;
+    }
+    .headfont{
+        font-size: 22px !important;
+    }
+</style>
           <div class="services-content">
-            <h3><a href="#">{{ $item->title }}</a></h3>
-            <p>{{ $item->description }}</p>
+            <h3 ><a class="headfont" href="#">{{ $item->title }}</a></h3>
+            <p class="parafont">{{ $item->description }}</p>
           </div>
 
         </div>
