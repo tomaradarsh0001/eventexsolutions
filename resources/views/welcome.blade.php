@@ -3051,40 +3051,42 @@ function eventForm() {
    <div class="social-links flex gap-3">
 
     {{-- Facebook --}}
-    <a href="{{ $website->facebook_link ?: '#' }}" target="_blank"
-       style="background-color:white; color:#1877F2; transition: all 0.3s ease;"
-       onmouseover="this.style.backgroundColor='#1877F2'; this.style.color='white';"
-       onmouseout="this.style.backgroundColor='white'; this.style.color='#1877F2';"
-       class="w-10 h-10 rounded-full flex items-center justify-center shadow-md">
-        <i class="fab fa-facebook-f"></i>
-    </a>
+  <a href="{{ $website?->facebook_link ?: '#' }}" target="_blank"
+   style="background-color:white; color:#1877F2; transition: all 0.3s ease;"
+   onmouseover="this.style.backgroundColor='#1877F2'; this.style.color='white';"
+   onmouseout="this.style.backgroundColor='white'; this.style.color='#1877F2';"
+   class="w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+    <i class="fab fa-facebook-f"></i>
+</a>
 
-    {{-- Instagram --}}
-    <a href="{{ $website->instagram_link ?: '#' }}" target="_blank"
-       style="background-color:white; color:#e1306c; transition: all 0.3s ease;"
-       onmouseover="this.style.background='linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)'; this.style.color='white';"
-       onmouseout="this.style.background='white'; this.style.color='#e1306c';"
-       class="w-10 h-10 rounded-full flex items-center justify-center shadow-md">
-        <i class="fab fa-instagram"></i>
-    </a>
 
-    {{-- LinkedIn --}}
-    <a href="{{ $website->linkedin_link ?: '#' }}" target="_blank"
-       style="background-color:white; color:#0A66C2; transition: all 0.3s ease;"
-       onmouseover="this.style.backgroundColor='#0A66C2'; this.style.color='white';"
-       onmouseout="this.style.backgroundColor='white'; this.style.color='#0A66C2';"
-       class="w-10 h-10 rounded-full flex items-center justify-center shadow-md">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
+   {{-- Instagram --}}
+<a href="{{ $website?->instagram_link ?: '#' }}" target="_blank"
+   style="background-color:white; color:#e1306c; transition: all 0.3s ease;"
+   onmouseover="this.style.background='linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)'; this.style.color='white';"
+   onmouseout="this.style.background='white'; this.style.color='#e1306c';"
+   class="w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+    <i class="fab fa-instagram"></i>
+</a>
 
-    {{-- WhatsApp --}}
-    <a href="{{ $website->whatsapp_link ?: '#' }}" target="_blank"
-       style="background-color:white; color:#25D366; transition: all 0.3s ease;"
-       onmouseover="this.style.backgroundColor='#25D366'; this.style.color='white';"
-       onmouseout="this.style.backgroundColor='white'; this.style.color='#25D366';"
-       class="w-10 h-10 rounded-full flex items-center justify-center shadow-md">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+{{-- LinkedIn --}}
+<a href="{{ $website?->linkedin_link ?: '#' }}" target="_blank"
+   style="background-color:white; color:#0A66C2; transition: all 0.3s ease;"
+   onmouseover="this.style.backgroundColor='#0A66C2'; this.style.color='white';"
+   onmouseout="this.style.backgroundColor='white'; this.style.color='#0A66C2';"
+   class="w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+    <i class="fab fa-linkedin-in"></i>
+</a>
+
+{{-- WhatsApp --}}
+<a href="{{ $website?->whatsapp_link ?: '#' }}" target="_blank"
+   style="background-color:white; color:#25D366; transition: all 0.3s ease;"
+   onmouseover="this.style.backgroundColor='#25D366'; this.style.color='white';"
+   onmouseout="this.style.backgroundColor='white'; this.style.color='#25D366';"
+   class="w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
 
 </div>
 
