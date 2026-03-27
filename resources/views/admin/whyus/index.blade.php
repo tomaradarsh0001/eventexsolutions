@@ -371,7 +371,7 @@
                 @endphp
 
                 @if(!$hasWhyUs)
-                    <a href="{{ route(admin.'whyus.create') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.whyus.create') }}" class="btn btn-primary">
                         <i class="lni lni-plus"></i>
                         Create New Section
                     </a>
