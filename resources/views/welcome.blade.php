@@ -46,6 +46,107 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+
+<style>
+/* Mobile Responsive Styles - 65% Height Images */
+@media (max-width: 768px) {
+  #main-slide .carousel-item {
+    min-height: 65vh !important;
+    background: #000;
+  }
+  
+  #main-slide .carousel-item img {
+    height: 65vh !important;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  #main-slide .carousel-caption {
+    left: 5% !important;
+    right: 5% !important;
+    bottom: 15% !important;
+    top: auto !important;
+    padding: 12px !important;
+  }
+  
+  #main-slide .carousel-caption p {
+    font-size: 13px !important;
+    margin-bottom: 8px !important;
+    font-weight: 500;
+  }
+  
+  #main-slide .carousel-caption h1 {
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 12px !important;
+    font-weight: bold;
+  }
+  
+  #main-slide .btn {
+    padding: 8px 18px !important;
+    font-size: 12px !important;
+    display: inline-block;
+  }
+  
+  #main-slide .carousel-indicators {
+    bottom: 8% !important;
+  }
+  
+  #main-slide .carousel-indicators li {
+    width: 8px !important;
+    height: 8px !important;
+    margin: 0 5px !important;
+    border-radius: 50%;
+  }
+  
+  #main-slide .carousel-control {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 16px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+  
+  /* For very small devices */
+  @media (max-width: 480px) {
+    #main-slide .carousel-item {
+      min-height: 65vh !important;
+    }
+    
+    #main-slide .carousel-item img {
+      height: 65vh !important;
+    }
+    
+    #main-slide .carousel-caption h1 {
+      font-size: 18px !important;
+    }
+    
+    #main-slide .carousel-caption p {
+      font-size: 11px !important;
+    }
+    
+    #main-slide .btn {
+      padding: 6px 14px !important;
+      font-size: 11px !important;
+    }
+    
+    #main-slide .carousel-caption {
+      bottom: 12% !important;
+    }
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  #main-slide .carousel-caption h1 {
+    font-size: 36px !important;
+  }
+  
+  #main-slide .carousel-caption p {
+    font-size: 16px !important;
+  }
+}
+</style>
 <!-- Main Carousel Section End -->
 
 
@@ -1726,191 +1827,153 @@
 
 
 {{--Book Event--}}
-<section class="relative min-h-screen flex items-center py-10 md:py-10 overflow-hidden" id="bookevent">
-     <div class="container">
-        <div class="section-header">
-            <h2>Event Enquiry</h2>
-            <p>Fill the form and submit to enquire about more</p>
-        </div>
-    {{-- Decorative Background --}}
-    <div class="absolute inset-0 z-0">
-        <div class="absolute inset-0 "></div>
-        <div class="absolute top-0 right-0 w-96 h-96  rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 mix-blend-multiply filter blur-3xl opacity-30 animate-pulse delay-1000"></div>
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" xmlns="http://www.w3.org/2000/svg"%3E%3Cdefs%3E%3Cpattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"%3E%3Cpath d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(99,102,241,0.05)" stroke-width="1"/%3E%3C/pattern%3E%3C/defs%3E%3Crect width="100%25" height="100%25" fill="url(%23grid)"/%3E%3C/svg%3E')] opacity-50"></div>
-    </div>
-
+<section class="relative py-10 md:py-20 overflow-hidden" id="bookevent">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="section-header text-center mb-8 md:mb-12">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800">Event Enquiry</h2>
+            <p class="text-gray-600 mt-2">Fill the form and submit to enquire about more</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
             
             {{-- Left Column - Contact Information --}}
-            <div class="fade-in-up">
+            <div class="order-2 lg:order-1 fade-in-up">
+                {{-- Top Badge --}}
+                <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm mb-6">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+                    </span>
+                    <span class="text-sm font-medium text-gray-700">Enquire for Event</span>
+                </div>
 
-    {{-- Top Badge --}}
-    <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm mb-6">
-        <span class="relative flex h-3 w-3">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
-        </span>
-        <span class="text-sm font-medium text-gray-700">Enquire for Event</span>
-    </div>
+                {{-- Heading --}}
+                <h2 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6">
+                    <span class="bg-gradient-to-r from-red-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                        Plan Your Dream
+                    </span>
+                    <br>
+                    <span class="text-gray-800">Event With Us</span>
+                </h2>
 
-    {{-- Heading --}}
-    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-        <span class="bg-gradient-to-r from-red-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-            Plan Your Dream
-        </span>
-        <br>
-        <span class="text-gray-800">Event With Us</span>
-    </h2>
-
-    {{-- Description --}}
-    <p class="text-lg text-gray-600 mb-10 leading-relaxed">
-        Whether it's a wedding, corporate gathering, or special celebration, 
-        our team is here to bring your vision to life. Reach out to us and 
-        let's create something extraordinary together.
-    </p>
-
-    {{-- Contact Info --}}
-    <div class="space-y-6">
-
-        {{-- Email --}}
-        <div class="flex items-center group cursor-pointer" 
-             onclick="window.location.href='mailto:{{ $website->email ?? '' }}'">
-
-            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                <i class="fas fa-envelope text-white text-xl"></i>
-            </div>
-
-            <div class="ml-4">
-                <p class="text-sm font-semibold text-red-600 uppercase tracking-wider">Email Us</p>
-
-                <a href="mailto:{{ $website->email ?? '' }}" 
-                   class="text-gray-800 text-lg font-medium hover:text-indigo-600 transition-colors">
-                    {{ $website->email ?? 'No Email Available' }}
-                </a>
-            </div>
-        </div>
-
-     {{-- Phone --}}
-<div class="flex items-center group">
-    
-    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-red-600 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-        <i class="fas fa-phone-alt text-white text-xl"></i>
-    </div>
-
-    <div class="ml-4">
-        <p class="text-sm font-semibold text-red-600 uppercase tracking-wider">Call Us</p>
-
-        @php
-            $phones = array_filter([
-                $website->phone_number_1 ?? null,
-                $website->phone_number_2 ?? null,
-                $website->phone_number_3 ?? null,
-            ]);
-        @endphp
-
-        @if(count($phones))
-            <p class="text-gray-800 text-lg font-medium">
-                @foreach($phones as $index => $phone)
-                    <a href="tel:{{ $phone }}" class="hover:text-purple-600 transition-colors">
-                        {{ $phone }}
-                    </a>
-                    @if(!$loop->last)
-                        , 
-                    @endif
-                @endforeach
-            </p>
-        @else
-            <p class="text-gray-500">No Phone Available</p>
-        @endif
-    </div>
-
-</div>
-
-
-        {{-- Address --}}
-        <div class="flex items-center">
-            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center shadow-lg">
-                <i class="fas fa-map-marker-alt text-white text-xl"></i>
-            </div>
-
-            <div class="ml-4">
-                <p class="text-sm font-semibold text-red-600 uppercase tracking-wider">Office Location</p>
-
-                <p class="text-gray-800 text-lg font-medium">
-                    {!! nl2br(e($website->address ?? 'No Address Available')) !!}
+                {{-- Description --}}
+                <p class="text-base md:text-lg text-gray-600 mb-8 md:mb-10 leading-relaxed">
+                    Whether it's a wedding, corporate gathering, or special celebration, 
+                    our team is here to bring your vision to life. Reach out to us and 
+                    let's create something extraordinary together.
                 </p>
+
+                {{-- Contact Info --}}
+                <div class="space-y-5 md:space-y-6">
+                    {{-- Email --}}
+                    <div class="flex items-center group cursor-pointer" 
+                         onclick="window.location.href='mailto:{{ $website->email ?? '' }}'">
+                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br from-red-500 to-pink-600 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                            <i class="fas fa-envelope text-white text-base md:text-xl"></i>
+                        </div>
+                        <div class="ml-3 md:ml-4">
+                            <p class="text-xs md:text-sm font-semibold text-red-600 uppercase tracking-wider">Email Us</p>
+                            <a href="mailto:{{ $website->email ?? '' }}" 
+                               class="text-gray-800 text-sm md:text-lg font-medium hover:text-indigo-600 transition-colors break-all">
+                                {{ $website->email ?? 'No Email Available' }}
+                            </a>
+                        </div>
+                    </div>
+
+                    {{-- Phone --}}
+                    <div class="flex items-center group">
+                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-red-600 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                            <i class="fas fa-phone-alt text-white text-base md:text-xl"></i>
+                        </div>
+                        <div class="ml-3 md:ml-4">
+                            <p class="text-xs md:text-sm font-semibold text-red-600 uppercase tracking-wider">Call Us</p>
+                            @php
+                                $phones = array_filter([
+                                    $website->phone_number_1 ?? null,
+                                    $website->phone_number_2 ?? null,
+                                    $website->phone_number_3 ?? null,
+                                ]);
+                            @endphp
+                            @if(count($phones))
+                                <p class="text-gray-800 text-sm md:text-lg font-medium">
+                                    @foreach($phones as $index => $phone)
+                                        <a href="tel:{{ $phone }}" class="hover:text-purple-600 transition-colors">
+                                            {{ $phone }}
+                                        </a>
+                                        @if(!$loop->last), @endif
+                                    @endforeach
+                                </p>
+                            @else
+                                <p class="text-gray-500">No Phone Available</p>
+                            @endif
+                        </div>
+                    </div>
+
+                    {{-- Address --}}
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center shadow-lg shrink-0">
+                            <i class="fas fa-map-marker-alt text-white text-base md:text-xl"></i>
+                        </div>
+                        <div class="ml-3 md:ml-4">
+                            <p class="text-xs md:text-sm font-semibold text-red-600 uppercase tracking-wider">Office Location</p>
+                            <p class="text-gray-800 text-sm md:text-lg font-medium break-words">
+                                {!! nl2br(e($website->address ?? 'No Address Available')) !!}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Social Media --}}
+                <div class="mt-8 md:mt-10 pt-6 border-t border-gray-200">
+                    <p class="text-sm text-gray-500 mb-4">Follow us for inspiration</p>
+                    <div class="flex gap-3 flex-wrap">
+                        @if(!empty($website->facebook_link))
+                        <a href="{{ $website->facebook_link }}" target="_blank"
+                           style="background-color:#1877F2;"
+                           class="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center text-white shadow-md hover:opacity-90 transition-all">
+                            <i class="fab fa-facebook-f text-sm md:text-base"></i>
+                        </a>
+                        @endif
+                        @if(!empty($website->instagram_link))
+                        <a href="{{ $website->instagram_link }}" target="_blank"
+                           style="background: linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);"
+                           class="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center text-white shadow-md hover:opacity-90 transition-all">
+                            <i class="fab fa-instagram text-sm md:text-base"></i>
+                        </a>
+                        @endif
+                        @if(!empty($website->linkedin_link))
+                        <a href="{{ $website->linkedin_link }}" target="_blank"
+                           style="background-color:#0A66C2;"
+                           class="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center text-white shadow-md hover:opacity-90 transition-all">
+                            <i class="fab fa-linkedin-in text-sm md:text-base"></i>
+                        </a>
+                        @endif
+                        @if(!empty($website->whatsapp_link))
+                        <a href="{{ $website->whatsapp_link }}" target="_blank"
+                           style="background-color:#25D366;"
+                           class="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center text-white shadow-md hover:opacity-90 transition-all">
+                            <i class="fab fa-whatsapp text-sm md:text-base"></i>
+                        </a>
+                        @endif
+                    </div>
+                </div>
             </div>
-        </div>
-
-    </div>
-
-    {{-- Social Media --}}
-    <div class="mt-10 pt-6 border-t border-gray-200">
-        <p class="text-sm text-gray-500 mb-4">Follow us for inspiration</p>
-
-        <div class="flex gap-3">
-
-    {{-- Facebook --}}
-    @if(!empty($website->facebook_link))
-    <a href="{{ $website->facebook_link }}" target="_blank"
-       style="background-color:#1877F2;"
-       class="w-10 h-10 rounded-full flex items-center justify-center text-white shadow-md hover:opacity-90">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    @endif
-
-    {{-- Instagram --}}
-    @if(!empty($website->instagram_link))
-    <a href="{{ $website->instagram_link }}" target="_blank"
-       style="background: linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);"
-       class="w-10 h-10 rounded-full flex items-center justify-center text-white shadow-md hover:opacity-90">
-        <i class="fab fa-instagram"></i>
-    </a>
-    @endif
-
-    {{-- LinkedIn --}}
-    @if(!empty($website->linkedin_link))
-    <a href="{{ $website->linkedin_link }}" target="_blank"
-       style="background-color:#0A66C2;"
-       class="w-10 h-10 rounded-full flex items-center justify-center text-white shadow-md hover:opacity-90">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
-    @endif
-
-    {{-- WhatsApp --}}
-    @if(!empty($website->whatsapp_link))
-    <a href="{{ $website->whatsapp_link }}" target="_blank"
-       style="background-color:#25D366;"
-       class="w-10 h-10 rounded-full flex items-center justify-center text-white shadow-md hover:opacity-90">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    @endif
-
-</div>
-
-    </div>
-
-</div>
-
             
-            {{-- Right Column - Form Card with Enhanced Logging --}}
-            <div class="fade-in-up" style="animation-delay: 0.2s;">
+            {{-- Right Column - Form Card --}}
+            <div class="order-1 lg:order-2 fade-in-up" style="animation-delay: 0.2s;">
                 <div class="bg-white/95 backdrop-blur-xl shadow-2xl border border-gray-100 overflow-hidden transform transition-all duration-500 hover:shadow-3xl">
-                    <div class="bg-gradient-to-r from-red-600 to-pink-600 px-8 py-6">
-                        <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                    <div class="bg-gradient-to-r from-red-600 to-pink-600 px-5 py-5 md:px-8 md:py-6">
+                        <h3 class="text-xl md:text-2xl font-bold text-white flex items-center gap-2">
                             <i class="fas fa-calendar-alt"></i>
                             Event Enquiry
                         </h3>
-                        <p class="text-white text-sm mt-1">Fill out the form and we'll get back to you within 24 hours</p>
+                        <p class="text-white text-xs md:text-sm mt-1">Fill out the form and we'll get back to you within 24 hours</p>
                     </div>
                     
-                    <form class="px-8 py-8" x-data="eventForm()" @submit.prevent="submitForm">
+                    <form class="px-5 py-6 md:px-8 md:py-8" x-data="eventForm()" @submit.prevent="submitForm">
                         @csrf
                         
-                        <div class="space-y-6">
+                        <div class="space-y-5 md:space-y-6">
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">
                                     <i class="fas fa-user text-gray-500 mr-2"></i>
@@ -1919,7 +1982,7 @@
                                 <input 
                                     type="text" 
                                     x-model="formData.name"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200 text-sm md:text-base"
                                     placeholder="Shubh Tomar"
                                     required>
                                 <template x-if="errors.name">
@@ -1935,7 +1998,7 @@
                                 <input 
                                     type="email" 
                                     x-model="formData.email"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200 text-sm md:text-base"
                                     placeholder="username@mail.com"
                                     required>
                                 <template x-if="errors.email">
@@ -1951,7 +2014,7 @@
                                 <input 
                                     type="tel" 
                                     x-model="formData.phone"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200 text-sm md:text-base"
                                     placeholder="9956748900"
                                     required>
                                 <template x-if="errors.phone">
@@ -1967,7 +2030,7 @@
                                 <div class="relative">
                                     <select 
                                         x-model="formData.purpose"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent appearance-none bg-white cursor-pointer"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent appearance-none bg-white cursor-pointer text-sm md:text-base"
                                         required>
                                         <option value="">Select event type</option>
                                         <option value="wedding">🎊 Wedding Reception</option>
@@ -1980,7 +2043,7 @@
                                         <option value="other">✨ Other</option>
                                     </select>
                                     <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-                                        <i class="fas fa-chevron-down text-gray-400"></i>
+                                        <i class="fas fa-chevron-down text-gray-400 text-xs md:text-sm"></i>
                                     </div>
                                 </div>
                                 <template x-if="errors.purpose">
@@ -1996,7 +2059,7 @@
                                 <textarea 
                                     x-model="formData.message"
                                     rows="3"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200 text-sm md:text-base"
                                     placeholder="Tell us more about your event..."></textarea>
                             </div>
                             
@@ -2007,28 +2070,28 @@
                                        hover:from-red-600 hover:to-pink-600 
                                        transform transition-all duration-200 shadow-lg hover:shadow-xl 
                                        flex items-center justify-center gap-2 
-                                       disabled:opacity-50 disabled:cursor-not-allowed">
+                                       disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base">
                                 <i class="fas fa-paper-plane" x-show="!isSubmitting"></i>
                                 <i class="fas fa-spinner fa-spin" x-show="isSubmitting"></i>
                                 <span x-text="isSubmitting ? 'Sending...' : 'Send Enquiry'"></span>
                             </button>
                             
-                            <div x-show="successMessage" x-transition.duration.300ms class="bg-green-50 border border-green-200 rounded-xl p-4">
+                            <div x-show="successMessage" x-transition.duration.300ms class="bg-green-50 border border-green-200 rounded-xl p-3 md:p-4">
                                 <div class="flex items-center gap-3">
-                                    <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                                    <i class="fas fa-check-circle text-green-500 text-lg md:text-xl"></i>
                                     <div>
-                                        <p class="text-green-800 font-medium" x-text="successMessage"></p>
-                                        <p class="text-green-600 text-sm mt-1">We'll get back to you within 24 hours!</p>
+                                        <p class="text-green-800 font-medium text-sm md:text-base" x-text="successMessage"></p>
+                                        <p class="text-green-600 text-xs md:text-sm mt-1">We'll get back to you within 24 hours!</p>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div x-show="errorMessage" x-transition.duration.300ms class="bg-red-50 border border-red-200 rounded-xl p-4">
+                            <div x-show="errorMessage" x-transition.duration.300ms class="bg-red-50 border border-red-200 rounded-xl p-3 md:p-4">
                                 <div class="flex items-center gap-3">
-                                    <i class="fas fa-exclamation-circle text-red-500 text-xl"></i>
+                                    <i class="fas fa-exclamation-circle text-red-500 text-lg md:text-xl"></i>
                                     <div>
-                                        <p class="text-red-800 font-medium" x-text="errorMessage"></p>
-                                        <p class="text-red-600 text-sm mt-1">Please try again or contact us directly.</p>
+                                        <p class="text-red-800 font-medium text-sm md:text-base" x-text="errorMessage"></p>
+                                        <p class="text-red-600 text-xs md:text-sm mt-1">Please try again or contact us directly.</p>
                                     </div>
                                 </div>
                             </div>
@@ -2042,7 +2105,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 
@@ -2246,43 +2308,67 @@ function eventForm() {
 
 
   <!-- Ask Question Section Start -->
-  <section id="faq" class="section-padding ">
-    <div class="container mb-5">
-        <div class="row">
-            <div class="col-12">
-                 <div class="section-header">
-            <h2>FAQs</h2>
-            <p>Here are some Frequently asked quesitions by our clients.</p>
-        </div>
+  <section id="faq" class="section-padding py-12 md:py-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-8 md:mb-12">
+            <div class="section-header text-center">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-3">FAQs</h2>
+                <p class="text-gray-600 text-sm md:text-base px-4">Here are some Frequently asked questions by our clients.</p>
             </div>
         </div>
-        <div class="row">
+        
+        <div class="flex flex-col lg:flex-row gap-4 md:gap-6 lg:gap-8">
             <!-- Left Side FAQs -->
-            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
-                <div class="accordion" id="leftAccordion">
+            <div class="w-full lg:w-1/2">
+                <div class="accordion space-y-3 md:space-y-4" id="leftAccordion">
                     @if(isset($leftFaqs) && $leftFaqs->count() > 0)
-                        @foreach($leftFaqs as $faq)
-                            <div class="card">
-                                <div class="card-header" id="headingLeft{{ $faq->id }}">
-                                    <div class="header-title" data-toggle="collapse" 
-                                         data-target="#collapseLeft{{ $faq->id }}" 
-                                         aria-expanded="false"
-                                         aria-controls="collapseLeft{{ $faq->id }}">
-                                        <i class="lni-pencil"></i> {{ $faq->question }}
+                        @php
+                            $leftFaqsArray = $leftFaqs->toArray();
+                            $leftTotal = count($leftFaqsArray);
+                            $leftVisible = 5; // Show first 5 on mobile
+                        @endphp
+                        
+                        <div id="leftFaqsContainer">
+                            @foreach($leftFaqsArray as $index => $faq)
+                                <div class="card bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden faq-item left-faq-item" 
+                                     data-faq-index="{{ $index }}"
+                                     style="{{ $index >= $leftVisible ? 'display: none;' : '' }}">
+                                    <div class="card-header" id="headingLeft{{ $faq['id'] }}">
+                                        <div class="header-title cursor-pointer flex items-center justify-between p-4 md:p-5 hover:bg-gray-50 transition-colors" 
+                                             data-toggle="collapse" 
+                                             data-target="#collapseLeft{{ $faq['id'] }}" 
+                                             aria-expanded="false"
+                                             aria-controls="collapseLeft{{ $faq['id'] }}">
+                                            <div class="flex items-center gap-3 flex-1 pr-3">
+                                                <i class="lni-pencil text-pink-500 text-sm md:text-base flex-shrink-0"></i>
+                                                <span class="text-gray-800 font-medium text-sm md:text-base break-words">{{ $faq['question'] }}</span>
+                                            </div>
+                                            <i class="fas fa-chevron-down text-gray-400 text-xs md:text-sm transition-transform duration-300 flex-shrink-0"></i>
+                                        </div>
+                                    </div>
+                                    <div id="collapseLeft{{ $faq['id'] }}" 
+                                         class="collapse" 
+                                         aria-labelledby="headingLeft{{ $faq['id'] }}" 
+                                         data-parent="#leftAccordion">
+                                        <div class="card-body p-4 md:p-5 pt-0 md:pt-0 border-t border-gray-100">
+                                            <div class="text-gray-600 text-sm md:text-base leading-relaxed mt-3 md:mt-4">
+                                                {!! nl2br(e($faq['answer'])) !!}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div id="collapseLeft{{ $faq->id }}" 
-                                     class="collapse" 
-                                     aria-labelledby="headingLeft{{ $faq->id }}" 
-                                     data-parent="#leftAccordion">
-                                    <div class="card-body">
-                                        {!! nl2br(e($faq->answer)) !!}
-                                    </div>
-                                </div>
+                            @endforeach
+                        </div>
+                        
+                        @if($leftTotal > $leftVisible)
+                            <div class="text-center mt-4 md:mt-6">
+                                <button class="load-more-btn left-load-more bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold py-2 px-6 md:py-3 md:px-8 rounded-lg hover:from-red-600 hover:to-pink-600 transition-all duration-300 shadow-md text-sm md:text-base">
+                                    Load More <i class="fas fa-chevron-down ml-2"></i>
+                                </button>
                             </div>
-                        @endforeach
+                        @endif
                     @else
-                        <div class="alert alert-info">
+                        <div class="alert alert-info bg-blue-50 border border-blue-200 text-blue-700 p-4 rounded-lg text-sm">
                             No FAQs available.
                         </div>
                     @endif
@@ -2290,31 +2376,56 @@ function eventForm() {
             </div>
 
             <!-- Right Side FAQs -->
-            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
-                <div class="accordion" id="rightAccordion">
+            <div class="w-full lg:w-1/2">
+                <div class="accordion space-y-3 md:space-y-4" id="rightAccordion">
                     @if(isset($rightFaqs) && $rightFaqs->count() > 0)
-                        @foreach($rightFaqs as $faq)
-                            <div class="card">
-                                <div class="card-header" id="headingRight{{ $faq->id }}">
-                                    <div class="header-title" data-toggle="collapse" 
-                                         data-target="#collapseRight{{ $faq->id }}" 
-                                         aria-expanded="false"
-                                         aria-controls="collapseRight{{ $faq->id }}">
-                                        <i class="lni-pencil"></i> {{ $faq->question }}
+                        @php
+                            $rightFaqsArray = $rightFaqs->toArray();
+                            $rightTotal = count($rightFaqsArray);
+                            $rightVisible = 5; // Show first 5 on mobile
+                        @endphp
+                        
+                        <div id="rightFaqsContainer">
+                            @foreach($rightFaqsArray as $index => $faq)
+                                <div class="card bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden faq-item right-faq-item" 
+                                     data-faq-index="{{ $index }}"
+                                     style="{{ $index >= $rightVisible ? 'display: none;' : '' }}">
+                                    <div class="card-header" id="headingRight{{ $faq['id'] }}">
+                                        <div class="header-title cursor-pointer flex items-center justify-between p-4 md:p-5 hover:bg-gray-50 transition-colors" 
+                                             data-toggle="collapse" 
+                                             data-target="#collapseRight{{ $faq['id'] }}" 
+                                             aria-expanded="false"
+                                             aria-controls="collapseRight{{ $faq['id'] }}">
+                                            <div class="flex items-center gap-3 flex-1 pr-3">
+                                                <i class="lni-pencil text-pink-500 text-sm md:text-base flex-shrink-0"></i>
+                                                <span class="text-gray-800 font-medium text-sm md:text-base break-words">{{ $faq['question'] }}</span>
+                                            </div>
+                                            <i class="fas fa-chevron-down text-gray-400 text-xs md:text-sm transition-transform duration-300 flex-shrink-0"></i>
+                                        </div>
+                                    </div>
+                                    <div id="collapseRight{{ $faq['id'] }}" 
+                                         class="collapse" 
+                                         aria-labelledby="headingRight{{ $faq['id'] }}" 
+                                         data-parent="#rightAccordion">
+                                        <div class="card-body p-4 md:p-5 pt-0 md:pt-0 border-t border-gray-100">
+                                            <div class="text-gray-600 text-sm md:text-base leading-relaxed mt-3 md:mt-4">
+                                                {!! nl2br(e($faq['answer'])) !!}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div id="collapseRight{{ $faq->id }}" 
-                                     class="collapse" 
-                                     aria-labelledby="headingRight{{ $faq->id }}" 
-                                     data-parent="#rightAccordion">
-                                    <div class="card-body">
-                                        {!! nl2br(e($faq->answer)) !!}
-                                    </div>
-                                </div>
+                            @endforeach
+                        </div>
+                        
+                        @if($rightTotal > $rightVisible)
+                            <div class="text-center mt-4 md:mt-6">
+                                <button class="load-more-btn right-load-more bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold py-2 px-6 md:py-3 md:px-8 rounded-lg hover:from-red-600 hover:to-pink-600 transition-all duration-300 shadow-md text-sm md:text-base">
+                                    Load More <i class="fas fa-chevron-down ml-2"></i>
+                                </button>
                             </div>
-                        @endforeach
+                        @endif
                     @else
-                        <div class="alert alert-info">
+                        <div class="alert alert-info bg-blue-50 border border-blue-200 text-blue-700 p-4 rounded-lg text-sm">
                             No FAQs available.
                         </div>
                     @endif
@@ -2323,6 +2434,177 @@ function eventForm() {
         </div>
     </div>
 </section>
+
+<style>
+@media (max-width: 768px) {
+    .faq-item {
+        transition: all 0.3s ease;
+    }
+    
+    .load-more-btn {
+        width: auto;
+        min-width: 140px;
+    }
+    
+    .load-more-btn i {
+        transition: transform 0.3s ease;
+    }
+    
+    .load-more-btn.loading i {
+        animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+}
+
+/* Desktop styles - show all FAQs */
+@media (min-width: 1024px) {
+    .faq-item {
+        display: block !important;
+    }
+    
+    .load-more-btn {
+        display: none !important;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Load More functionality for Left FAQs
+    function initLoadMore(containerId, btnClass, itemClass, loadCount = 5) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        const btn = document.querySelector('.' + btnClass);
+        if (!btn) return;
+        
+        const items = container.querySelectorAll('.faq-item');
+        let visibleCount = 5; // Initially showing 5
+        const totalCount = items.length;
+        
+        // Check if all items are already visible (desktop)
+        if (window.innerWidth >= 1024) {
+            items.forEach(item => item.style.display = 'block');
+            if (btn) btn.style.display = 'none';
+            return;
+        }
+        
+        btn.addEventListener('click', function() {
+            // Add loading state
+            btn.classList.add('loading');
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Loading...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                let newVisibleCount = visibleCount + loadCount;
+                
+                // Show next batch of items
+                for (let i = visibleCount; i < newVisibleCount && i < totalCount; i++) {
+                    if (items[i]) {
+                        items[i].style.display = 'block';
+                        // Add animation
+                        items[i].style.animation = 'fadeInUp 0.5s ease';
+                    }
+                }
+                
+                visibleCount = newVisibleCount;
+                
+                // Hide button if all items are shown
+                if (visibleCount >= totalCount) {
+                    btn.style.display = 'none';
+                }
+                
+                // Reset button state
+                btn.innerHTML = originalHtml;
+                btn.classList.remove('loading');
+                btn.disabled = false;
+            }, 500);
+        });
+    }
+    
+    // Initialize load more for both sides
+    if (document.getElementById('leftFaqsContainer')) {
+        initLoadMore('leftFaqsContainer', 'left-load-more', 'left-faq-item', 5);
+    }
+    
+    if (document.getElementById('rightFaqsContainer')) {
+        initLoadMore('rightFaqsContainer', 'right-load-more', 'right-faq-item', 5);
+    }
+    
+    // Chevron rotation animation
+    function initChevronRotation() {
+        // For left accordion
+        document.querySelectorAll('#leftAccordion .collapse').forEach(function(element) {
+            element.addEventListener('show.bs.collapse', function() {
+                let chevron = this.closest('.card').querySelector('.fa-chevron-down');
+                if (chevron) {
+                    chevron.style.transform = 'rotate(180deg)';
+                }
+            });
+            
+            element.addEventListener('hide.bs.collapse', function() {
+                let chevron = this.closest('.card').querySelector('.fa-chevron-down');
+                if (chevron) {
+                    chevron.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+        
+        // For right accordion
+        document.querySelectorAll('#rightAccordion .collapse').forEach(function(element) {
+            element.addEventListener('show.bs.collapse', function() {
+                let chevron = this.closest('.card').querySelector('.fa-chevron-down');
+                if (chevron) {
+                    chevron.style.transform = 'rotate(180deg)';
+                }
+            });
+            
+            element.addEventListener('hide.bs.collapse', function() {
+                let chevron = this.closest('.card').querySelector('.fa-chevron-down');
+                if (chevron) {
+                    chevron.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+    }
+    
+    initChevronRotation();
+    
+    // Re-initialize chevron rotation for dynamically loaded items
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                initChevronRotation();
+            }
+        });
+    });
+    
+    document.querySelectorAll('.faq-item').forEach(function(item) {
+        observer.observe(item, { attributes: true });
+    });
+});
+
+// Add CSS animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(style);
+</script>
   <!-- Ask Question Section End -->
 
   <section class="testimonials-section" id="testimonials">
@@ -2338,8 +2620,8 @@ function eventForm() {
       position: absolute;
       top: -50%;
       right: -20%;
-      width: 500px;
-      height: 500px;
+      width: 300px;
+      height: 300px;
       background: radial-gradient(circle, rgba(255,20,147,0.08) 0%, rgba(255,20,147,0) 70%);
       border-radius: 50%;
       pointer-events: none;
@@ -2351,8 +2633,8 @@ function eventForm() {
       position: absolute;
       bottom: -30%;
       left: -10%;
-      width: 400px;
-      height: 400px;
+      width: 250px;
+      height: 250px;
       background: radial-gradient(circle, rgba(220,20,60,0.08) 0%, rgba(220,20,60,0) 70%);
       border-radius: 50%;
       pointer-events: none;
@@ -2372,8 +2654,8 @@ function eventForm() {
     }
 
     .testimonial-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 35px -12px rgba(219,39,119,0.15) !important;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px -10px rgba(219,39,119,0.15) !important;
     }
 
     .avatar-ring {
@@ -2381,55 +2663,105 @@ function eventForm() {
     }
 
     .testimonial-card:hover .avatar-ring {
-      box-shadow: 0 0 0 4px rgba(219,39,119,0.2), 0 0 0 8px rgba(225,29,72,0.1);
+      box-shadow: 0 0 0 3px rgba(219,39,119,0.2), 0 0 0 6px rgba(225,29,72,0.1);
     }
     
     /* Fallback avatar styling */
     .avatar-fallback {
-      width: 52px;
-      height: 52px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: linear-gradient(135deg, #db2777, #e11d48);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 600;
       border: 2px solid white;
+    }
+
+    /* Mobile responsive styles */
+    @media (max-width: 768px) {
+      .testimonials-section::before {
+        width: 200px;
+        height: 200px;
+      }
+      
+      .testimonials-section::after {
+        width: 180px;
+        height: 180px;
+      }
+    }
+
+    /* Load More button animation */
+    .load-more-testimonials {
+      transition: all 0.3s ease;
+    }
+
+    .load-more-testimonials.loading {
+      opacity: 0.7;
+      cursor: wait;
+    }
+
+    .load-more-testimonials i {
+      transition: transform 0.3s ease;
+    }
+
+    .testimonial-item {
+      animation: fadeInUp 0.5s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <div style="max-width: 1280px; margin: 0 auto; padding: 80px 24px; position: relative; z-index: 2; font-family: 'Inter', sans-serif;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 50px 20px 60px 20px; position: relative; z-index: 2; font-family: 'Inter', sans-serif;">
     
     <!-- Section Header with Pink/Red accents -->
-    <div style="text-align: center; margin-bottom: 64px;">
-      <div style="display: inline-flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-        <div style="width: 40px; height: 2px; background: linear-gradient(90deg, #db2777, #e11d48); border-radius: 2px;"></div>
-        <span style="font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; background: linear-gradient(135deg, #db2777, #e11d48); -webkit-background-clip: text; background-clip: text; color: transparent;">Testimonials</span>
-        <div style="width: 40px; height: 2px; background: linear-gradient(90deg, #e11d48, #db2777); border-radius: 2px;"></div>
+    <div style="text-align: center; margin-bottom: 40px;">
+      <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 15px;">
+        <div style="width: 30px; height: 2px; background: linear-gradient(90deg, #db2777, #e11d48); border-radius: 2px;"></div>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; background: linear-gradient(135deg, #db2777, #e11d48); -webkit-background-clip: text; background-clip: text; color: transparent;">Testimonials</span>
+        <div style="width: 30px; height: 2px; background: linear-gradient(90deg, #e11d48, #db2777); border-radius: 2px;"></div>
       </div>
-      <h2 style="font-size: 2.5rem; font-weight: 700; margin: 0 0 16px 0; color: #1e1e2f; letter-spacing: -0.02em;">
+      <h2 style="font-size: 1.8rem; font-weight: 700; margin: 0 0 12px 0; color: #1e1e2f; letter-spacing: -0.02em;">
         What <span class="gradient-text">Our Clients</span> Say
       </h2>
-      <p style="font-size: 1.1rem; color: #5a5a6e; max-width: 600px; margin: 0 auto; line-height: 1.5;">
+      <p style="font-size: 0.95rem; color: #5a5a6e; max-width: 600px; margin: 0 auto; line-height: 1.5; padding: 0 15px;">
         Real experiences from people who transformed their journey with us
       </p>
     </div>
 
-    <!-- Two Testimonials Grid - Dynamic from Database -->
+    <!-- Testimonials Grid - Dynamic from Database -->
     @if($testimonials->count() > 0)
-    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 1000px; margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 1000px; margin: 0 auto;" id="testimonialsContainer">
       
-      @foreach($testimonials as $testimonial)
+      @php
+        $testimonialsArray = $testimonials->toArray();
+        $totalTestimonials = count($testimonialsArray);
+        $visibleTestimonials = 2; // Show first 2 on mobile
+      @endphp
+      
+      @foreach($testimonialsArray as $index => $testimonial)
       <!-- Testimonial {{ $loop->iteration }} -->
-      <div class="testimonial-card" style="background: white; border-radius: 32px; padding: 32px; box-shadow: 0 12px 30px rgba(0,0,0,0.05); border: 1px solid rgba(219,39,119,0.1); display: flex; flex-direction: column;">
+      <div class="testimonial-card testimonial-item" 
+           data-testimonial-index="{{ $index }}"
+           style="background: white; border-radius: 24px; padding: 24px; box-shadow: 0 12px 30px rgba(0,0,0,0.05); border: 1px solid rgba(219,39,119,0.1); display: flex; flex-direction: column; {{ $index >= $visibleTestimonials ? 'display: none;' : '' }}">
         <!-- Quote icon decoration -->
-        <div style="margin-bottom: 20px;">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div style="margin-bottom: 16px;">
+          <svg width="36" height="36" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18 18H12V24H18V30H12V36H6V24C6 18.5 10.5 14 16 14H18V18ZM36 18H30V24H36V30H30V36H24V24C24 18.5 28.5 14 34 14H36V18Z" fill="url(#paint{{ $loop->index }}_linear)"/>
             <defs>
               <linearGradient id="paint{{ $loop->index }}_linear" x1="6" y1="14" x2="42" y2="36" gradientUnits="userSpaceOnUse">
@@ -2441,44 +2773,44 @@ function eventForm() {
         </div>
         
         <!-- Text -->
-        <p style="font-size: 1.1rem; line-height: 1.6; color: #2d2d3a; margin-bottom: 28px; flex-grow: 1; font-weight: 400;">
-          "{{ $testimonial->review_text }}"
+        <p style="font-size: 0.95rem; line-height: 1.6; color: #2d2d3a; margin-bottom: 20px; flex-grow: 1; font-weight: 400;">
+          "{{ Str::limit($testimonial['review_text'], 200) }}"
         </p>
         
         <!-- Author info with image and details -->
-        <div style="display: flex; align-items: center; gap: 16px; border-top: 1px solid #f0eef3; padding-top: 24px; margin-top: auto;">
-          <div class="avatar-ring" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #fff0f3, #ffe4e9); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;">
-            @if($testimonial->image)
-              <img src="{{ asset('storage/testimonials/' . $testimonial->image) }}" alt="{{ $testimonial->name }}" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid white;">
+        <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid #f0eef3; padding-top: 20px; margin-top: auto;">
+          <div class="avatar-ring" style="width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #fff0f3, #ffe4e9); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; flex-shrink: 0;">
+            @if(!empty($testimonial['image']))
+              <img src="{{ asset('storage/testimonials/' . $testimonial['image']) }}" alt="{{ $testimonial['name'] }}" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid white;">
             @else
-              <div class="avatar-fallback">
-                {{ strtoupper(substr($testimonial->name, 0, 1)) }}
+              <div class="avatar-fallback" style="width: 44px; height: 44px; font-size: 16px;">
+                {{ strtoupper(substr($testimonial['name'], 0, 1)) }}
               </div>
             @endif
           </div>
-          <div>
-            <h4 style="margin: 0 0 4px 0; font-size: 1.1rem; font-weight: 700; color: #1e1e2f;">{{ $testimonial->name }}</h4>
-            @if($testimonial->designation)
-              <p style="margin: 0 0 4px 0; font-size: 0.85rem; color: #e11d48; font-weight: 500;">{{ $testimonial->designation }}</p>
+          <div style="flex: 1; min-width: 0;">
+            <h4 style="margin: 0 0 3px 0; font-size: 1rem; font-weight: 700; color: #1e1e2f;">{{ $testimonial['name'] }}</h4>
+            @if(!empty($testimonial['designation']))
+              <p style="margin: 0 0 3px 0; font-size: 0.75rem; color: #e11d48; font-weight: 500;">{{ $testimonial['designation'] }}</p>
             @endif
-            <div style="display: flex; align-items: center; gap: 6px; margin-top: 4px;">
-              <span class="material-icons" style="font-size: 14px; color: #db2777;">schedule</span>
-              <span style="font-size: 0.75rem; color: #8a8a9e;">
-                @if($testimonial->date)
-                  {{ \Carbon\Carbon::parse($testimonial->date)->diffForHumans() }}
+            <div style="display: flex; align-items: center; gap: 5px; margin-top: 3px; flex-wrap: wrap;">
+              <span class="material-icons" style="font-size: 12px; color: #db2777;">schedule</span>
+              <span style="font-size: 0.7rem; color: #8a8a9e;">
+                @if(!empty($testimonial['date']))
+                  {{ \Carbon\Carbon::parse($testimonial['date'])->diffForHumans() }}
                 @else
-                  {{ $testimonial->created_at->diffForHumans() }}
+                  {{ \Carbon\Carbon::parse($testimonial['created_at'])->diffForHumans() }}
                 @endif
               </span>
             </div>
             <!-- Star Rating Display -->
-            @if($testimonial->rating)
+            @if(!empty($testimonial['rating']))
             <div style="display: flex; align-items: center; gap: 2px; margin-top: 4px;">
               @for($i = 1; $i <= 5; $i++)
-                @if($i <= $testimonial->rating)
-                  <span class="material-icons" style="font-size: 14px; color: #ffc107;">star</span>
+                @if($i <= $testimonial['rating'])
+                  <span class="material-icons" style="font-size: 12px; color: #ffc107;">star</span>
                 @else
-                  <span class="material-icons" style="font-size: 14px; color: #e4e5e9;">star_border</span>
+                  <span class="material-icons" style="font-size: 12px; color: #e4e5e9;">star_border</span>
                 @endif
               @endfor
             </div>
@@ -2489,30 +2821,133 @@ function eventForm() {
       @endforeach
       
     </div>
+    
+    <!-- Load More Button -->
+    @if($totalTestimonials > $visibleTestimonials)
+    <div style="text-align: center; margin-top: 32px;">
+      <button class="load-more-testimonials" id="loadMoreTestimonials" 
+              style="background: linear-gradient(135deg, #db2777, #e11d48); color: white; border: none; padding: 12px 28px; border-radius: 50px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(219,39,119,0.3);">
+        <i class="material-icons" style="font-size: 18px; vertical-align: middle; margin-right: 6px;">expand_more</i>
+        Load More Testimonials
+      </button>
+    </div>
+    @endif
+    
     @else
     <!-- Fallback when no testimonials exist -->
-    <div style="text-align: center; padding: 60px 20px;">
-      <p style="color: #5a5a6e; font-size: 1.1rem;">No testimonials available yet. Check back soon!</p>
+    <div style="text-align: center; padding: 40px 20px;">
+      <p style="color: #5a5a6e; font-size: 0.95rem;">No testimonials available yet. Check back soon!</p>
     </div>
     @endif
 
     <!-- Decorative pink/red dots -->
-    <div style="text-align: center; margin-top: 48px;">
-      <div style="display: inline-flex; gap: 12px;">
-        <div style="width: 8px; height: 8px; border-radius: 50%; background: #db2777; opacity: 0.6;"></div>
-        <div style="width: 8px; height: 8px; border-radius: 50%; background: #e11d48; opacity: 0.8;"></div>
-        <div style="width: 8px; height: 8px; border-radius: 50%; background: #db2777;"></div>
-        <div style="width: 8px; height: 8px; border-radius: 50%; background: #e11d48; opacity: 0.6;"></div>
+    <div style="text-align: center; margin-top: 40px;">
+      <div style="display: inline-flex; gap: 8px;">
+        <div style="width: 6px; height: 6px; border-radius: 50%; background: #db2777; opacity: 0.6;"></div>
+        <div style="width: 6px; height: 6px; border-radius: 50%; background: #e11d48; opacity: 0.8;"></div>
+        <div style="width: 6px; height: 6px; border-radius: 50%; background: #db2777;"></div>
+        <div style="width: 6px; height: 6px; border-radius: 50%; background: #e11d48; opacity: 0.6;"></div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('testimonialsContainer');
+    const loadMoreBtn = document.getElementById('loadMoreTestimonials');
+    
+    if (!container || !loadMoreBtn) return;
+    
+    const items = container.querySelectorAll('.testimonial-card');
+    let visibleCount = 2; // Initially showing 2 items
+    const totalCount = items.length;
+    const loadCount = 2; // Load 2 more each time
+    
+    // Check if on desktop and adjust
+    function checkDesktop() {
+        if (window.innerWidth >= 768) {
+            // On tablet/desktop, show all items
+            items.forEach(item => item.style.display = 'flex');
+            if (loadMoreBtn) loadMoreBtn.style.display = 'none';
+            return true;
+        }
+        return false;
+    }
+    
+    // Initial check
+    if (!checkDesktop()) {
+        // Reset visibility on mobile
+        for (let i = 0; i < items.length; i++) {
+            items[i].style.display = i < visibleCount ? 'flex' : 'none';
+        }
+    }
+    
+    // Load more functionality
+    loadMoreBtn.addEventListener('click', function() {
+        // Add loading state
+        this.classList.add('loading');
+        const originalText = this.innerHTML;
+        this.innerHTML = '<i class="material-icons" style="font-size: 18px; vertical-align: middle; margin-right: 6px; animation: spin 1s linear infinite;">autorenew</i> Loading...';
+        this.disabled = true;
+        
+        setTimeout(() => {
+            let newVisibleCount = visibleCount + loadCount;
+            
+            // Show next batch
+            for (let i = visibleCount; i < newVisibleCount && i < totalCount; i++) {
+                if (items[i]) {
+                    items[i].style.display = 'flex';
+                    // Add animation
+                    items[i].style.animation = 'fadeInUp 0.5s ease';
+                }
+            }
+            
+            visibleCount = newVisibleCount;
+            
+            // Hide button if all shown
+            if (visibleCount >= totalCount) {
+                loadMoreBtn.style.display = 'none';
+            }
+            
+            // Reset button
+            loadMoreBtn.classList.remove('loading');
+            loadMoreBtn.innerHTML = originalText;
+            loadMoreBtn.disabled = false;
+        }, 400);
+    });
+    
+    // Handle resize
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            if (window.innerWidth >= 768) {
+                items.forEach(item => item.style.display = 'flex');
+                if (loadMoreBtn) loadMoreBtn.style.display = 'none';
+            } else {
+                if (loadMoreBtn) loadMoreBtn.style.display = 'inline-flex';
+                for (let i = 0; i < items.length; i++) {
+                    if (items[i].style.display !== 'none') {
+                        items[i].style.display = i < visibleCount ? 'flex' : 'none';
+                    }
+                }
+                if (visibleCount >= totalCount && loadMoreBtn) {
+                    loadMoreBtn.style.display = 'none';
+                }
+            }
+        }, 250);
+    });
+});
+</script>
 <div class="modern-contact-section mt-5 mb-5" id="contactus">
-     <div class="container">
-        <div class="section-header">
-            <h2>Contact Us</h2>
-            <p>Contact us with the following details or fill the form below</p>
+    <div class="container">
+        <div class="section-header text-center mb-8">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800">Contact Us</h2>
+            <p class="text-gray-600 text-sm md:text-base mt-2">Contact us with the following details or fill the form below</p>
         </div>
+    </div>
+    
     <style>
         * {
             margin: 0;
@@ -2522,7 +2957,7 @@ function eventForm() {
 
         .modern-contact-section {
             width: 100%;
-            padding: 2rem 1.5rem;
+            padding: 1rem 0.75rem 2rem 0.75rem;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
@@ -2530,26 +2965,28 @@ function eventForm() {
             max-width: 1200px;
             margin: 0 auto;
             background: white;
-            border-radius: 28px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 40px -12px rgba(220, 38, 38, 0.2);
+            box-shadow: 0 20px 40px -12px rgba(220, 38, 38, 0.15);
             display: grid;
-            grid-template-columns: 1fr 0.9fr;
-            min-height: 540px;
+            grid-template-columns: 1fr;
+            min-height: auto;
         }
 
         /* Left Side - Form */
         .form-side {
-            padding: 2rem 2.2rem;
+            padding: 1.5rem;
             background: white;
+            order: 2;
         }
 
         .form-header {
             margin-bottom: 1.5rem;
+            text-align: center;
         }
 
         .form-header h2 {
-            font-size: 2rem;
+            font-size: 1.6rem;
             font-weight: 700;
             background: linear-gradient(135deg, #e11d48 0%, #f43f5e 100%);
             -webkit-background-clip: text;
@@ -2560,14 +2997,14 @@ function eventForm() {
 
         .form-header p {
             color: #6b7280;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             line-height: 1.5;
         }
 
         .contact-form {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 1rem;
         }
 
         .input-group {
@@ -2579,7 +3016,7 @@ function eventForm() {
         .input-group label {
             font-weight: 600;
             color: #374151;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -2591,10 +3028,10 @@ function eventForm() {
 
         .input-group input,
         .input-group textarea {
-            padding: 0.75rem 1rem;
+            padding: 0.7rem 1rem;
             border: 2px solid #ffe2e2;
-            border-radius: 14px;
-            font-size: 0.9rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-family: inherit;
             background: #fefafa;
@@ -2605,7 +3042,7 @@ function eventForm() {
             outline: none;
             border-color: #f43f5e;
             background: white;
-            box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.1);
+            box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.1);
         }
 
         .input-group input.error,
@@ -2615,7 +3052,7 @@ function eventForm() {
         }
 
         .input-group textarea {
-            min-height: 100px;
+            min-height: 90px;
             resize: vertical;
         }
 
@@ -2630,16 +3067,17 @@ function eventForm() {
             background: linear-gradient(135deg, #e11d48 0%, #f43f5e 100%);
             color: white;
             border: none;
-            padding: 0.8rem 1.6rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 40px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             margin-top: 0.5rem;
-            width: fit-content;
+            width: 100%;
+            text-align: center;
         }
 
         .submit-btn:hover:not(:disabled) {
@@ -2678,25 +3116,27 @@ function eventForm() {
         /* Right Side - Info */
         .info-side {
             background: linear-gradient(135deg, #e11d48 0%, #f97373 100%);
-            padding: 2rem 2rem;
+            padding: 1.8rem 1.5rem;
             color: white;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            order: 1;
         }
 
         .info-header {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
         }
 
         .info-header h3 {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
 
         .info-header p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             line-height: 1.5;
             opacity: 0.9;
         }
@@ -2704,8 +3144,8 @@ function eventForm() {
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
         }
 
         .info-item {
@@ -2713,18 +3153,20 @@ function eventForm() {
             align-items: center;
             gap: 0.8rem;
             animation: slideInRight 0.5s ease-out;
+            flex-wrap: wrap;
         }
 
         .info-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.2);
+            width: 38px;
+            height: 38px;
+            background: rgb(255, 255, 255);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1rem;
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
         .info-item:hover .info-icon {
@@ -2733,22 +3175,24 @@ function eventForm() {
         }
 
         .info-content h4 {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             margin-bottom: 0.2rem;
             opacity: 0.9;
         }
 
         .info-content p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             line-height: 1.3;
+            word-break: break-word;
         }
 
         .info-content a {
             color: white;
             text-decoration: none;
             transition: opacity 0.3s ease;
+            word-break: break-all;
         }
 
         .info-content a:hover {
@@ -2759,11 +3203,13 @@ function eventForm() {
             display: flex;
             gap: 0.8rem;
             margin-top: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .social-link {
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
@@ -2781,29 +3227,29 @@ function eventForm() {
         }
 
         /* Alert Styles */
-        .alert {
+        .alert-message-custom {
             padding: 0.7rem 1rem;
-            border-radius: 14px;
-            margin-bottom: 1.2rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
             animation: slideInDown 0.3s ease;
             display: flex;
             align-items: center;
             gap: 0.6rem;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
-        .alert.success {
+        .alert-message-custom.success {
             background: #10b981;
             color: white;
         }
 
-        .alert.error {
+        .alert-message-custom.error {
             background: #ef4444;
             color: white;
         }
 
-        .alert i {
-            font-size: 1rem;
+        .alert-message-custom i {
+            font-size: 0.9rem;
         }
 
         /* Animations */
@@ -2829,49 +3275,88 @@ function eventForm() {
             }
         }
 
-        /* Responsive Design */
-        @media (max-width: 900px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
+        /* Tablet Styles */
+        @media (min-width: 768px) {
             .modern-contact-section {
-                padding: 1.5rem 1rem;
+                padding: 1.5rem 1rem 2rem 1rem;
             }
-
-            .form-side,
+            
+            .form-side {
+                padding: 2rem;
+            }
+            
             .info-side {
-                padding: 1.8rem;
+                padding: 2rem;
             }
-
-            .info-side {
-                order: -1;
+            
+            .form-header {
+                text-align: left;
             }
-
-            .form-header h2 {
-                font-size: 1.8rem;
+            
+            .info-header {
+                text-align: left;
+            }
+            
+            .submit-btn {
+                width: auto;
+            }
+            
+            .social-links {
+                justify-content: flex-start;
+            }
+            
+            .info-item {
+                flex-wrap: nowrap;
             }
         }
 
-        @media (max-width: 480px) {
-            .form-side,
-            .info-side {
-                padding: 1.2rem;
+        /* Desktop Styles */
+        @media (min-width: 900px) {
+            .contact-container {
+                grid-template-columns: 1fr 0.9fr;
             }
+            
+            .form-side {
+                order: 1;
+                padding: 2rem 2.2rem;
+            }
+            
+            .info-side {
+                order: 2;
+                padding: 2rem;
+            }
+            
+            .form-header h2 {
+                font-size: 2rem;
+            }
+            
+            .info-header h3 {
+                font-size: 1.6rem;
+            }
+            
+            .submit-btn {
+                width: fit-content;
+            }
+        }
 
+        /* Small Mobile Devices */
+        @media (max-width: 480px) {
             .info-item {
                 flex-direction: column;
                 text-align: center;
                 gap: 0.5rem;
             }
-
+            
             .contact-info {
                 align-items: center;
             }
-
-            .submit-btn {
-                width: 100%;
+            
+            .info-content {
                 text-align: center;
+            }
+            
+            .info-icon {
+                margin: 0 auto;
             }
         }
     </style>
@@ -2928,176 +3413,190 @@ function eventForm() {
 
         <!-- Right Side - Contact Information -->
         <div class="info-side">
+            <div class="info-header">
+                <h3>Contact Information</h3>
+                <p>We're here to help! Reach out to us through any of these channels.</p>
+            </div>
+
+            <div class="contact-info">
+                {{-- Address --}}
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>Visit Us</h4>
+                        <p class="text-white">{!! nl2br(e($website->address ?? 'No Address Available')) !!}</p>
+                    </div>
+                </div>
+
+                {{-- Email --}}
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>Email Us</h4>
+                        @if(!empty($website->email))
+                            <p><a href="mailto:{{ $website->email }}">{{ $website->email }}</a></p>
+                        @else
+                            <p>No Email Available</p>
+                        @endif
+                    </div>
+                </div>
+
+                {{-- Phones --}}
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>Call Us</h4>
+                        @php
+                            $phones = array_filter([
+                                $website->phone_number_1 ?? null,
+                                $website->phone_number_2 ?? null,
+                                $website->phone_number_3 ?? null,
+                            ]);
+                        @endphp
+                        @if(count($phones))
+                            <p class="text-white">
+                                @foreach($phones as $phone)
+                                    <a href="tel:{{ $phone }}">{{ $phone }}</a>@if(!$loop->last), @endif
+                                @endforeach
+                            </p>
+                        @else
+                            <p>No Phone Available</p>
+                        @endif
+                    </div>
+                </div>
+
+                {{-- Business Hours --}}
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>Business Hours</h4>
+                        <p class="text-white">
+                            Monday - Friday: 9:00 AM - 6:00 PM<br>
+                            Saturday: 10:00 AM - 4:00 PM<br>
+                            Sunday: Closed
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+            {{-- Social Links --}}
+            <div class="social-links">
+                @if(!empty($website->facebook_link))
+                <a href="{{ $website->facebook_link }}" target="_blank" class="social-link">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                @endif
+                @if(!empty($website->instagram_link))
+                <a href="{{ $website->instagram_link }}" target="_blank" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                @endif
+                @if(!empty($website->linkedin_link))
+                <a href="{{ $website->linkedin_link }}" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                @endif
+                @if(!empty($website->whatsapp_link))
+                <a href="{{ $website->whatsapp_link }}" target="_blank" class="social-link">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                @endif
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Form submission handling
+document.getElementById('contact-form')?.addEventListener('submit', async function(e) {
+    e.preventDefault();
     
-    {{-- Header --}}
-    <div class="info-header">
-        <h3>Contact Information</h3>
-        <p>We're here to help! Reach out to us through any of these channels.</p>
-    </div>
-
-    <div class="contact-info space-y-6">
-
-    {{-- Address --}}
-    <div class="info-item flex items-start gap-4">
-
-        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md"
-             style="background-color:white; transition:0.3s; line-height:0;"
-             onmouseover="this.style.backgroundColor='#ef4444'; this.querySelector('i').style.color='white';"
-             onmouseout="this.style.backgroundColor='white'; this.querySelector('i').style.color='#ef4444';">
-
-            <i class="fas fa-map-marker-alt"
-               style="color:#ef4444; font-size:18px; display:flex; align-items:center; justify-content:center;"></i>
-        </div>
-
-        <div>
-            <h4>Visit Us</h4>
-            <p class="text-white">
-                {!! nl2br(e($website->address ?? 'No Address Available')) !!}
-            </p>
-        </div>
-    </div>
-
-    {{-- Email --}}
-    <div class="info-item flex items-start gap-4">
-
-        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md"
-             style="background-color:white; transition:0.3s; line-height:0;"
-             onmouseover="this.style.backgroundColor='#3b82f6'; this.querySelector('i').style.color='white';"
-             onmouseout="this.style.backgroundColor='white'; this.querySelector('i').style.color='#3b82f6';">
-
-            <i class="fas fa-envelope"
-               style="color:#3b82f6; font-size:18px; display:flex; align-items:center; justify-content:center;"></i>
-        </div>
-
-        <div>
-            <h4>Email Us</h4>
-
-            @if(!empty($website->email))
-                <p class="text-white">
-                    <a href="mailto:{{ $website->email }}">
-                        {{ $website->email }}
-                    </a>
-                </p>
-            @else
-                <p>No Email Available</p>
-            @endif
-        </div>
-    </div>
-
-    {{-- Phones --}}
-    <div class="info-item flex items-start gap-4">
-
-        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md"
-             style="background-color:white; transition:0.3s; line-height:0;"
-             onmouseover="this.style.backgroundColor='#22c55e'; this.querySelector('i').style.color='white';"
-             onmouseout="this.style.backgroundColor='white'; this.querySelector('i').style.color='#22c55e';">
-
-            <i class="fas fa-phone-alt"
-               style="color:#22c55e; font-size:18px; display:flex; align-items:center; justify-content:center;"></i>
-        </div>
-
-        <div>
-            <h4>Call Us :-</h4>
-
-            @php
-                $phones = array_filter([
-                    $website->phone_number_1 ?? null,
-                    $website->phone_number_2 ?? null,
-                    $website->phone_number_3 ?? null,
-                ]);
-            @endphp
-
-            @if(count($phones))
-                <p class="text-white">
-                    @foreach($phones as $phone)
-                        <a href="tel:{{ $phone }}">
-                            {{ $phone }}
-                        </a>@if(!$loop->last), @endif
-                    @endforeach
-                </p>
-            @else
-                <p>No Phone Available</p>
-            @endif
-        </div>
-    </div>
-
-    {{-- Business Hours --}}
-    <div class="info-item flex items-start gap-4">
-
-        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md"
-             style="background-color:white; transition:0.3s; line-height:0;"
-             onmouseover="this.style.backgroundColor='#a855f7'; this.querySelector('i').style.color='white';"
-             onmouseout="this.style.backgroundColor='white'; this.querySelector('i').style.color='#a855f7';">
-
-            <i class="fas fa-clock"
-               style="color:#a855f7; font-size:18px; display:flex; align-items:center; justify-content:center;"></i>
-        </div>
-
-        <div>
-            <h4>Business Hours</h4>
-            <p class="text-white">
-                Monday - Friday: 9:00 AM - 6:00 PM<br>
-                Saturday: 10:00 AM - 4:00 PM<br>
-                Sunday: Closed
-            </p>
-        </div>
-    </div>
-
-</div>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    {{-- Social Links --}}
-   <div class="social-links flex gap-3">
-
-    {{-- Facebook --}}
-  <a href="{{ $website?->facebook_link ?: '#' }}" target="_blank"
-   style="background-color:white; color:#1877F2; transition: all 0.3s ease;"
-   onmouseover="this.style.backgroundColor='#1877F2'; this.style.color='white';"
-   onmouseout="this.style.backgroundColor='white'; this.style.color='#1877F2';"
-   class="w-10 h-10 rounded-full flex items-center justify-center shadow-md">
-    <i class="fab fa-facebook-f"></i>
-</a>
-
-
-   {{-- Instagram --}}
-<a href="{{ $website?->instagram_link ?: '#' }}" target="_blank"
-   style="background-color:white; color:#e1306c; transition: all 0.3s ease;"
-   onmouseover="this.style.background='linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)'; this.style.color='white';"
-   onmouseout="this.style.background='white'; this.style.color='#e1306c';"
-   class="w-10 h-10 rounded-full flex items-center justify-center shadow-md">
-    <i class="fab fa-instagram"></i>
-</a>
-
-{{-- LinkedIn --}}
-<a href="{{ $website?->linkedin_link ?: '#' }}" target="_blank"
-   style="background-color:white; color:#0A66C2; transition: all 0.3s ease;"
-   onmouseover="this.style.backgroundColor='#0A66C2'; this.style.color='white';"
-   onmouseout="this.style.backgroundColor='white'; this.style.color='#0A66C2';"
-   class="w-10 h-10 rounded-full flex items-center justify-center shadow-md">
-    <i class="fab fa-linkedin-in"></i>
-</a>
-
-{{-- WhatsApp --}}
-<a href="{{ $website?->whatsapp_link ?: '#' }}" target="_blank"
-   style="background-color:white; color:#25D366; transition: all 0.3s ease;"
-   onmouseover="this.style.backgroundColor='#25D366'; this.style.color='white';"
-   onmouseout="this.style.backgroundColor='white'; this.style.color='#25D366';"
-   class="w-10 h-10 rounded-full flex items-center justify-center shadow-md">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
-
-</div>
-
-
-
-</div>
-
-    </div>
-    </div>
-</div>
-
+    const submitBtn = document.getElementById('submit-btn');
+    const alertDiv = document.getElementById('alert-message');
+    
+    // Clear previous errors
+    document.querySelectorAll('.error-message').forEach(el => el.innerHTML = '');
+    document.querySelectorAll('input, textarea').forEach(el => el.classList.remove('error'));
+    
+    // Show loading state
+    submitBtn.classList.add('loading');
+    submitBtn.disabled = true;
+    
+    const formData = new FormData(this);
+    
+    try {
+        const response = await fetch('/contact-submit', {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                'Accept': 'application/json'
+            },
+            body: formData
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            // Show success message
+            alertDiv.style.display = 'block';
+            alertDiv.innerHTML = `<div class="alert-message-custom success"><i class="fas fa-check-circle"></i> ${data.message}</div>`;
+            alertDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Reset form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                alertDiv.style.display = 'none';
+            }, 5000);
+        } else {
+            // Show validation errors
+            if (data.errors) {
+                for (let field in data.errors) {
+                    const errorDiv = document.getElementById(`${field}-error`);
+                    const inputField = document.getElementById(field);
+                    if (errorDiv) {
+                        errorDiv.innerHTML = data.errors[field][0];
+                    }
+                    if (inputField) {
+                        inputField.classList.add('error');
+                    }
+                }
+            }
+            
+            // Show error message
+            alertDiv.style.display = 'block';
+            alertDiv.innerHTML = `<div class="alert-message-custom error"><i class="fas fa-exclamation-circle"></i> ${data.message || 'Something went wrong. Please try again.'}</div>`;
+            
+            setTimeout(() => {
+                alertDiv.style.display = 'none';
+            }, 5000);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alertDiv.style.display = 'block';
+        alertDiv.innerHTML = `<div class="alert-message-custom error"><i class="fas fa-exclamation-circle"></i> Network error. Please check your connection and try again.</div>`;
+        
+        setTimeout(() => {
+            alertDiv.style.display = 'none';
+        }, 5000);
+    } finally {
+        // Remove loading state
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+    }
+});
+</script>
 <script>
 document.getElementById('contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
