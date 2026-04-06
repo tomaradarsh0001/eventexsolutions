@@ -2941,13 +2941,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <div class="modern-contact-section mt-5 mb-5" id="contactus">
-    <div class="container">
-        <div class="section-header text-center mb-8">
-            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800">Contact Us</h2>
-            <p class="text-gray-600 text-sm md:text-base mt-2">Contact us with the following details or fill the form below</p>
+     <div class="container">
+        <div class="section-header">
+            <h2>Contact Us</h2>
+            <p>Contact us with the following details or fill the form below</p>
         </div>
-    </div>
-    
     <style>
         * {
             margin: 0;
@@ -2957,7 +2955,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         .modern-contact-section {
             width: 100%;
-            padding: 1rem 0.75rem 2rem 0.75rem;
+            padding: 2rem 1rem;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
@@ -2965,28 +2963,26 @@ document.addEventListener('DOMContentLoaded', function() {
             max-width: 1200px;
             margin: 0 auto;
             background: white;
-            border-radius: 20px;
+            border-radius: 28px;
             overflow: hidden;
-            box-shadow: 0 20px 40px -12px rgba(220, 38, 38, 0.15);
+            box-shadow: 0 20px 40px -12px rgba(220, 38, 38, 0.2);
             display: grid;
-            grid-template-columns: 1fr;
-            min-height: auto;
+            grid-template-columns: 1fr 0.9fr;
+            min-height: 540px;
         }
 
         /* Left Side - Form */
         .form-side {
-            padding: 1.5rem;
+            padding: 2rem 2rem;
             background: white;
-            order: 2;
         }
 
         .form-header {
             margin-bottom: 1.5rem;
-            text-align: center;
         }
 
         .form-header h2 {
-            font-size: 1.6rem;
+            font-size: 2rem;
             font-weight: 700;
             background: linear-gradient(135deg, #e11d48 0%, #f43f5e 100%);
             -webkit-background-clip: text;
@@ -2997,14 +2993,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         .form-header p {
             color: #6b7280;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             line-height: 1.5;
         }
 
         .contact-form {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.2rem;
         }
 
         .input-group {
@@ -3016,7 +3012,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .input-group label {
             font-weight: 600;
             color: #374151;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -3028,13 +3024,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         .input-group input,
         .input-group textarea {
-            padding: 0.7rem 1rem;
+            padding: 0.75rem 1rem;
             border: 2px solid #ffe2e2;
-            border-radius: 12px;
-            font-size: 0.85rem;
+            border-radius: 14px;
+            font-size: 0.9rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-family: inherit;
             background: #fefafa;
+            width: 100%;
         }
 
         .input-group input:focus,
@@ -3042,7 +3039,7 @@ document.addEventListener('DOMContentLoaded', function() {
             outline: none;
             border-color: #f43f5e;
             background: white;
-            box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.1);
+            box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.1);
         }
 
         .input-group input.error,
@@ -3052,7 +3049,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         .input-group textarea {
-            min-height: 90px;
+            min-height: 100px;
             resize: vertical;
         }
 
@@ -3067,17 +3064,16 @@ document.addEventListener('DOMContentLoaded', function() {
             background: linear-gradient(135deg, #e11d48 0%, #f43f5e 100%);
             color: white;
             border: none;
-            padding: 0.8rem 1.5rem;
+            padding: 0.8rem 1.6rem;
             border-radius: 40px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             margin-top: 0.5rem;
-            width: 100%;
-            text-align: center;
+            width: fit-content;
         }
 
         .submit-btn:hover:not(:disabled) {
@@ -3116,27 +3112,25 @@ document.addEventListener('DOMContentLoaded', function() {
         /* Right Side - Info */
         .info-side {
             background: linear-gradient(135deg, #e11d48 0%, #f97373 100%);
-            padding: 1.8rem 1.5rem;
+            padding: 2rem 2rem;
             color: white;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            order: 1;
         }
 
         .info-header {
-            margin-bottom: 1.5rem;
-            text-align: center;
+            margin-bottom: 2rem;
         }
 
         .info-header h3 {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .info-header p {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             line-height: 1.5;
             opacity: 0.9;
         }
@@ -3144,8 +3138,8 @@ document.addEventListener('DOMContentLoaded', function() {
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
-            margin-bottom: 1.5rem;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .info-item {
@@ -3153,20 +3147,18 @@ document.addEventListener('DOMContentLoaded', function() {
             align-items: center;
             gap: 0.8rem;
             animation: slideInRight 0.5s ease-out;
-            flex-wrap: wrap;
         }
 
         .info-icon {
-            width: 38px;
-            height: 38px;
-            background: rgb(255, 255, 255);
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 1.2rem;
             transition: all 0.3s ease;
-            flex-shrink: 0;
         }
 
         .info-item:hover .info-icon {
@@ -3175,24 +3167,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         .info-content h4 {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 600;
             margin-bottom: 0.2rem;
             opacity: 0.9;
         }
 
         .info-content p {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 500;
             line-height: 1.3;
-            word-break: break-word;
         }
 
         .info-content a {
             color: white;
             text-decoration: none;
             transition: opacity 0.3s ease;
-            word-break: break-all;
         }
 
         .info-content a:hover {
@@ -3203,13 +3193,12 @@ document.addEventListener('DOMContentLoaded', function() {
             display: flex;
             gap: 0.8rem;
             margin-top: 1rem;
-            justify-content: center;
             flex-wrap: wrap;
         }
 
         .social-link {
-            width: 34px;
-            height: 34px;
+            width: 36px;
+            height: 36px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
@@ -3227,29 +3216,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         /* Alert Styles */
-        .alert-message-custom {
+        .alert {
             padding: 0.7rem 1rem;
-            border-radius: 12px;
-            margin-bottom: 1rem;
+            border-radius: 14px;
+            margin-bottom: 1.2rem;
             animation: slideInDown 0.3s ease;
             display: flex;
             align-items: center;
             gap: 0.6rem;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
         }
 
-        .alert-message-custom.success {
+        .alert.success {
             background: #10b981;
             color: white;
         }
 
-        .alert-message-custom.error {
+        .alert.error {
             background: #ef4444;
             color: white;
         }
 
-        .alert-message-custom i {
-            font-size: 0.9rem;
+        .alert i {
+            font-size: 1rem;
         }
 
         /* Animations */
@@ -3275,88 +3264,220 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        /* Tablet Styles */
-        @media (min-width: 768px) {
-            .modern-contact-section {
-                padding: 1.5rem 1rem 2rem 1rem;
+        /* Mobile Friendly Responsive Design - Enhanced */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                border-radius: 24px;
             }
-            
-            .form-side {
-                padding: 2rem;
-            }
-            
+
             .info-side {
-                padding: 2rem;
+                order: -1;
+                border-radius: 24px 24px 0 0;
             }
-            
-            .form-header {
-                text-align: left;
+
+            .form-side {
+                border-radius: 0 0 24px 24px;
             }
-            
-            .info-header {
-                text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .modern-contact-section {
+                padding: 1.5rem 0.75rem;
             }
-            
+
+            .form-side,
+            .info-side {
+                padding: 1.5rem;
+            }
+
+            .form-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .form-header p {
+                font-size: 0.85rem;
+            }
+
+            .info-header h3 {
+                font-size: 1.4rem;
+            }
+
+            .info-header p {
+                font-size: 0.8rem;
+            }
+
+            .contact-info {
+                gap: 1.25rem;
+            }
+
+            .info-item {
+                gap: 0.75rem;
+            }
+
+            .info-item .w-12 {
+                width: 44px !important;
+                height: 44px !important;
+                flex-shrink: 0;
+            }
+
+            .info-item .w-12 i {
+                font-size: 16px !important;
+            }
+
+            .info-item div h4 {
+                font-size: 0.85rem;
+                margin-bottom: 0.2rem;
+            }
+
+            .info-item div p,
+            .info-item div p a {
+                font-size: 0.85rem;
+                word-break: break-word;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .modern-contact-section {
+                padding: 1rem 0.5rem;
+            }
+
+            .form-side,
+            .info-side {
+                padding: 1.2rem;
+            }
+
+            .form-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .form-header p {
+                font-size: 0.8rem;
+            }
+
+            .input-group input,
+            .input-group textarea {
+                padding: 0.65rem 0.85rem;
+                font-size: 0.85rem;
+            }
+
+            .input-group label {
+                font-size: 0.75rem;
+            }
+
             .submit-btn {
-                width: auto;
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem 1rem;
+                font-size: 0.85rem;
             }
-            
+
+            .info-header h3 {
+                font-size: 1.25rem;
+            }
+
+            .info-header p {
+                font-size: 0.75rem;
+            }
+
+            .info-item {
+                flex-direction: row;
+                align-items: center;
+                text-align: left;
+                gap: 0.75rem;
+                flex-wrap: wrap;
+            }
+
+            .info-item .w-12 {
+                width: 38px !important;
+                height: 38px !important;
+            }
+
+            .info-item .w-12 i {
+                font-size: 14px !important;
+            }
+
+            .info-item div h4 {
+                font-size: 0.8rem;
+            }
+
+            .info-item div p,
+            .info-item div p a {
+                font-size: 0.8rem;
+            }
+
+            .contact-info {
+                gap: 1rem;
+            }
+
             .social-links {
                 justify-content: flex-start;
+                gap: 0.7rem;
             }
-            
-            .info-item {
-                flex-wrap: nowrap;
+
+            .social-links a {
+                width: 36px !important;
+                height: 36px !important;
+            }
+
+            .social-links a i {
+                font-size: 14px !important;
             }
         }
 
-        /* Desktop Styles */
-        @media (min-width: 900px) {
-            .contact-container {
-                grid-template-columns: 1fr 0.9fr;
-            }
-            
-            .form-side {
-                order: 1;
-                padding: 2rem 2.2rem;
-            }
-            
+        /* Extra small devices */
+        @media (max-width: 380px) {
+            .form-side,
             .info-side {
-                order: 2;
-                padding: 2rem;
+                padding: 1rem;
             }
-            
-            .form-header h2 {
-                font-size: 2rem;
+
+            .info-item {
+                gap: 0.6rem;
             }
-            
-            .info-header h3 {
-                font-size: 1.6rem;
+
+            .info-item .w-12 {
+                width: 34px !important;
+                height: 34px !important;
             }
-            
-            .submit-btn {
-                width: fit-content;
+
+            .info-item div h4 {
+                font-size: 0.75rem;
+            }
+
+            .info-item div p,
+            .info-item div p a {
+                font-size: 0.75rem;
+            }
+
+            .social-links a {
+                width: 32px !important;
+                height: 32px !important;
             }
         }
 
-        /* Small Mobile Devices */
-        @media (max-width: 480px) {
-            .info-item {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.5rem;
+        /* Touch-friendly adjustments */
+        @media (hover: none) and (pointer: coarse) {
+            .submit-btn:hover:not(:disabled) {
+                transform: none;
+                box-shadow: none;
             }
-            
-            .contact-info {
-                align-items: center;
+
+            .info-item:hover .info-icon {
+                transform: none;
             }
-            
-            .info-content {
-                text-align: center;
+
+            .social-link:hover {
+                transform: none;
             }
-            
-            .info-icon {
-                margin: 0 auto;
+
+            .input-group input,
+            .input-group textarea,
+            .submit-btn,
+            .social-link,
+            .info-item .w-12 {
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
             }
         }
     </style>
@@ -3413,32 +3534,51 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <!-- Right Side - Contact Information -->
         <div class="info-side">
+    
+            {{-- Header --}}
             <div class="info-header">
                 <h3>Contact Information</h3>
                 <p>We're here to help! Reach out to us through any of these channels.</p>
             </div>
 
             <div class="contact-info">
+
                 {{-- Address --}}
                 <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md"
+                         style="background-color:white; transition:0.3s; line-height:0; min-width: 44px; min-height: 44px; width: 44px; height: 44px;"
+                         onmouseover="this.style.backgroundColor='#ef4444'; this.querySelector('i').style.color='white';"
+                         onmouseout="this.style.backgroundColor='white'; this.querySelector('i').style.color='#ef4444';">
+
+                        <i class="fas fa-map-marker-alt"
+                           style="color:#ef4444; font-size:18px; display:flex; align-items:center; justify-content:center;"></i>
                     </div>
-                    <div class="info-content">
+                    <div>
                         <h4>Visit Us</h4>
-                        <p class="text-white">{!! nl2br(e($website->address ?? 'No Address Available')) !!}</p>
+                        <p class="text-white">
+                            {!! nl2br(e($website->address ?? 'No Address Available')) !!}
+                        </p>
                     </div>
                 </div>
 
                 {{-- Email --}}
                 <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-envelope"></i>
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md"
+                         style="background-color:white; transition:0.3s; line-height:0; min-width: 44px; min-height: 44px; width: 44px; height: 44px;"
+                         onmouseover="this.style.backgroundColor='#3b82f6'; this.querySelector('i').style.color='white';"
+                         onmouseout="this.style.backgroundColor='white'; this.querySelector('i').style.color='#3b82f6';">
+
+                        <i class="fas fa-envelope"
+                           style="color:#3b82f6; font-size:18px; display:flex; align-items:center; justify-content:center;"></i>
                     </div>
-                    <div class="info-content">
+                    <div>
                         <h4>Email Us</h4>
                         @if(!empty($website->email))
-                            <p><a href="mailto:{{ $website->email }}">{{ $website->email }}</a></p>
+                            <p class="text-white">
+                                <a href="mailto:{{ $website->email }}">
+                                    {{ $website->email }}
+                                </a>
+                            </p>
                         @else
                             <p>No Email Available</p>
                         @endif
@@ -3447,11 +3587,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 {{-- Phones --}}
                 <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-phone-alt"></i>
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md"
+                         style="background-color:white; transition:0.3s; line-height:0; min-width: 44px; min-height: 44px; width: 44px; height: 44px;"
+                         onmouseover="this.style.backgroundColor='#22c55e'; this.querySelector('i').style.color='white';"
+                         onmouseout="this.style.backgroundColor='white'; this.querySelector('i').style.color='#22c55e';">
+
+                        <i class="fas fa-phone-alt"
+                           style="color:#22c55e; font-size:18px; display:flex; align-items:center; justify-content:center;"></i>
                     </div>
-                    <div class="info-content">
-                        <h4>Call Us</h4>
+                    <div>
+                        <h4>Call Us :-</h4>
                         @php
                             $phones = array_filter([
                                 $website->phone_number_1 ?? null,
@@ -3462,7 +3607,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         @if(count($phones))
                             <p class="text-white">
                                 @foreach($phones as $phone)
-                                    <a href="tel:{{ $phone }}">{{ $phone }}</a>@if(!$loop->last), @endif
+                                    <a href="tel:{{ $phone }}">
+                                        {{ $phone }}
+                                    </a>@if(!$loop->last), @endif
                                 @endforeach
                             </p>
                         @else
@@ -3473,10 +3620,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 {{-- Business Hours --}}
                 <div class="info-item">
-                    <div class="info-icon">
-                        <i class="fas fa-clock"></i>
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md"
+                         style="background-color:white; transition:0.3s; line-height:0; min-width: 44px; min-height: 44px; width: 44px; height: 44px;"
+                         onmouseover="this.style.backgroundColor='#a855f7'; this.querySelector('i').style.color='white';"
+                         onmouseout="this.style.backgroundColor='white'; this.querySelector('i').style.color='#a855f7';">
+
+                        <i class="fas fa-clock"
+                           style="color:#a855f7; font-size:18px; display:flex; align-items:center; justify-content:center;"></i>
                     </div>
-                    <div class="info-content">
+                    <div>
                         <h4>Business Hours</h4>
                         <p class="text-white">
                             Monday - Friday: 9:00 AM - 6:00 PM<br>
@@ -3491,28 +3643,44 @@ document.addEventListener('DOMContentLoaded', function() {
 
             {{-- Social Links --}}
             <div class="social-links">
-                @if(!empty($website->facebook_link))
-                <a href="{{ $website->facebook_link }}" target="_blank" class="social-link">
+                {{-- Facebook --}}
+                <a href="{{ $website?->facebook_link ?: '#' }}" target="_blank"
+                   style="background-color:white; color:#1877F2; transition: all 0.3s ease; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%;"
+                   onmouseover="this.style.backgroundColor='#1877F2'; this.style.color='white';"
+                   onmouseout="this.style.backgroundColor='white'; this.style.color='#1877F2';"
+                   class="shadow-md">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                @endif
-                @if(!empty($website->instagram_link))
-                <a href="{{ $website->instagram_link }}" target="_blank" class="social-link">
+
+                {{-- Instagram --}}
+                <a href="{{ $website?->instagram_link ?: '#' }}" target="_blank"
+                   style="background-color:white; color:#e1306c; transition: all 0.3s ease; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%;"
+                   onmouseover="this.style.background='linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)'; this.style.color='white';"
+                   onmouseout="this.style.background='white'; this.style.color='#e1306c';"
+                   class="shadow-md">
                     <i class="fab fa-instagram"></i>
                 </a>
-                @endif
-                @if(!empty($website->linkedin_link))
-                <a href="{{ $website->linkedin_link }}" target="_blank" class="social-link">
+
+                {{-- LinkedIn --}}
+                <a href="{{ $website?->linkedin_link ?: '#' }}" target="_blank"
+                   style="background-color:white; color:#0A66C2; transition: all 0.3s ease; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%;"
+                   onmouseover="this.style.backgroundColor='#0A66C2'; this.style.color='white';"
+                   onmouseout="this.style.backgroundColor='white'; this.style.color='#0A66C2';"
+                   class="shadow-md">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
-                @endif
-                @if(!empty($website->whatsapp_link))
-                <a href="{{ $website->whatsapp_link }}" target="_blank" class="social-link">
+
+                {{-- WhatsApp --}}
+                <a href="{{ $website?->whatsapp_link ?: '#' }}" target="_blank"
+                   style="background-color:white; color:#25D366; transition: all 0.3s ease; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%;"
+                   onmouseover="this.style.backgroundColor='#25D366'; this.style.color='white';"
+                   onmouseout="this.style.backgroundColor='white'; this.style.color='#25D366';"
+                   class="shadow-md">
                     <i class="fab fa-whatsapp"></i>
                 </a>
-                @endif
             </div>
         </div>
+    </div>
     </div>
 </div>
 
