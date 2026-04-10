@@ -2940,6 +2940,861 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
+
+<!-- Instagram Posts Carousel Section - Wider & Mobile Friendly -->
+<section class="instagram-feed-section">
+    <div class="container-fluid px-4 px-lg-5">
+        <!-- Section Header -->
+        <div class="section-header">
+           
+            <h2 class="main-title">Instagram Posts</h2>
+            <p class="subtitle">Follow our visual journey on Instagram Handle</p>
+        </div>
+
+        <!-- Instagram Handle Button -->
+        <div class="handle-container">
+            <a href="https://instagram.com/eventexsolutions" target="_blank" class="instagram-follow-btn">
+                <i class="fab fa-instagram"></i>
+                <span>Follow @eventexsolutions</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Instagram Portrait Carousel - Wider & Responsive -->
+        <div class="instagram-carousel-wrapper">
+            <div class="instagram-carousel-container">
+                <div class="instagram-carousel-track">
+                    @php
+                        $activePosts = App\Models\CarouselPost::where('status', 1)
+                            ->orderBy('order', 'asc')
+                            ->orderBy('created_at', 'desc')
+                            ->get();
+                        
+                        // Create infinite array for smooth infinite scroll
+                        $infinitePosts = [];
+                        for($i = 0; $i < 20; $i++) {
+                            foreach($activePosts as $post) {
+                                $infinitePosts[] = $post;
+                            }
+                        }
+                    @endphp
+
+                    @if($activePosts->count() > 0)
+                        @foreach($infinitePosts as $index => $post)
+                            <div class="instagram-card-item" data-index="{{ $index }}">
+                                <div class="instagram-portrait-card">
+                                    <div class="portrait-image-wrapper">
+                                        <img src="{{ asset('storage/' . $post->image_path) }}" alt="{{ $post->title }}" class="portrait-image" loading="lazy">
+                                        <div class="portrait-overlay">
+                                            <div class="portrait-title">
+                                                <i class="fas fa-camera"></i>
+                                                <span>{{ $post->title }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="portrait-footer">
+                                        <div class="portrait-user">
+                                            <div class="user-avatar">
+                                                <i class="fab fa-instagram"></i>
+                                            </div>
+                                            <div class="user-info">
+                                                <h4>Instagram</h4>
+                                                <p>{{ $post->created_at->diffForHumans() }}</p>
+                                            </div>
+                                        </div>
+                                        <button class="portrait-like-btn">
+                                            <i class="far fa-heart"></i>
+                                            <span>Like</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="no-posts-portrait">
+                            <i class="fas fa-instagram"></i>
+                            <h3>No Posts Yet</h3>
+                            <p>Check back soon for Instagram updates!</p>
+                        </div>
+                    @endif
+                </div>
+            </div>
+            
+            <button class="carousel-nav-btn prev-nav-btn" aria-label="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-nav-btn next-nav-btn" aria-label="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <div class="carousel-indicators"></div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .instagram-feed-section {
+        padding: 60px 0;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e9edf2 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Animated Background */
+    .instagram-feed-section::before {
+        content: '';
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(210, 48, 110, 0.08) 0%, transparent 70%);
+        border-radius: 50%;
+        top: -250px;
+        right: -250px;
+        animation: floatSlow 20s ease-in-out infinite;
+    }
+
+    .instagram-feed-section::after {
+        content: '';
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(79, 91, 213, 0.06) 0%, transparent 70%);
+        border-radius: 50%;
+        bottom: -200px;
+        left: -200px;
+        animation: floatSlow 25s ease-in-out infinite reverse;
+    }
+
+    @keyframes floatSlow {
+        0%, 100% { transform: translate(0, 0) rotate(0deg); }
+        50% { transform: translate(40px, 30px) rotate(5deg); }
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .instagram-icon-badge {
+        width: 70px;
+        height: 70px;
+        background: white;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+
+    .instagram-icon-badge:hover {
+        transform: scale(1.05);
+    }
+
+    .instagram-icon-badge i {
+        font-size: 34px;
+        background: linear-gradient(45deg, #f09433, #d62976, #962fbf);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 15px;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+
+    .handle-container {
+        text-align: center;
+        margin-bottom: 50px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .instagram-follow-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: white;
+        padding: 10px 28px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #262626;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .instagram-follow-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(210, 48, 110, 0.15);
+        color: #d62976;
+    }
+
+    .instagram-follow-btn i:first-child {
+        font-size: 1.3rem;
+        background: linear-gradient(45deg, #f09433, #d62976);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    /* Instagram Portrait Carousel - Wider Layout */
+    .instagram-carousel-wrapper {
+        position: relative;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 20px 50px;
+        z-index: 2;
+    }
+
+    .instagram-carousel-container {
+        overflow: hidden;
+        padding: 20px 0;
+        cursor: grab;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .instagram-carousel-container:active {
+        cursor: grabbing;
+    }
+
+    .instagram-carousel-track {
+        display: flex;
+        gap: 25px;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
+    }
+
+    .instagram-card-item {
+        flex-shrink: 0;
+        width: 350px;
+        transition: all 0.3s ease;
+    }
+
+    /* Instagram Portrait Card */
+    .instagram-portrait-card {
+        background: white;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .instagram-portrait-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .portrait-image-wrapper {
+        position: relative;
+        height: 438px;
+        overflow: hidden;
+        background: #f5f5f5;
+    }
+
+    .portrait-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .instagram-portrait-card:hover .portrait-image {
+        transform: scale(1.05);
+    }
+
+    .portrait-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        padding: 20px;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .instagram-portrait-card:hover .portrait-overlay {
+        transform: translateY(0);
+    }
+
+    .portrait-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: white;
+    }
+
+    .portrait-title i {
+        font-size: 0.9rem;
+    }
+
+    .portrait-title span {
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    .portrait-footer {
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .portrait-user {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(45deg, #f09433, #d62976);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+
+    .user-avatar i {
+        font-size: 1.1rem;
+    }
+
+    .user-info h4 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin: 0 0 4px 0;
+    }
+
+    .user-info p {
+        font-size: 0.7rem;
+        color: #95a5a6;
+        margin: 0;
+    }
+
+    .portrait-like-btn {
+        background: none;
+        border: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        color: #7f8c8d;
+        transition: all 0.2s ease;
+    }
+
+    .portrait-like-btn:hover {
+        background: #fef2f2;
+        color: #d62976;
+    }
+
+    .portrait-like-btn i {
+        font-size: 1rem;
+    }
+
+    /* Navigation Buttons */
+    .carousel-nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        background: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        transition: all 0.3s ease;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .carousel-nav-btn:hover {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    .carousel-nav-btn:hover i {
+        color: white;
+    }
+
+    .carousel-nav-btn i {
+        font-size: 1.2rem;
+        color: #667eea;
+        transition: color 0.3s ease;
+    }
+
+    .prev-nav-btn {
+        left: 0;
+    }
+
+    .next-nav-btn {
+        right: 0;
+    }
+
+    /* Indicators */
+    .carousel-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+
+    .indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #cbd5e1;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .indicator.active {
+        width: 28px;
+        background: linear-gradient(45deg, #f09433, #d62976);
+        border-radius: 10px;
+    }
+
+    .indicator:hover {
+        background: #d62976;
+        transform: scale(1.2);
+    }
+
+    .no-posts-portrait {
+        text-align: center;
+        padding: 50px;
+        background: white;
+        border-radius: 20px;
+    }
+
+    .no-posts-portrait i {
+        font-size: 3.5rem;
+        background: linear-gradient(45deg, #f09433, #d62976);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    /* ============================================ */
+    /* RESPONSIVE BREAKPOINTS - MOBILE FRIENDLY */
+    /* ============================================ */
+
+    /* Large Desktops (1400px and above) */
+    @media (min-width: 1400px) {
+        .instagram-card-item { width: 380px; }
+        .portrait-image-wrapper { height: 475px; }
+        .instagram-carousel-track { gap: 30px; }
+    }
+
+    /* Desktops (1200px - 1399px) */
+    @media (max-width: 1399px) and (min-width: 1200px) {
+        .instagram-card-item { width: 350px; }
+        .portrait-image-wrapper { height: 438px; }
+        .instagram-carousel-track { gap: 28px; }
+    }
+
+    /* Small Desktops / Laptops (992px - 1199px) */
+    @media (max-width: 1199px) {
+        .instagram-feed-section { padding: 50px 0; }
+        .instagram-card-item { width: 320px; }
+        .portrait-image-wrapper { height: 400px; }
+        .instagram-carousel-track { gap: 25px; }
+        .carousel-nav-btn { width: 44px; height: 44px; }
+        .carousel-nav-btn i { font-size: 1.1rem; }
+        .main-title { font-size: 2.2rem; }
+    }
+
+    /* Tablets (768px - 991px) */
+    @media (max-width: 991px) {
+        .instagram-feed-section { padding: 45px 0; }
+        .instagram-card-item { width: 300px; }
+        .portrait-image-wrapper { height: 375px; }
+        .instagram-carousel-wrapper { padding: 15px 45px; }
+        .carousel-nav-btn { width: 40px; height: 40px; }
+        .carousel-nav-btn i { font-size: 1rem; }
+        .main-title { font-size: 2rem; }
+        .section-header { margin-bottom: 30px; }
+        .handle-container { margin-bottom: 40px; }
+        .instagram-icon-badge { width: 60px; height: 60px; }
+        .instagram-icon-badge i { font-size: 30px; }
+    }
+
+    /* Mobile Landscape (576px - 767px) */
+    @media (max-width: 767px) {
+        .instagram-feed-section { padding: 40px 0; }
+        .instagram-card-item { width: 280px; }
+        .portrait-image-wrapper { height: 350px; }
+        .instagram-carousel-wrapper { padding: 10px 35px; }
+        .carousel-nav-btn { width: 36px; height: 36px; }
+        .carousel-nav-btn i { font-size: 0.9rem; }
+        .main-title { font-size: 1.8rem; }
+        .subtitle { font-size: 0.9rem; }
+        .instagram-follow-btn { padding: 8px 24px; font-size: 0.9rem; gap: 8px; }
+        .instagram-follow-btn i:first-child { font-size: 1.2rem; }
+        .portrait-footer { padding: 12px; }
+        .user-avatar { width: 36px; height: 36px; }
+        .user-avatar i { font-size: 1rem; }
+        .user-info h4 { font-size: 0.85rem; }
+        .portrait-like-btn { padding: 5px 12px; font-size: 0.8rem; }
+        .carousel-indicators { margin-top: 25px; gap: 8px; }
+        .indicator { width: 6px; height: 6px; }
+        .indicator.active { width: 22px; }
+    }
+
+    /* Mobile Portrait (480px - 575px) */
+    @media (max-width: 575px) {
+        .instagram-feed-section { padding: 35px 0; }
+        .instagram-card-item { width: 260px; }
+        .portrait-image-wrapper { height: 325px; }
+        .instagram-carousel-wrapper { padding: 10px 30px; }
+        .carousel-nav-btn { width: 32px; height: 32px; }
+        .carousel-nav-btn i { font-size: 0.8rem; }
+        .prev-nav-btn { left: -5px; }
+        .next-nav-btn { right: -5px; }
+        .main-title { font-size: 1.6rem; }
+        .instagram-icon-badge { width: 55px; height: 55px; }
+        .instagram-icon-badge i { font-size: 26px; }
+        .instagram-follow-btn { padding: 7px 20px; font-size: 0.85rem; gap: 6px; }
+        .portrait-footer { padding: 10px; }
+        .user-avatar { width: 32px; height: 32px; }
+        .user-info h4 { font-size: 0.8rem; }
+        .user-info p { font-size: 0.65rem; }
+        .portrait-like-btn { padding: 4px 10px; font-size: 0.75rem; }
+        .carousel-indicators { margin-top: 20px; gap: 6px; }
+    }
+
+    /* Very Small Devices (320px - 479px) */
+    @media (max-width: 479px) {
+        .instagram-feed-section { padding: 30px 0; }
+        .instagram-card-item { width: 240px; }
+        .portrait-image-wrapper { height: 300px; }
+        .instagram-carousel-wrapper { padding: 10px 25px; }
+        .carousel-nav-btn { width: 30px; height: 30px; }
+        .carousel-nav-btn i { font-size: 0.75rem; }
+        .main-title { font-size: 1.4rem; }
+        .subtitle { font-size: 0.85rem; }
+        .section-header { margin-bottom: 25px; }
+        .handle-container { margin-bottom: 35px; }
+        .instagram-icon-badge { width: 50px; height: 50px; margin-bottom: 15px; }
+        .instagram-icon-badge i { font-size: 24px; }
+        .instagram-follow-btn { padding: 6px 16px; font-size: 0.8rem; gap: 5px; }
+        .instagram-follow-btn i:first-child { font-size: 1.1rem; }
+        .portrait-title span { font-size: 0.75rem; }
+        .carousel-indicators { margin-top: 15px; }
+        .indicator { width: 5px; height: 5px; }
+        .indicator.active { width: 18px; }
+    }
+
+    /* Touch device optimizations */
+    @media (hover: none) and (pointer: coarse) {
+        .instagram-portrait-card:hover {
+            transform: none;
+        }
+        .instagram-portrait-card:hover .portrait-image {
+            transform: none;
+        }
+        .instagram-portrait-card:hover .portrait-overlay {
+            transform: translateY(100%);
+        }
+        .carousel-nav-btn {
+            display: flex;
+        }
+        .carousel-nav-btn:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+    }
+
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+        .instagram-carousel-track,
+        .portrait-image,
+        .instagram-portrait-card,
+        .carousel-nav-btn,
+        .indicator {
+            transition: none;
+        }
+        .instagram-feed-section::before,
+        .instagram-feed-section::after {
+            animation: none;
+        }
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const track = document.querySelector('.instagram-carousel-track');
+        const slides = Array.from(document.querySelectorAll('.instagram-card-item'));
+        const container = document.querySelector('.instagram-carousel-container');
+        const prevBtn = document.querySelector('.prev-nav-btn');
+        const nextBtn = document.querySelector('.next-nav-btn');
+        const indicatorsContainer = document.querySelector('.carousel-indicators');
+        
+        if (slides.length === 0) return;
+        
+        let currentIndex = 0;
+        let autoSlideInterval;
+        let isDragging = false;
+        let startPos = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationID = 0;
+        
+        // Get dynamic slide width based on current screen size
+        function getSlideWidth() {
+            if (slides[0]) {
+                const computedStyle = window.getComputedStyle(track);
+                const gap = parseInt(computedStyle.gap) || 25;
+                return slides[0].offsetWidth + gap;
+            }
+            return 350 + 25; // fallback values
+        }
+        
+        let slideWidth = getSlideWidth();
+        let visibleSlides = getVisibleSlidesCount();
+        const totalSlides = slides.length;
+        const originalPostCount = {{ $activePosts->count() }};
+        
+        // Get visible slides count based on screen width
+        function getVisibleSlidesCount() {
+            const width = window.innerWidth;
+            if (width >= 1400) return 3;
+            if (width >= 992) return 3;
+            if (width >= 768) return 2;
+            if (width >= 576) return 2;
+            return 1;
+        }
+        
+        // Set slider position
+        function setSliderPosition() {
+            slideWidth = getSlideWidth();
+            const translateValue = -currentIndex * slideWidth;
+            track.style.transform = `translateX(${translateValue}px)`;
+            currentTranslate = translateValue;
+            prevTranslate = translateValue;
+            updateIndicators();
+        }
+        
+        // Update indicators
+        function updateIndicators() {
+            if (!indicatorsContainer) return;
+            
+            const currentGroup = currentIndex % originalPostCount;
+            indicatorsContainer.innerHTML = '';
+            
+            // Limit indicators on mobile for better UX
+            const maxIndicators = window.innerWidth < 576 ? 5 : originalPostCount;
+            const startIndicator = Math.max(0, Math.min(currentGroup - Math.floor(maxIndicators / 2), originalPostCount - maxIndicators));
+            const endIndicator = Math.min(originalPostCount, startIndicator + maxIndicators);
+            
+            for (let i = startIndicator; i < endIndicator; i++) {
+                const indicator = document.createElement('div');
+                indicator.classList.add('indicator');
+                if (i === currentGroup) {
+                    indicator.classList.add('active');
+                }
+                indicator.addEventListener('click', (function(index) {
+                    return function() {
+                        stopAutoSlide();
+                        currentIndex = index;
+                        setSliderPosition();
+                        startAutoSlide();
+                    };
+                })(i));
+                indicatorsContainer.appendChild(indicator);
+            }
+        }
+        
+        // Next slide
+        function nextSlide() {
+            visibleSlides = getVisibleSlidesCount();
+            if (currentIndex < totalSlides - visibleSlides) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            setSliderPosition();
+        }
+        
+        // Previous slide
+        function prevSlide() {
+            visibleSlides = getVisibleSlidesCount();
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = totalSlides - visibleSlides;
+            }
+            setSliderPosition();
+        }
+        
+        // Auto slide
+        function startAutoSlide() {
+            stopAutoSlide();
+            autoSlideInterval = setInterval(() => {
+                nextSlide();
+            }, 4000);
+        }
+        
+        function stopAutoSlide() {
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = null;
+            }
+        }
+        
+        // Drag to swipe functionality
+        function dragStart(e) {
+            if (autoSlideInterval) stopAutoSlide();
+            isDragging = true;
+            startPos = getPositionX(e);
+            animationID = requestAnimationFrame(animation);
+            track.style.transition = 'none';
+        }
+        
+        function dragEnd(e) {
+            isDragging = false;
+            cancelAnimationFrame(animationID);
+            track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            
+            const movedBy = currentTranslate - prevTranslate;
+            const threshold = 50;
+            
+            visibleSlides = getVisibleSlidesCount();
+            
+            if (movedBy < -threshold && currentIndex < totalSlides - visibleSlides) {
+                currentIndex++;
+            } else if (movedBy > threshold && currentIndex > 0) {
+                currentIndex--;
+            } else if (movedBy < -threshold && currentIndex >= totalSlides - visibleSlides) {
+                currentIndex = 0;
+            } else if (movedBy > threshold && currentIndex <= 0) {
+                currentIndex = totalSlides - visibleSlides;
+            }
+            
+            setSliderPosition();
+            startAutoSlide();
+        }
+        
+        function dragMove(e) {
+            if (!isDragging) return;
+            const currentPosition = getPositionX(e);
+            const diff = currentPosition - startPos;
+            currentTranslate = prevTranslate + diff;
+            track.style.transform = `translateX(${currentTranslate}px)`;
+        }
+        
+        function getPositionX(e) {
+            return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+        }
+        
+        function animation() {
+            if (isDragging) {
+                requestAnimationFrame(animation);
+            }
+        }
+        
+        // Event listeners
+        if (container) {
+            container.addEventListener('mousedown', dragStart);
+            container.addEventListener('mouseup', dragEnd);
+            container.addEventListener('mousemove', dragMove);
+            container.addEventListener('mouseleave', dragEnd);
+            container.addEventListener('touchstart', dragStart, { passive: false });
+            container.addEventListener('touchend', dragEnd);
+            container.addEventListener('touchmove', dragMove, { passive: false });
+            container.addEventListener('mouseenter', stopAutoSlide);
+            container.addEventListener('mouseleave', startAutoSlide);
+        }
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                stopAutoSlide();
+                prevSlide();
+                startAutoSlide();
+            });
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                stopAutoSlide();
+                nextSlide();
+                startAutoSlide();
+            });
+        }
+        
+        // Like button functionality
+        document.querySelectorAll('.portrait-like-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const icon = this.querySelector('i');
+                const span = this.querySelector('span');
+                
+                if (icon.classList.contains('far')) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                    icon.style.color = '#d62976';
+                    span.textContent = 'Liked';
+                    this.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 200);
+                } else {
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                    icon.style.color = '';
+                    span.textContent = 'Like';
+                }
+            });
+        });
+        
+        // Handle window resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                slideWidth = getSlideWidth();
+                visibleSlides = getVisibleSlidesCount();
+                setSliderPosition();
+                updateIndicators();
+            }, 150);
+        });
+        
+        // Initialize
+        setSliderPosition();
+        startAutoSlide();
+        
+        console.log('Instagram Carousel Ready - Wider & Mobile Friendly');
+    });
+</script>
 <div class="modern-contact-section mt-5 mb-5" id="contactus">
      <div class="container">
         <div class="section-header">

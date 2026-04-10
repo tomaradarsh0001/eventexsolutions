@@ -9,6 +9,8 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\EventEnquiryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\CarouselController;
+
 
 use Illuminate\Support\Facades\Route;
 use App\Models\WhyUs;
@@ -194,6 +196,15 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::post('services/{service}/duplicate', [ServiceController::class, 'duplicate'])->name('services.duplicate');
 });
 
+Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
+    // Carousel Posts Routes
+  Route::resource('carousel', CarouselController::class)->except(['show']);
+    // Additional custom routes
+    Route::post('carousel/{carouselPost}/toggle-status', [CarouselController::class, 'toggleStatus'])->name('carousel.toggle-status');
+    Route::post('carousel/update-order', [CarouselController::class, 'updateOrder'])->name('carousel.update-order');
+    Route::get('carousel/{carouselPost}/image', [CarouselController::class, 'getImage'])->name('carousel.get-image');
+
+});
 
 });
 
