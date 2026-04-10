@@ -178,7 +178,7 @@
                 <!-- Visitor Count Right -->
                 <div class="col-md-4 text-center text-md-right mt-2 mt-md-0">
                     <div class="visitor-box">
-                        👀 {{ $visitorCount ?? 0 }} Visitors
+                        👀 {{ $visitorCount ?? 0 }} Visitor Count
                     </div>
                 </div>
             </div>
