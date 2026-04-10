@@ -153,6 +153,7 @@
                             @endif
                         </ul>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -162,9 +163,22 @@
     <div class="copyright-area">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-12 text-center">
+                <!-- Center Text with "Adarsh" -->
+                <div class="col-md-8 text-center text-md-center">
                     <div class="copyright-text">
-                        <p>&copy; {{ date('Y') }} Eventex Solution. All rights reserved. | Designed by Adarsh with <i class="lni-heart" style="color: #ff3366;"></i> for unforgettable experiences</p>
+                        <p class="mb-0">
+                            &copy; {{ date('Y') }} Eventex Solution. All rights reserved | 
+                            Designed by <strong>Adarsh</strong> with 
+                            <i class="lni-heart" style="color: #ff3366;"></i> 
+                            for unforgettable experiences
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Visitor Count Right -->
+                <div class="col-md-4 text-center text-md-right mt-2 mt-md-0">
+                    <div class="visitor-box">
+                        👀 {{ $visitorCount ?? 0 }} Visitors
                     </div>
                 </div>
             </div>
@@ -181,6 +195,17 @@
     position: relative;
     overflow: hidden;
 }
+.visitor-box {
+    display: inline-block;
+    background: #ffffff;
+    color: #000000;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
 
 .footer-area::before {
     content: '';
@@ -428,6 +453,23 @@
     .footer-social {
         flex-wrap: wrap;
         gap: 12px;
+    }
+
+    /* Mobile adjustments for copyright area */
+    .copyright-area .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .copyright-area .col-md-8,
+    .copyright-area .col-md-4 {
+        width: 100%;
+        text-align: center !important;
+    }
+
+    .copyright-area .visitor-box {
+        margin-top: 10px;
+        display: inline-block;
     }
 }
 

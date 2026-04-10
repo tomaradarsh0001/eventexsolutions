@@ -7,6 +7,8 @@ use App\Models\WebsiteDetail;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Pagination\Paginator;
+use App\Http\Controllers\VisitorController;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,5 +29,8 @@ class AppServiceProvider extends ServiceProvider
         View::share('website', $website);
 
         Paginator::defaultView('vendor.pagination.custom');
+         View::composer('*', function ($view) {
+        $view->with('visitorCount', VisitorController::getVisitorCount());
+    });
     }
 }
