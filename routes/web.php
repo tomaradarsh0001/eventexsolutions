@@ -41,7 +41,7 @@ Route::get('/', function () {
         })
         ->orderBy('event_date', 'desc')
         ->orderBy('created_at', 'desc')
-        ->take(6)
+        ->take(10)
         ->get();
     
     // Fetch FAQs
