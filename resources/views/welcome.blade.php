@@ -235,7 +235,7 @@
                         
                         <!-- Optional CTA Button -->
                         <div class="service-cta">
-                            <a href="#" class="btn-learn-more">
+                            <a href="#bookevent" class="btn-learn-more">
                                 Book Now! <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>

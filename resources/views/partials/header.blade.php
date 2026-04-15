@@ -88,9 +88,7 @@
         <a class="page-scroll" href="{{ url('/') }}#contactus">Contact</a>
     </li>
 </ul>
-<!-- Mobile Menu End -->
 
-        <!-- Mobile Menu End -->
     </nav>
     <!-- Navbar End -->
 </header>
