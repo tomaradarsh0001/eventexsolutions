@@ -86,7 +86,9 @@
       box-shadow: 0 6px 20px rgba(238, 9, 121, 0.4);
       color: #fff;
     }
-
+    .footer-area .footer-social li a {
+    padding: 10px !important;
+}
     .book-event-btn i {
       margin-right: 8px;
       font-size: 16px;
