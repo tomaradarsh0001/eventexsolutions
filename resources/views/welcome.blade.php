@@ -4591,7 +4591,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             .form-header p {
-                font-size: 0.5rem;
+                font-size: 0.8rem;
             }
 
             .input-group input,
@@ -4642,7 +4642,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             .info-item div p,
             .info-item div p a {
-                font-size: 0.8rem;
+                font-size: 0.5rem;
             }
 
             .contact-info {
