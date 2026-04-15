@@ -5,6 +5,8 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
+
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -26,5 +28,26 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+    public function render($request, Throwable $exception)
+    {
+        if ($this->isHttpException($exception)) {
+            $statusCode = $exception->getStatusCode();
+            
+            switch ($statusCode) {
+                case 403:
+                    return response()->view('errors.403', [], 403);
+                case 404:
+                    return response()->view('errors.404', [], 404);
+                case 419:
+                    return response()->view('errors.419', [], 419);
+                case 500:
+                    return response()->view('errors.500', [], 500);
+                default:
+                    return response()->view('errors.500', [], 500);
+            }
+        }
+        
+        return parent::render($request, $exception);
     }
 }
