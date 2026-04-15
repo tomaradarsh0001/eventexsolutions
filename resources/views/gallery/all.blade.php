@@ -809,7 +809,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; {{ date('Y') }} Your Brand. All rights reserved.</p>
+            <p>&copy; {{ date('Y') }} eventexsolution.com. All rights reserved.</p>
         </div>
     </footer>
     
