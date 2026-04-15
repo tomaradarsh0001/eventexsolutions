@@ -6,11 +6,6 @@
 @section('content')
 <!-- Main Carousel Section Start -->
 <div id="main-slide" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#main-slide" data-slide-to="0" class="active"></li>
-    <li data-target="#main-slide" data-slide-to="1"></li>
-    <li data-target="#main-slide" data-slide-to="2"></li>
-  </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img class="d-block w-100" src="{{ asset('assets/img/slider/slider1.jpg') }}" alt="First slide">
@@ -48,38 +43,6 @@
 </div>
 
 <style>
-/* Carousel Indicators (Dots) Styling */
-.carousel-indicators {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  z-index: 15;
-  display: flex;
-  justify-content: center;
-  padding-left: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.carousel-indicators li {
-  position: relative;
-  flex: 0 1 auto;
-  width: 30px;
-  height: 3px;
-  margin: 0 4px;
-  text-indent: -999px;
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-.carousel-indicators li.active {
-  background-color: #ff6a00;
-  width: 40px;
-}
-
 /* Mobile Responsive Styles - 65% Height Images */
 @media (max-width: 768px) {
   #main-slide .carousel-item {
@@ -120,21 +83,6 @@
     display: inline-block;
   }
   
-  /* Fixed Dots Position for Mobile */
-  .carousel-indicators {
-    bottom: 15px !important;
-  }
-  
-  .carousel-indicators li {
-    width: 25px !important;
-    height: 3px !important;
-    margin: 0 3px !important;
-  }
-  
-  .carousel-indicators li.active {
-    width: 35px !important;
-  }
-  
   /* For very small devices */
   @media (max-width: 480px) {
     #main-slide .carousel-item {
@@ -161,19 +109,6 @@
     #main-slide .carousel-caption {
       bottom: 12% !important;
     }
-    
-    .carousel-indicators {
-      bottom: 10px !important;
-    }
-    
-    .carousel-indicators li {
-      width: 20px !important;
-      height: 2px !important;
-    }
-    
-    .carousel-indicators li.active {
-      width: 28px !important;
-    }
   }
 }
 
@@ -185,10 +120,6 @@
   
   #main-slide .carousel-caption p {
     font-size: 16px !important;
-  }
-  
-  .carousel-indicators {
-    bottom: 25px !important;
   }
 }
 </style>
