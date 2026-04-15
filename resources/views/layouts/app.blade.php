@@ -5,9 +5,40 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>@yield('title', 'Eventex Solutions - Professional Event Management & Photography Services')</title>
+  <meta name="title" content="@yield('meta_title', 'Eventex Solutions - Event Management, Photography & Videography Services')">
+  <meta name="description" content="@yield('meta_description', 'Eventex Solutions offers professional event management, photography, videography, wedding planning, decorations, corporate events, and multi-camera setups. Book your event today!')">
+  <meta name="keywords" content="@yield('meta_keywords', 'event management, photography services, videography services, wedding planning, event decorations, corporate events, multi-camera setup, event photography, wedding photography, Eventex Solutions')">
+  <meta name="author" content="Eventex Solutions">
+  <meta name="robots" content="@yield('meta_robots', 'index, follow')">
+  
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:type" content="@yield('og_type', 'website')">
+  <meta property="og:url" content="@yield('og_url', url()->current())">
+  <meta property="og:title" content="@yield('og_title', 'Eventex Solutions - Professional Event Services')">
+  <meta property="og:description" content="@yield('og_description', 'Expert event management, photography, videography, and wedding planning services. Making your events unforgettable.')">
+  <meta property="og:image" content="@yield('og_image', asset('assets/img/og-image.jpg'))">
+  <meta property="og:site_name" content="Eventex Solutions">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="@yield('twitter_card', 'summary_large_image')">
+  <meta name="twitter:url" content="@yield('twitter_url', url()->current())">
+  <meta name="twitter:title" content="@yield('twitter_title', 'Eventex Solutions - Professional Event Services')">
+  <meta name="twitter:description" content="@yield('twitter_description', 'Expert event management, photography, videography, and wedding planning services.')">
+  <meta name="twitter:image" content="@yield('twitter_image', asset('assets/img/twitter-image.jpg'))">
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="@yield('canonical_url', url()->current())">
 
   <title>@yield('title', 'Grand - Event and Conference')</title>
 <!-- Favicon -->
