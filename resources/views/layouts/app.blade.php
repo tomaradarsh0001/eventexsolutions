@@ -201,7 +201,44 @@ input, textarea, [contenteditable="true"] {
   <script src="{{ asset('assets/js/jquery.slicknav.js') }}"></script>
   <script src="{{ asset('assets/js/nivo-lightbox.js') }}"></script>
   <script src="{{ asset('assets/js/main.js') }}"></script>
-
+ <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Eventex Solutions",
+    "image": "{{ asset('assets/img/logo.png') }}",
+    "description": "Professional event management, photography, videography, wedding planning, decorations, and corporate event services with multi-camera setups.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ghaziabad",
+      "addressRegion": "UP,
+      "addressCountry": "India"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "28.6130052",
+      "longitude": "77.2290188"
+    },
+    "url": "{{ url('/') }}",
+    "telephone": "7011864373",
+    "priceRange": "$$",
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "sameAs": [
+      "https://www.facebook.com/eventexsolutions",
+      "https://www.instagram.com/eventexsolutions",
+      "https://www.linkedin.com/eventexsolutions"
+    ],
+    "serviceType": [
+      "Event Management",
+      "Photography Services",
+      "Videography Services",
+      "Wedding Planning",
+      "Event Decorations",
+      "Corporate Events",
+      "Multi-Camera Setup"
+    ]
+  }
+  </script>
   @stack('scripts')
 </body>
 
