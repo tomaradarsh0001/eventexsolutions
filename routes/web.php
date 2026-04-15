@@ -126,6 +126,17 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     // Add these missing routes
     Route::patch('/enquiries/{id}/mark-read', [EventEnquiryController::class, 'markRead'])->name('enquiries.mark-read');
     Route::patch('/enquiries/{id}/mark-unread', [EventEnquiryController::class, 'markUnread'])->name('enquiries.mark-unread');
+
+    // Route for getting event enquiries counts
+Route::get('/admin/event-enquiries/counts', function() {
+    return response()->json(App\Models\EventEnquiry::getCounts());
+})->name('event-enquiries.counts')->middleware('auth');
+
+// Route for getting contacts counts
+Route::get('/admin/contacts/counts', function() {
+    return response()->json(App\Models\Contact::getCounts());
+})->name('contacts.counts')->middleware('auth');
+
 });
 Route::middleware('auth')->group(function () {
    Route::prefix('admin')->name('admin.')->group(function () {

@@ -51,6 +51,15 @@
         </div>
         <div class="tile-label">Why Us</div>
     </a>
+<a href="{{ route('admin.carousel.index') }}" 
+   class="tile {{ request()->routeIs('admin.carousel.*') ? 'active' : '' }}">
+    
+    <div class="tile-icon">
+        <i class="fas fa-images"></i>
+    </div>
+    
+    <div class="tile-label">Carousel</div>
+</a>
 
     <a href="{{ route('admin.enquiries.index') }}" 
        class="tile {{ request()->routeIs('admin.enquiries.*') ? 'active' : '' }}">
@@ -58,6 +67,21 @@
             <i class="fas fa-envelope-open-text"></i>
         </div>
         <div class="tile-label">Event Enquiries</div>
+        <!-- Badge for Event Enquiries -->
+        @php
+            $unreadEventEnquiriesCount = App\Models\EventEnquiry::where('is_read', false)->count();
+            $readEventEnquiriesCount = App\Models\EventEnquiry::where('is_read', true)->count();
+        @endphp
+        @if($unreadEventEnquiriesCount > 0)
+            <span class="badge unread-badge event-enquiry-unread" title="Unread Enquiries">
+                {{ $unreadEventEnquiriesCount }}
+            </span>
+        @endif
+        @if($readEventEnquiriesCount > 0)
+            <span class="badge read-badge event-enquiry-read" title="Read Enquiries">
+                {{ $readEventEnquiriesCount }}
+            </span>
+        @endif
     </a>
 
     <a href="{{ route('admin.contacts.index') }}" class="tile">
@@ -65,6 +89,21 @@
             <i class="fas fa-address-book"></i>
         </div>
         <div class="tile-label">Contact Forms</div>
+        <!-- Badge for Contact Forms -->
+        @php
+            $unreadContactsCount = App\Models\Contact::where('is_read', false)->count();
+            $readContactsCount = App\Models\Contact::where('is_read', true)->count();
+        @endphp
+        @if($unreadContactsCount > 0)
+            <span class="badge unread-badge contact-unread" title="Unread Contacts">
+                {{ $unreadContactsCount }}
+            </span>
+        @endif
+        @if($readContactsCount > 0)
+            <span class="badge read-badge contact-read" title="Read Contacts">
+                {{ $readContactsCount }}
+            </span>
+        @endif
     </a>
 
     <a href="{{ route('admin.gallery.index') }}" class="tile">
@@ -98,16 +137,7 @@
         padding: 0 15px;
     }
 
-    /* Logout specific icon color */
-    .tile .logout-icon {
-        color: #e74a3b;
-    }
-
-    .tile:hover .logout-icon {
-        color: #fff;
-    }
-
-    /* Each Tile */
+    /* Each Tile - Make it relative for badge positioning */
     .tile {
         background: #fff;
         border-radius: 20px;
@@ -122,8 +152,98 @@
         align-items: center;
         justify-content: center;
         position: relative;
-        overflow: hidden;
+        overflow: visible;
         cursor: pointer;
+    }
+
+    /* Badge Styles */
+    .badge {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        z-index: 10;
+        border: 2px solid white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        transition: all 0.3s ease;
+    }
+
+    /* Unread Badge - Red */
+    .unread-badge {
+        background: linear-gradient(135deg, #e74a3b, #c82333);
+        color: white;
+        border-radius: 50%;
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+        box-shadow: 0 2px 8px rgba(231, 74, 59, 0.4);
+        animation: pulse 2s infinite;
+        top: -10px;
+        right: -10px;
+        padding: 0 6px;
+    }
+
+    /* Read Badge - Green */
+    .read-badge {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        border-radius: 20px;
+        min-width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+        bottom: -10px;
+        right: -10px;
+        padding: 0 8px;
+        box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+    }
+
+    /* Position adjustments for multiple badges */
+    .tile .unread-badge + .read-badge {
+        bottom: -10px;
+        right: -10px;
+    }
+
+    /* If only read badge exists without unread */
+    .tile .read-badge:first-child {
+        top: -10px;
+        right: -10px;
+        border-radius: 50%;
+    }
+
+    /* Pulse Animation for Unread Badge */
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 2px 8px rgba(231, 74, 59, 0.4);
+        }
+        50% {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(231, 74, 59, 0.6);
+        }
+        100% {
+            transform: scale(1);
+            box-shadow: 0 2px 8px rgba(231, 74, 59, 0.4);
+        }
+    }
+
+    /* Hover effect for badges */
+    .tile:hover .unread-badge {
+        animation: none;
+        transform: scale(1.05);
+    }
+
+    .tile:hover .read-badge {
+        transform: scale(1.05);
+    }
+
+    /* Logout specific icon color */
+    .tile .logout-icon {
+        color: #e74a3b;
+    }
+
+    .tile:hover .logout-icon {
+        color: #fff;
     }
 
     /* Icon inside tile */
@@ -207,6 +327,22 @@
         .tile-label {
             font-size: 1rem;
         }
+        
+        .unread-badge {
+            min-width: 28px;
+            height: 28px;
+            font-size: 0.75rem;
+            top: -8px;
+            right: -8px;
+        }
+        
+        .read-badge {
+            min-width: 24px;
+            height: 24px;
+            font-size: 0.7rem;
+            bottom: -8px;
+            right: -8px;
+        }
     }
 
     /* Mobile Styles (480px and below) */
@@ -232,6 +368,24 @@
             font-size: 0.9rem;
             font-weight: 500;
         }
+        
+        .unread-badge {
+            min-width: 24px;
+            height: 24px;
+            font-size: 0.7rem;
+            top: -6px;
+            right: -6px;
+            border-width: 1.5px;
+        }
+        
+        .read-badge {
+            min-width: 22px;
+            height: 22px;
+            font-size: 0.65rem;
+            bottom: -6px;
+            right: -6px;
+            padding: 0 6px;
+        }
     }
 
     /* Small Mobile Styles (380px and below) */
@@ -253,6 +407,22 @@
         .tile-label {
             font-size: 0.85rem;
         }
+        
+        .unread-badge {
+            min-width: 22px;
+            height: 22px;
+            font-size: 0.65rem;
+            top: -5px;
+            right: -5px;
+        }
+        
+        .read-badge {
+            min-width: 20px;
+            height: 20px;
+            font-size: 0.6rem;
+            bottom: -5px;
+            right: -5px;
+        }
     }
 
     /* Landscape mode for mobile */
@@ -267,6 +437,18 @@
         
         .tile-icon {
             font-size: 2.5rem;
+        }
+        
+        .unread-badge {
+            min-width: 26px;
+            height: 26px;
+            font-size: 0.7rem;
+        }
+        
+        .read-badge {
+            min-width: 22px;
+            height: 22px;
+            font-size: 0.65rem;
         }
     }
 
@@ -300,6 +482,96 @@
             }
         }
     }
+
+    /* Animation for badge updates */
+    @keyframes bounce {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.2);
+        }
+    }
+
+    .badge-updated {
+        animation: bounce 0.5s ease;
+    }
 </style>
+
+<script>
+// Function to refresh badge counts
+function refreshBadgeCounts() {
+    // Fetch Event Enquiries counts
+    fetch('{{ route("admin.event-enquiries.counts") }}')
+        .then(response => response.json())
+        .then(data => {
+            updateBadge('.event-enquiry-unread', data.unread, 'unread-badge event-enquiry-unread');
+            updateBadge('.event-enquiry-read', data.read, 'read-badge event-enquiry-read');
+        })
+        .catch(error => console.error('Error fetching event enquiries counts:', error));
+    
+    // Fetch Contact Forms counts
+    fetch('{{ route("admin.contacts.counts") }}')
+        .then(response => response.json())
+        .then(data => {
+            updateBadge('.contact-unread', data.unread, 'unread-badge contact-unread');
+            updateBadge('.contact-read', data.read, 'read-badge contact-read');
+        })
+        .catch(error => console.error('Error fetching contacts counts:', error));
+}
+
+// Function to update badge
+function updateBadge(selector, count, badgeClass) {
+    const badge = document.querySelector(selector);
+    const parentTile = document.querySelector(selector)?.closest('.tile');
+    
+    if (count > 0) {
+        if (badge) {
+            // Update existing badge
+            const oldCount = parseInt(badge.textContent);
+            badge.textContent = count;
+            if (oldCount !== count) {
+                badge.classList.add('badge-updated');
+                setTimeout(() => badge.classList.remove('badge-updated'), 500);
+            }
+        } else if (parentTile) {
+            // Create new badge
+            const newBadge = document.createElement('span');
+            newBadge.className = `badge ${badgeClass}`;
+            newBadge.textContent = count;
+            
+            if (badgeClass.includes('unread')) {
+                newBadge.setAttribute('title', 'Unread Items');
+                parentTile.appendChild(newBadge);
+            } else if (badgeClass.includes('read')) {
+                newBadge.setAttribute('title', 'Read Items');
+                // Check if unread badge exists
+                const unreadBadge = parentTile.querySelector('.unread-badge');
+                if (unreadBadge) {
+                    parentTile.appendChild(newBadge);
+                } else {
+                    parentTile.appendChild(newBadge);
+                }
+            }
+        }
+    } else if (badge) {
+        // Remove badge if count is 0
+        badge.remove();
+    }
+}
+
+// Refresh every 30 seconds
+let refreshInterval = setInterval(refreshBadgeCounts, 30000);
+
+// Initial load
+document.addEventListener('DOMContentLoaded', refreshBadgeCounts);
+
+// Optional: Clear interval on page unload
+window.addEventListener('beforeunload', function() {
+    if (refreshInterval) {
+        clearInterval(refreshInterval);
+    }
+});
+</script>
 
 @endsection
