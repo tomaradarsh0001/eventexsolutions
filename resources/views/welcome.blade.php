@@ -4642,7 +4642,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             .info-item div p,
             .info-item div p a {
-                font-size: 0.5rem;
+                font-size: 0.6rem;
             }
 
             .contact-info {
