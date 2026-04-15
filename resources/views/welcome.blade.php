@@ -1,7 +1,7 @@
 {{-- resources/views/welcome.blade.php --}}
 @extends('layouts.app')
 
-@section('title', 'Grand - Event and Conference')
+@section('title', 'Eventex Solutions - Professional Event Management & Photography Services')
 
 @section('content')
 <!-- Main Carousel Section Start -->
