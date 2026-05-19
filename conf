@@ -1,0 +1,204 @@
+# /etc/nginx/sites-available/ldo.mohua.gov.in.conf
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name ldo.mohua.gov.in;
+    
+    # Timeouts
+    fastcgi_read_timeout 2400s;
+    client_max_body_size 100M;
+    
+    # Security Headers
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header X-Frame-Options "DENY" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    
+    # Logging
+    access_log /var/log/nginx/ldo.mohua.gov.in.access.log;
+    error_log /var/log/nginx/ldo.mohua.gov.in.error.log;
+    
+    # ==============================================
+    # NEXT.JS APP (Root - Port 4000)
+    # ==============================================
+    location / {
+        proxy_pass http://127.0.0.1:4000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        
+        # WebSocket support (if needed)
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+    
+    # ==============================================
+    # LARAVEL ADMIN APP STATIC ASSETS
+    # ==============================================
+    
+    # jQuery assets
+    location /jquery/ {
+        root /var/www/lnd_backend/public;
+        try_files $uri =404;
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+        access_log off;
+    }
+    
+    # Theme assets
+    location /theme/ {
+        root /var/www/lnd_backend/public;
+        try_files $uri =404;
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+        access_log off;
+    }
+    
+    # Validations assets
+    location /validations/ {
+        root /var/www/lnd_backend/public;
+        try_files $uri =404;
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+        access_log off;
+    }
+    
+    # Administrator storage
+    location /administrator/storage {
+        alias /var/www/lnd_backend/public/administrator;
+        try_files $uri =404;
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+        access_log off;
+    }
+    
+    # ==============================================
+    # LARAVEL ADMIN APP (lnd_backend)
+    # ==============================================
+    
+    # Admin main path
+    location /admin {
+        alias /var/www/lnd_backend/public;
+        try_files $uri @admin;
+        
+        location ~ \.php$ {
+            fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+            fastcgi_param SCRIPT_FILENAME /var/www/lnd_backend/public/index.php;
+            include fastcgi_params;
+            fastcgi_param X-Forwarded-Prefix /admin;
+        }
+    }
+    
+    location @admin {
+        rewrite /admin/(.*)$ /admin/index.php?/$1 last;
+    }
+    
+    # Admin API
+    location /admin/api/ {
+        alias /var/www/lnd_backend/public;
+        try_files $uri @admin_api;
+        
+        location ~ \.php$ {
+            fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+            fastcgi_param SCRIPT_FILENAME /var/www/lnd_backend/public/index.php;
+            include fastcgi_params;
+        }
+    }
+    
+    location @admin_api {
+        rewrite /admin/api/(.*)$ /admin/index.php?/api/$1 last;
+    }
+    
+    # Additional admin static assets
+    location ~ ^/admin/(jquery|theme|validations|administrator|assets|css|js|images|img|fonts|uploads)/ {
+        root /var/www/lnd_backend/public;
+        try_files $uri =404;
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+        access_log off;
+    }
+    
+    # ==============================================
+    # LARAVEL EDHARTI APP STATIC ASSETS
+    # ==============================================
+    
+    # Assets (css, js, images etc)
+    location /assets/ {
+        root /var/www/edhartiMain/public;
+        try_files $uri =404;
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+        access_log off;
+    }
+    
+    # Storage files
+    location /storage {
+        root /var/www/edhartiMain/public;
+        try_files $uri =404;
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+        access_log off;
+    }
+    
+    # ==============================================
+    # LARAVEL EDHARTI APP - MIXED APPROACH
+    # - APIs: KEEP /edharti prefix
+    # - Normal routes: REMOVE /edharti prefix
+    # ==============================================
+    
+    # Static assets for edharti (served directly)
+    location ~ ^/edharti/(assets|storage|css|js|images|img|fonts|uploads|vendor)/ {
+        root /var/www/edhartiMain/public;
+        try_files $uri =404;
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+        access_log off;
+    }
+    
+    # Edharti API - KEEP /edharti prefix (no rewrite)
+    location /edharti/api/ {
+        alias /var/www/edhartiMain/public;
+        
+        # Keep /edharti prefix - Laravel will see /edharti/api/endpoint
+        location ~ \.php$ {
+            fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+            fastcgi_param SCRIPT_FILENAME /var/www/edhartiMain/public/index.php;
+            fastcgi_param REQUEST_URI $request_uri;
+            fastcgi_param SCRIPT_NAME /index.php;
+            fastcgi_param DOCUMENT_URI /index.php;
+            include fastcgi_params;
+        }
+    }
+    
+    # Normal edharti routes - REMOVE /edharti prefix
+    location /edharti {
+        alias /var/www/edhartiMain/public;
+        
+        # Remove /edharti prefix for normal routes
+        rewrite ^/edharti/(.*)$ /$1 break;
+        
+        try_files $uri @edharti_php;
+        
+        location ~ \.php$ {
+            fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+            fastcgi_param SCRIPT_FILENAME /var/www/edhartiMain/public/index.php;
+            fastcgi_param REQUEST_URI /$1$is_args$args;
+            fastcgi_param SCRIPT_NAME /index.php;
+            fastcgi_param DOCUMENT_URI /index.php;
+            include fastcgi_params;
+        }
+    }
+    
+    # PHP processing fallback for edharti normal routes
+    location @edharti_php {
+        rewrite ^/edharti/(.*)$ /index.php?/$1 last;
+        fastcgi_pass unix:/var/run/php/php8.3-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME /var/www/edhartiMain/public/index.php;
+        fastcgi_param REQUEST_URI /$1$is_args$args;
+        fastcgi_param SCRIPT_NAME /index.php;
+        fastcgi_param DOCUMENT_URI /index.php;
+        include fastcgi_params;
+    }
+}

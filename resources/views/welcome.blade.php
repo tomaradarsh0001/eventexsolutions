@@ -933,7 +933,7 @@
     /* Gallery Section Styles */
     .gallery-section {
         padding: 80px 0;
-        background: linear-gradient(135deg, #fff5f5 0%, #ffffff 50%, #fff0f0 100%);
+        background: linear-gradient(135deg, #f5f3f0 0%, #ffffff 50%, #f0ede8 100%);
         position: relative;
         overflow: hidden;
     }
@@ -961,7 +961,7 @@
     /* Section Header */
     .section-header {
         text-align: center;
-        margin-bottom: 60px;
+        margin-bottom: 50px;
         position: relative;
     }
     
@@ -969,63 +969,81 @@
         display: inline-block;
         background: linear-gradient(135deg, #ec489a 0%, #f43f5e 100%);
         color: white;
-        padding: 6px 20px;
+        padding: 4px 18px;
         border-radius: 100px;
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 600;
-        margin-bottom: 20px;
+        margin-bottom: 16px;
         letter-spacing: 0.5px;
-        box-shadow: 0 4px 15px rgba(236, 72, 153, 0.2);
+        box-shadow: 0 2px 10px rgba(236, 72, 153, 0.2);
     }
     
     .section-title {
-        font-size: 48px;
-        font-weight: 800;
+        font-size: 36px;
+        font-weight: 700;
         background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-        margin-bottom: 20px;
+        margin-bottom: 16px;
     }
     
     .section-subtitle {
-        font-size: 18px;
+        font-size: 16px;
         color: #64748b;
-        max-width: 600px;
+        max-width: 550px;
         margin: 0 auto;
-        line-height: 1.6;
+        line-height: 1.5;
     }
     
-    /* Gallery Grid - 20% bigger tiles */
+    /* Gallery Grid - 3 columns */
     .gallery-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(456px, 1fr));
-        gap: 36px;
-        margin-bottom: 60px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-bottom: 50px;
     }
     
-    /* Gallery Card - 20% bigger */
+    /* Photography Card Design - Premium Polaroid Style */
     .gallery-card {
-        background: white;
-        border-radius: 28px;
+        background: #ffffff;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         cursor: pointer;
         position: relative;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
+    
+    /* Subtle tilt on alternate cards */
+    .gallery-card:nth-child(odd) {
+        transform: rotate(-0.8deg);
+    }
+    
+    .gallery-card:nth-child(even) {
+        transform: rotate(1.2deg);
     }
     
     .gallery-card:hover {
-        transform: translateY(-12px);
-        box-shadow: 0 25px 50px rgba(236, 72, 153, 0.2);
+        transform: rotate(0deg) translateY(-10px);
+        box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(236, 72, 153, 0.2);
+        z-index: 10;
     }
     
-    /* Media Container - Carousel (20% bigger) */
+    /* Polaroid White Border - Realistic */
     .media-container {
+        position: relative;
+        background: #fefefe;
+        padding: 14px 14px 10px 14px;
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
+    }
+    
+    /* Inner image wrapper - 16:9 for 1920x1080 */
+    .image-wrapper {
         position: relative;
         aspect-ratio: 16/9;
         overflow: hidden;
-        background: #f1f5f9;
+        background: #1a1a1a;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
     }
     
     .carousel-slider {
@@ -1037,12 +1055,14 @@
     
     .carousel-track {
         display: flex;
-        transition: transform 0.5s ease-in-out;
+        transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         height: 100%;
+        width: 100%;
     }
     
     .carousel-slide {
         min-width: 100%;
+        width: 100%;
         height: 100%;
         position: relative;
         flex-shrink: 0;
@@ -1053,33 +1073,115 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        display: block;
+    }
+    
+    /* Realistic Photo Corner Accents - Embossed Effect */
+    .photo-corner {
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        pointer-events: none;
+        z-index: 10;
+        opacity: 0.7;
+        transition: all 0.3s ease;
+    }
+    
+    .corner-tl {
+        top: 14px;
+        left: 14px;
+        background: linear-gradient(135deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 50%);
+        border-top: 2px solid rgba(255,255,255,0.6);
+        border-left: 2px solid rgba(255,255,255,0.6);
+        box-shadow: -1px -1px 0 rgba(0,0,0,0.1);
+    }
+    
+    .corner-tr {
+        top: 14px;
+        right: 14px;
+        background: linear-gradient(225deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 50%);
+        border-top: 2px solid rgba(255,255,255,0.6);
+        border-right: 2px solid rgba(255,255,255,0.6);
+        box-shadow: 1px -1px 0 rgba(0,0,0,0.1);
+    }
+    
+    .corner-bl {
+        bottom: 14px;
+        left: 14px;
+        background: linear-gradient(45deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 50%);
+        border-bottom: 2px solid rgba(255,255,255,0.6);
+        border-left: 2px solid rgba(255,255,255,0.6);
+        box-shadow: -1px 1px 0 rgba(0,0,0,0.1);
+    }
+    
+    .corner-br {
+        bottom: 14px;
+        right: 14px;
+        background: linear-gradient(315deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 50%);
+        border-bottom: 2px solid rgba(255,255,255,0.6);
+        border-right: 2px solid rgba(255,255,255,0.6);
+        box-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+    }
+    
+    .gallery-card:hover .photo-corner {
+        opacity: 1;
+        width: 36px;
+        height: 36px;
+    }
+    
+    /* Embossed edge effect on the white border */
+    .media-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05), inset 0 1px 2px rgba(255,255,255,0.8);
+        z-index: 5;
+    }
+    
+    /* Shadow under the polaroid */
+    .media-container::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 4px;
+        right: 4px;
+        height: 6px;
+        background: rgba(0,0,0,0.08);
+        filter: blur(3px);
+        pointer-events: none;
+        z-index: 1;
     }
     
     /* Carousel Navigation */
     .carousel-nav {
         position: absolute;
-        bottom: 24px;
+        bottom: 16px;
         left: 0;
         right: 0;
         display: flex;
         justify-content: center;
-        gap: 10px;
-        z-index: 3;
+        gap: 6px;
+        z-index: 15;
     }
     
     .carousel-dot {
-        width: 10px;
-        height: 10px;
+        width: 5px;
+        height: 5px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(0, 0, 0, 0.5);
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.25s ease;
+        box-shadow: 0 0 1px white;
     }
     
     .carousel-dot.active {
         background: #ec489a;
-        width: 28px;
-        border-radius: 5px;
+        width: 16px;
+        border-radius: 3px;
     }
     
     .carousel-arrow {
@@ -1087,200 +1189,203 @@
         top: 50%;
         transform: translateY(-50%);
         background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(4px);
         color: white;
-        width: 42px;
-        height: 42px;
+        width: 28px;
+        height: 28px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        z-index: 3;
-        transition: all 0.3s ease;
+        z-index: 15;
+        transition: all 0.2s ease;
         opacity: 0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     }
     
     .gallery-card:hover .carousel-arrow {
-        opacity: 1;
+        opacity: 0.9;
     }
     
     .carousel-arrow:hover {
-        background: rgba(236, 72, 153, 0.8);
-        transform: translateY(-50%) scale(1.1);
+        background: #ec489a;
+        transform: translateY(-50%) scale(1.05);
     }
     
     .carousel-arrow.prev {
-        left: 12px;
+        left: 18px;
     }
     
     .carousel-arrow.next {
-        right: 12px;
+        right: 18px;
     }
     
     .carousel-arrow .material-icons {
-        font-size: 24px;
+        font-size: 16px;
     }
     
-    /* Media Type Badge - Bigger */
+    /* Media Type Badge */
     .media-badge {
         position: absolute;
-        top: 18px;
-        right: 18px;
-        background: rgba(0, 0, 0, 0.75);
-        backdrop-filter: blur(10px);
-        padding: 10px 16px;
-        border-radius: 50px;
+        top: 22px;
+        right: 22px;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(8px);
+        padding: 3px 10px;
+        border-radius: 20px;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 4px;
         color: white;
-        font-size: 14px;
+        font-size: 10px;
         font-weight: 500;
-        z-index: 4;
+        z-index: 12;
+        letter-spacing: 0.3px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     }
     
     .media-badge .material-icons {
-        font-size: 18px;
+        font-size: 12px;
     }
     
-    /* Play Button Overlay for Videos */
+    /* Video Overlay */
     .video-overlay {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.4);
+        background: rgba(0, 0, 0, 0.25);
         display: flex;
         align-items: center;
         justify-content: center;
         opacity: 0;
         transition: opacity 0.3s ease;
         cursor: pointer;
-        z-index: 2;
+        z-index: 8;
     }
     
-    .media-container:hover .video-overlay {
+    .image-wrapper:hover .video-overlay {
         opacity: 1;
     }
     
     .play-button {
-        width: 70px;
-        height: 70px;
+        width: 44px;
+        height: 44px;
         background: linear-gradient(135deg, #ec489a, #f43f5e);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s ease;
     }
     
     .play-button:hover {
-        transform: scale(1.15);
+        transform: scale(1.1);
     }
     
     .play-button .material-icons {
-        font-size: 38px;
-        color: white;
-    }
-    
-    /* Transparent Overlay for Event Details - Bigger text */
-    .event-details-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.6), transparent);
-        padding: 36px 24px 24px;
-        color: white;
-        z-index: 3;
-        transform: translateY(0);
-        transition: all 0.3s ease;
-    }
-    
-    .gallery-card:hover .event-details-overlay {
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7), transparent);
-    }
-    
-    .event-name-overlay {
         font-size: 24px;
-        font-weight: 700;
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        flex-wrap: wrap;
+        color: white;
     }
     
-    .event-date-overlay {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 14px;
-        opacity: 0.9;
-        margin-bottom: 10px;
+    /* Card Footer - Vintage Caption */
+    .card-footer {
+        background: #ffffff;
+        padding: 12px 14px 14px 14px;
+        position: relative;
     }
     
-    .event-date-overlay .material-icons {
-        font-size: 16px;
+    /* Subtle embossed line above footer */
+    .card-footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 14px;
+        right: 14px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent);
     }
     
-    .event-description-overlay {
+    .event-name {
         font-size: 15px;
-        line-height: 1.6;
-        opacity: 0.9;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 4px;
+        letter-spacing: -0.2px;
+        line-height: 1.3;
+    }
+    
+    .event-date {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 10px;
+        color: #ec489a;
+        margin-bottom: 6px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .event-date .material-icons {
+        font-size: 10px;
+    }
+    
+    .event-description {
+        font-size: 11px;
+        color: #7f8c8d;
+        line-height: 1.4;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        margin-bottom: 8px;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-style: normal;
     }
     
-    .media-count-overlay {
+    .media-stats {
         display: flex;
-        gap: 16px;
-        margin-top: 16px;
-        padding-top: 12px;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        font-size: 14px;
+        gap: 12px;
+        padding-top: 6px;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
     }
     
-    .media-count-overlay-item {
+    .media-stat {
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 3px;
+        font-size: 9px;
+        color: #95a5a6;
+        font-weight: 500;
     }
     
-    .media-count-overlay-item .material-icons {
-        font-size: 16px;
+    .media-stat .material-icons {
+        font-size: 11px;
     }
     
-    /* Hide original card content */
-    .card-content {
-        display: none;
-    }
-    
-    /* More Button Container */
+    /* More Button */
     .more-button-container {
         text-align: center;
-        margin-top: 20px;
+        margin-top: 10px;
     }
     
-    /* Animated Pink More Button */
     .more-button {
         display: inline-flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         background: linear-gradient(135deg, #ec489a 0%, #f43f5e 100%);
         color: white;
-        padding: 14px 32px;
-        border-radius: 50px;
-        font-size: 16px;
+        padding: 10px 28px;
+        border-radius: 40px;
+        font-size: 14px;
         font-weight: 600;
         text-decoration: none;
-        letter-spacing: 0.5px;
-        box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+        letter-spacing: 0.3px;
+        box-shadow: 0 4px 12px rgba(236, 72, 153, 0.25);
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
@@ -1294,36 +1399,32 @@
         width: 0;
         height: 0;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.25);
         transform: translate(-50%, -50%);
-        transition: width 0.6s ease, height 0.6s ease;
+        transition: width 0.5s ease, height 0.5s ease;
     }
     
     .more-button:hover::before {
-        width: 300px;
-        height: 300px;
+        width: 200px;
+        height: 200px;
     }
     
     .more-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(236, 72, 153, 0.4);
-        gap: 16px;
-    }
-    
-    .more-button:active {
-        transform: translateY(0);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(236, 72, 153, 0.35);
+        gap: 12px;
     }
     
     .more-button .material-icons {
-        font-size: 20px;
-        transition: transform 0.3s ease;
+        font-size: 18px;
+        transition: transform 0.25s ease;
     }
     
     .more-button:hover .material-icons {
-        transform: translateX(5px);
+        transform: translateX(4px);
     }
     
-    /* Modal Styles - Medium Size (20% bigger) */
+    /* Modal Styles */
     .modal {
         display: none;
         position: fixed;
@@ -1331,9 +1432,9 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0, 0, 0, 0.96);
         z-index: 9999;
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(15px);
         align-items: center;
         justify-content: center;
     }
@@ -1344,9 +1445,9 @@
     
     .modal-container {
         width: 90%;
-        max-width: 960px;
-        background: rgba(0, 0, 0, 0.85);
-        border-radius: 24px;
+        max-width: 1000px;
+        background: rgba(0, 0, 0, 0.9);
+        border-radius: 16px;
         overflow: hidden;
         position: relative;
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -1357,31 +1458,31 @@
     .modal-header {
         display: flex;
         justify-content: flex-end;
-        padding: 14px 18px;
+        padding: 12px 16px;
         background: rgba(0, 0, 0, 0.5);
     }
     
     .close-modal {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.12);
         border: none;
         color: white;
-        width: 42px;
-        height: 42px;
+        width: 36px;
+        height: 36px;
         border-radius: 50%;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s ease;
+        transition: all 0.25s ease;
     }
     
     .close-modal:hover {
-        background: rgba(236, 72, 153, 0.8);
+        background: #ec489a;
         transform: rotate(90deg);
     }
     
     .close-modal .material-icons {
-        font-size: 24px;
+        font-size: 20px;
     }
     
     .modal-media-area {
@@ -1400,16 +1501,19 @@
     .modal-media-track {
         display: flex;
         height: 100%;
-        transition: transform 0.4s ease-in-out;
+        transition: transform 0.35s ease-in-out;
+        width: 100%;
     }
     
     .modal-media-slide {
         min-width: 100%;
+        width: 100%;
         height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         background: #000;
+        flex-shrink: 0;
     }
     
     .modal-media-slide img,
@@ -1421,147 +1525,167 @@
         object-fit: contain;
     }
     
-    .modal-media-slide video {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-    
     .modal-nav-btn {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(5px);
         border: none;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         color: white;
-        transition: all 0.3s ease;
+        transition: all 0.25s ease;
         z-index: 10;
     }
     
     .modal-nav-btn:hover {
-        background: rgba(236, 72, 153, 0.8);
-        transform: translateY(-50%) scale(1.1);
+        background: #ec489a;
+        transform: translateY(-50%) scale(1.05);
     }
     
     .modal-nav-prev {
-        left: 20px;
+        left: 16px;
     }
     
     .modal-nav-next {
-        right: 20px;
+        right: 16px;
     }
     
     .modal-nav-btn .material-icons {
-        font-size: 32px;
+        font-size: 24px;
     }
     
     .modal-dots {
         position: absolute;
-        bottom: 20px;
+        bottom: 12px;
         left: 0;
         right: 0;
         display: flex;
         justify-content: center;
-        gap: 12px;
+        gap: 8px;
         z-index: 10;
     }
     
     .modal-dot {
-        width: 10px;
-        height: 10px;
+        width: 6px;
+        height: 6px;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.5);
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.25s ease;
     }
     
     .modal-dot.active {
         background: #ec489a;
-        width: 28px;
-        border-radius: 5px;
+        width: 20px;
+        border-radius: 3px;
     }
     
     .modal-footer {
-        padding: 16px 24px;
+        padding: 10px 16px;
         background: rgba(0, 0, 0, 0.7);
         color: white;
-        font-size: 15px;
+        font-size: 13px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        gap: 12px;
-    }
-    
-    .modal-event-name {
-        font-weight: 600;
-        display: flex;
-        align-items: center;
         gap: 10px;
     }
     
+    .modal-event-name {
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+    }
+    
     .modal-event-name .material-icons {
-        font-size: 18px;
+        font-size: 16px;
         color: #ec489a;
     }
     
     .modal-media-counter {
-        font-size: 14px;
+        font-size: 12px;
         opacity: 0.8;
         background: rgba(255, 255, 255, 0.15);
-        padding: 6px 12px;
+        padding: 3px 10px;
         border-radius: 20px;
     }
     
     .autoplay-indicator {
-        font-size: 13px;
+        font-size: 11px;
         opacity: 0.7;
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 4px;
     }
     
-    /* No Data Styling */
+    .autoplay-indicator .material-icons {
+        font-size: 12px;
+    }
+    
+    /* No Data */
     .no-data {
         text-align: center;
-        padding: 60px 20px;
+        padding: 50px 20px;
         background: white;
         border-radius: 20px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     }
     
     .no-data .material-icons {
-        font-size: 64px;
+        font-size: 56px;
         color: #ec489a;
-        margin-bottom: 20px;
+        margin-bottom: 16px;
     }
     
     .no-data h3 {
-        font-size: 24px;
+        font-size: 20px;
         color: #1e293b;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
     
     .no-data p {
         color: #64748b;
+        font-size: 14px;
     }
     
     /* Responsive */
+    @media (max-width: 1024px) {
+        .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        
+        .section-title {
+            font-size: 30px;
+        }
+        
+        .gallery-card:nth-child(odd),
+        .gallery-card:nth-child(even) {
+            transform: rotate(0deg);
+        }
+    }
+    
     @media (max-width: 768px) {
         .gallery-section {
             padding: 50px 0;
         }
         
         .section-title {
-            font-size: 32px;
+            font-size: 26px;
+        }
+        
+        .section-subtitle {
+            font-size: 14px;
         }
         
         .gallery-grid {
@@ -1569,12 +1693,12 @@
             gap: 24px;
         }
         
-        .event-name-overlay {
-            font-size: 20px;
+        .event-name {
+            font-size: 14px;
         }
         
         .carousel-arrow {
-            opacity: 0.5;
+            opacity: 0.7;
         }
         
         .modal-container {
@@ -1583,25 +1707,37 @@
         }
         
         .modal-nav-btn {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
         }
         
         .modal-nav-btn .material-icons {
-            font-size: 24px;
-        }
-        
-        .modal-nav-prev {
-            left: 10px;
-        }
-        
-        .modal-nav-next {
-            right: 10px;
+            font-size: 20px;
         }
         
         .more-button {
-            padding: 12px 28px;
-            font-size: 15px;
+            padding: 9px 24px;
+            font-size: 13px;
+        }
+        
+        .card-footer {
+            padding: 10px 12px 12px 12px;
+        }
+        
+        .media-container {
+            padding: 10px 10px 8px 10px;
+        }
+        
+        .photo-corner {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .corner-tl, .corner-tr, .corner-bl, .corner-br {
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
         }
     }
 </style>
@@ -1611,8 +1747,8 @@
     <div class="container">
 
         <div class="section-header">
-            <h2>Event Gallery</h2>
-            <p>Explore our collection of memorable events and precious moments</p>
+            <h2 class="section-title">Event Gallery</h2>
+            <p class="section-subtitle">Explore our collection of memorable events and precious moments</p>
         </div>
         
         <div class="gallery-grid" id="galleryGrid">
@@ -1620,7 +1756,6 @@
                 @php
                     $allMedia = collect();
                     
-                    // Add images to media collection
                     foreach($event->images as $image) {
                         $allMedia->push([
                             'type' => 'image',
@@ -1629,7 +1764,6 @@
                         ]);
                     }
                     
-                    // Add videos to media collection
                     foreach($event->videos as $video) {
                         $allMedia->push([
                             'type' => 'video',
@@ -1644,89 +1778,85 @@
                 @if($allMedia->count() > 0)
                     <div class="gallery-card" data-event-id="{{ $event->id }}" data-event-name="{{ $event->name }}" data-media='@json($allMedia)'>
                         <div class="media-container">
-                            <div class="carousel-slider" data-autoplay="{{ $hasMultipleMedia ? 'true' : 'false' }}">
-                                <div class="carousel-track">
-                                    @foreach($allMedia as $index => $media)
-                                        <div class="carousel-slide" data-index="{{ $index }}" data-type="{{ $media['type'] }}" data-path="{{ $media['path'] }}">
-                                            @if($media['type'] == 'image')
-                                                <img src="{{ $media['path'] }}" alt="{{ $event->name }}" loading="lazy">
-                                            @else
-                                                <video preload="none">
-                                                    <source src="{{ $media['path'] }}" type="video/mp4">
-                                                </video>
-                                                <div class="video-overlay" data-video-src="{{ $media['path'] }}">
-                                                    <div class="play-button">
-                                                        <span class="material-icons">play_arrow</span>
+                            <!-- Realistic Photo Corner Accents -->
+                            <div class="photo-corner corner-tl"></div>
+                            <div class="photo-corner corner-tr"></div>
+                            <div class="photo-corner corner-bl"></div>
+                            <div class="photo-corner corner-br"></div>
+                            
+                            <div class="image-wrapper">
+                                <div class="carousel-slider" data-autoplay="{{ $hasMultipleMedia ? 'true' : 'false' }}">
+                                    <div class="carousel-track">
+                                        @foreach($allMedia as $index => $media)
+                                            <div class="carousel-slide" data-index="{{ $index }}" data-type="{{ $media['type'] }}" data-path="{{ $media['path'] }}">
+                                                @if($media['type'] == 'image')
+                                                    <img src="{{ $media['path'] }}" alt="{{ $event->name }}" loading="lazy">
+                                                @else
+                                                    <video preload="none">
+                                                        <source src="{{ $media['path'] }}" type="video/mp4">
+                                                    </video>
+                                                    <div class="video-overlay" data-video-src="{{ $media['path'] }}">
+                                                        <div class="play-button">
+                                                            <span class="material-icons">play_arrow</span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            @endif
+                                                @endif
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    
+                                    @if($hasMultipleMedia)
+                                        <div class="carousel-nav"></div>
+                                        <div class="carousel-arrow prev">
+                                            <span class="material-icons">chevron_left</span>
                                         </div>
-                                    @endforeach
+                                        <div class="carousel-arrow next">
+                                            <span class="material-icons">chevron_right</span>
+                                        </div>
+                                    @endif
                                 </div>
-                                
-                                @if($hasMultipleMedia)
-                                    <div class="carousel-nav"></div>
-                                    <div class="carousel-arrow prev">
-                                        <span class="material-icons">chevron_left</span>
-                                    </div>
-                                    <div class="carousel-arrow next">
-                                        <span class="material-icons">chevron_right</span>
-                                    </div>
-                                @endif
                             </div>
                             
                             <span class="media-badge">
                                 @if($event->images->count() > 0 && $event->videos->count() > 0)
                                     <span class="material-icons">photo_library</span>
-                                    {{ $allMedia->count() }} Media
+                                    {{ $allMedia->count() }}
                                 @elseif($event->images->count() > 0)
                                     <span class="material-icons">photo</span>
-                                    {{ $event->images->count() }} Photo{{ $event->images->count() != 1 ? 's' : '' }}
+                                    {{ $event->images->count() }}
                                 @else
                                     <span class="material-icons">videocam</span>
-                                    {{ $event->videos->count() }} Video{{ $event->videos->count() != 1 ? 's' : '' }}
+                                    {{ $event->videos->count() }}
                                 @endif
                             </span>
-                            
-                            <!-- Transparent Overlay for Event Details -->
-                            <div class="event-details-overlay">
-                                <div class="media-count-overlay">
-                                    @if($event->images->count() > 0)
-                                        <div class="media-count-overlay-item">
-                                            <span class="material-icons">photo</span>
-                                            <span>{{ $event->images->count() }} {{ $event->name }}</span>
-                                        </div>
-                                    @endif
-                                    @if($event->videos->count() > 0)
-                                        <div class="media-count-overlay-item">
-                                            <span class="material-icons">videocam</span>
-                                            <span>{{ $event->videos->count() }}{{ $event->name }}</span>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
                         </div>
                         
-                        <!-- Hidden original content (kept for reference) -->
-                        <div class="card-content" style="display: none;">
+                        <div class="card-footer">
+                            <div class="event-name">
+                                {{ $event->name }}
+                            </div>
                             @if($event->event_date)
                                 <div class="event-date">
                                     <span class="material-icons">event</span>
-                                    <span>{{ \Carbon\Carbon::parse($event->event_date)->format('F d, Y') }}</span>
+                                    <span>{{ \Carbon\Carbon::parse($event->event_date)->format('M d, Y') }}</span>
                                 </div>
                             @endif
                             @if($event->description)
                                 <p class="event-description">{{ $event->description }}</p>
                             @endif
-                            <div class="media-count">
-                                <div class="media-count-item">
-                                    <span class="material-icons">photo</span>
-                                    <span>{{ $event->images->count() }} Photos </span>
-                                </div>
-                                <div class="media-count-item">
-                                    <span class="material-icons">videocam</span>
-                                    <span>{{ $event->videos->count() }} Videos</span>
-                                </div>
+                            <div class="media-stats">
+                                @if($event->images->count() > 0)
+                                    <div class="media-stat">
+                                        <span class="material-icons">photo</span>
+                                        <span>{{ $event->images->count() }} photo{{ $event->images->count() != 1 ? 's' : '' }}</span>
+                                    </div>
+                                @endif
+                                @if($event->videos->count() > 0)
+                                    <div class="media-stat">
+                                        <span class="material-icons">videocam</span>
+                                        <span>{{ $event->videos->count() }} video{{ $event->videos->count() != 1 ? 's' : '' }}</span>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -1751,7 +1881,7 @@
     </div>
 </section>
 
-<!-- Medium Modal -->
+<!-- Modal -->
 <div id="mediaModal" class="modal">
     <div class="modal-container">
         <div class="modal-header">
@@ -1779,7 +1909,7 @@
             <div class="modal-media-counter" id="modalCounter"></div>
             <div class="autoplay-indicator" id="autoplayIndicator">
                 <span class="material-icons">slideshow</span>
-                <span>Auto-swiping every 3s</span>
+                <span>Auto</span>
             </div>
         </div>
     </div>
@@ -1804,7 +1934,7 @@
     
     // Initialize all carousels
     function initCarousels() {
-        document.querySelectorAll('.carousel-slider').forEach((slider, sliderIndex) => {
+        document.querySelectorAll('.carousel-slider').forEach((slider) => {
             const track = slider.querySelector('.carousel-track');
             const slides = slider.querySelectorAll('.carousel-slide');
             const prevBtn = slider.querySelector('.prev');
@@ -1852,27 +1982,17 @@
             }
             
             function nextSlide() {
-                if (currentIndex + 1 < slideCount) {
-                    goToSlide(currentIndex + 1);
-                } else {
-                    goToSlide(0);
-                }
+                goToSlide(currentIndex + 1 >= slideCount ? 0 : currentIndex + 1);
             }
             
             function prevSlide() {
-                if (currentIndex - 1 >= 0) {
-                    goToSlide(currentIndex - 1);
-                } else {
-                    goToSlide(slideCount - 1);
-                }
+                goToSlide(currentIndex - 1 < 0 ? slideCount - 1 : currentIndex - 1);
             }
             
             function startAutoplay() {
                 if (!autoplay || slideCount <= 1) return;
                 if (autoplayInterval) clearInterval(autoplayInterval);
-                autoplayInterval = setInterval(() => {
-                    nextSlide();
-                }, 3000);
+                autoplayInterval = setInterval(nextSlide, 3000);
             }
             
             function resetAutoplay() {
@@ -1888,63 +2008,29 @@
                 }
             }
             
-            // Event listeners
-            if (prevBtn) {
-                prevBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    prevSlide();
-                });
-            }
+            if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevSlide(); });
+            if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextSlide(); });
             
-            if (nextBtn) {
-                nextBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    nextSlide();
-                });
-            }
-            
-            // Pause autoplay on hover
             const card = slider.closest('.gallery-card');
             if (card) {
-                card.addEventListener('mouseenter', () => {
-                    if (autoplay) stopAutoplay();
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    if (autoplay) startAutoplay();
-                });
+                card.addEventListener('mouseenter', () => autoplay && stopAutoplay());
+                card.addEventListener('mouseleave', () => autoplay && startAutoplay());
             }
             
-            // Start autoplay if enabled
-            if (autoplay && slideCount > 1) {
-                startAutoplay();
-            }
-            
-            // Store carousel controls on the element for later use
-            slider.carouselControls = {
-                goToSlide,
-                nextSlide,
-                prevSlide,
-                stopAutoplay,
-                startAutoplay
-            };
+            if (autoplay && slideCount > 1) startAutoplay();
         });
     }
     
     // Modal functions
     function stopModalAutoplay() {
-        if (modalAutoplayInterval) {
-            clearInterval(modalAutoplayInterval);
-            modalAutoplayInterval = null;
-        }
+        if (modalAutoplayInterval) clearInterval(modalAutoplayInterval);
+        modalAutoplayInterval = null;
     }
     
     function startModalAutoplay() {
         if (modalMediaItems.length <= 1) return;
-        if (modalAutoplayInterval) stopModalAutoplay();
-        modalAutoplayInterval = setInterval(() => {
-            goToModalSlide(modalCurrentIndex + 1);
-        }, 3000);
+        stopModalAutoplay();
+        modalAutoplayInterval = setInterval(() => goToModalSlide(modalCurrentIndex + 1), 3000);
     }
     
     function resetModalAutoplay() {
@@ -1954,118 +2040,73 @@
     }
     
     function updateModalUI() {
-        // Update dots
         const dots = modalDotsContainer.querySelectorAll('.modal-dot');
         dots.forEach((dot, idx) => {
-            if (idx === modalCurrentIndex) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
+            if (idx === modalCurrentIndex) dot.classList.add('active');
+            else dot.classList.remove('active');
         });
         
-        // Update counter
         if (modalCounterSpan) {
             modalCounterSpan.textContent = `${modalCurrentIndex + 1} / ${modalMediaItems.length}`;
         }
         
-        // Update track position
         const offset = -modalCurrentIndex * 100;
         modalTrack.style.transform = `translateX(${offset}%)`;
         
-        // Reset autoplay on manual navigation
+        const currentVideo = modalTrack.querySelector('video');
+        if (currentVideo && !currentVideo.paused) currentVideo.pause();
+        
         resetModalAutoplay();
     }
     
     function goToModalSlide(index) {
         if (!modalMediaItems.length) return;
-        
         if (index < 0) index = modalMediaItems.length - 1;
         if (index >= modalMediaItems.length) index = 0;
-        
         modalCurrentIndex = index;
-        
-        // Pause any playing video
-        const currentVideo = modalTrack.querySelector('video');
-        if (currentVideo && !currentVideo.paused) {
-            currentVideo.pause();
-        }
-        
         updateModalUI();
     }
     
     function openModalWithMedia(eventName, mediaItems, startIndex = 0) {
         modalMediaItems = mediaItems;
         modalCurrentIndex = Math.min(startIndex, mediaItems.length - 1);
-        
-        // Set event name
         modalEventNameSpan.textContent = eventName;
         
-        // Build track HTML
         let trackHtml = '';
         mediaItems.forEach((item, idx) => {
             if (item.type === 'image') {
-                trackHtml += `
-                    <div class="modal-media-slide" data-index="${idx}">
-                        <img src="${item.path}" alt="${eventName}" loading="lazy">
-                    </div>
-                `;
+                trackHtml += `<div class="modal-media-slide" data-index="${idx}"><img src="${item.path}" alt="${eventName}" loading="lazy"></div>`;
             } else {
-                trackHtml += `
-                    <div class="modal-media-slide" data-index="${idx}">
-                        <video controls preload="metadata">
-                            <source src="${item.path}" type="video/mp4">
-                        </video>
-                    </div>
-                `;
+                trackHtml += `<div class="modal-media-slide" data-index="${idx}"><video controls preload="metadata"><source src="${item.path}" type="video/mp4"></video></div>`;
             }
         });
         modalTrack.innerHTML = trackHtml;
         
-        // Build dots
         let dotsHtml = '';
         mediaItems.forEach((item, idx) => {
             dotsHtml += `<div class="modal-dot ${idx === modalCurrentIndex ? 'active' : ''}" data-dot-index="${idx}"></div>`;
         });
         modalDotsContainer.innerHTML = dotsHtml;
         
-        // Add dot click handlers
         document.querySelectorAll('.modal-dot').forEach(dot => {
             dot.addEventListener('click', (e) => {
                 const idx = parseInt(dot.dataset.dotIndex);
-                if (!isNaN(idx)) {
-                    goToModalSlide(idx);
-                }
+                if (!isNaN(idx)) goToModalSlide(idx);
                 e.stopPropagation();
             });
         });
         
-        // Update counter
         modalCounterSpan.textContent = `${modalCurrentIndex + 1} / ${mediaItems.length}`;
-        
-        // Set track position
-        const offset = -modalCurrentIndex * 100;
-        modalTrack.style.transform = `translateX(${offset}%)`;
-        
-        // Show modal
+        modalTrack.style.transform = `translateX(${-modalCurrentIndex * 100}%)`;
         modal.classList.add('active');
         modalIsOpen = true;
-        
-        // Start autoplay if multiple items
-        if (mediaItems.length > 1) {
-            startModalAutoplay();
-        }
+        if (mediaItems.length > 1) startModalAutoplay();
     }
     
     function closeModal() {
         stopModalAutoplay();
-        
-        // Pause any playing videos
         const videos = modalTrack.querySelectorAll('video');
-        videos.forEach(video => {
-            video.pause();
-        });
-        
+        videos.forEach(video => video.pause());
         modal.classList.remove('active');
         modalIsOpen = false;
         modalMediaItems = [];
@@ -2074,138 +2115,67 @@
         modalDotsContainer.innerHTML = '';
     }
     
-    // Event listeners for modal
-    if (modalPrevBtn) {
-        modalPrevBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            goToModalSlide(modalCurrentIndex - 1);
-        });
-    }
+    if (modalPrevBtn) modalPrevBtn.addEventListener('click', () => goToModalSlide(modalCurrentIndex - 1));
+    if (modalNextBtn) modalNextBtn.addEventListener('click', () => goToModalSlide(modalCurrentIndex + 1));
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
     
-    if (modalNextBtn) {
-        modalNextBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            goToModalSlide(modalCurrentIndex + 1);
-        });
-    }
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     
-    if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', closeModal);
-    }
-    
-    // Close modal on background click
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
-    
-    // Close modal on escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modalIsOpen) {
-            closeModal();
-        }
-        
-        // Keyboard navigation when modal is open
+        if (e.key === 'Escape' && modalIsOpen) closeModal();
         if (modalIsOpen) {
-            if (e.key === 'ArrowLeft') {
-                goToModalSlide(modalCurrentIndex - 1);
-                e.preventDefault();
-            } else if (e.key === 'ArrowRight') {
-                goToModalSlide(modalCurrentIndex + 1);
-                e.preventDefault();
-            }
+            if (e.key === 'ArrowLeft') { goToModalSlide(modalCurrentIndex - 1); e.preventDefault(); }
+            if (e.key === 'ArrowRight') { goToModalSlide(modalCurrentIndex + 1); e.preventDefault(); }
         }
     });
     
-    // Pause modal autoplay on hover over modal container
     const modalContainer = document.querySelector('.modal-container');
     if (modalContainer) {
-        modalContainer.addEventListener('mouseenter', () => {
-            if (modalIsOpen) stopModalAutoplay();
-        });
-        
-        modalContainer.addEventListener('mouseleave', () => {
-            if (modalIsOpen && modalMediaItems.length > 1) startModalAutoplay();
-        });
+        modalContainer.addEventListener('mouseenter', () => modalIsOpen && stopModalAutoplay());
+        modalContainer.addEventListener('mouseleave', () => modalIsOpen && modalMediaItems.length > 1 && startModalAutoplay());
     }
     
-    // Gallery card click handler for modal
     document.querySelectorAll('.gallery-card').forEach(card => {
         card.addEventListener('click', function(e) {
-            // Prevent if clicking on video overlay, play button, or carousel controls
-            if (e.target.closest('.video-overlay') || 
-                e.target.closest('.play-button') ||
-                e.target.closest('.carousel-arrow') ||
-                e.target.closest('.carousel-dot')) {
-                return;
-            }
+            if (e.target.closest('.video-overlay') || e.target.closest('.play-button') || 
+                e.target.closest('.carousel-arrow') || e.target.closest('.carousel-dot')) return;
             
-            // Get all media from this card
             const mediaData = this.dataset.media;
             const eventName = this.dataset.eventName || 'Gallery';
-            const slides = this.querySelectorAll('.carousel-slide');
-            
-            // Find current visible slide index
             let currentIndex = 0;
-            if (slides.length > 0) {
-                // Check which slide is currently visible (has opacity 1 or is in view)
-                const track = this.querySelector('.carousel-track');
-                if (track) {
-                    const transform = track.style.transform;
-                    const match = transform.match(/translateX\((-?\d+(?:\.\d+)?)%\)/);
-                    if (match) {
-                        const percentage = parseFloat(match[1]);
-                        currentIndex = Math.round(Math.abs(percentage) / 100);
-                    }
-                }
+            const track = this.querySelector('.carousel-track');
+            if (track) {
+                const transform = track.style.transform;
+                const match = transform.match(/translateX\((-?\d+(?:\.\d+)?)%\)/);
+                if (match) currentIndex = Math.round(Math.abs(parseFloat(match[1])) / 100);
             }
             
             if (mediaData) {
-                try {
-                    const mediaItems = JSON.parse(mediaData);
-                    openModalWithMedia(eventName, mediaItems, currentIndex);
-                } catch (err) {
-                    console.error('Failed to parse media data:', err);
-                }
+                try { openModalWithMedia(eventName, JSON.parse(mediaData), currentIndex); }
+                catch (err) { console.error('Failed to parse media data:', err); }
             }
         });
         
-        // Handle video overlay click
-        const videoOverlays = card.querySelectorAll('.video-overlay');
-        videoOverlays.forEach(overlay => {
+        card.querySelectorAll('.video-overlay').forEach(overlay => {
             overlay.addEventListener('click', function(e) {
                 e.stopPropagation();
                 const mediaData = card.dataset.media;
                 const eventName = card.dataset.eventName || 'Gallery';
                 const videoSrc = this.dataset.videoSrc;
-                
-                // Find the index of this video in the media array
                 if (mediaData && videoSrc) {
                     try {
                         const mediaItems = JSON.parse(mediaData);
                         const videoIndex = mediaItems.findIndex(item => item.path === videoSrc);
-                        if (videoIndex !== -1) {
-                            openModalWithMedia(eventName, mediaItems, videoIndex);
-                        }
-                    } catch (err) {
-                        console.error('Failed to parse media data:', err);
-                    }
+                        if (videoIndex !== -1) openModalWithMedia(eventName, mediaItems, videoIndex);
+                    } catch (err) { console.error('Failed to parse media data:', err); }
                 }
             });
         });
     });
     
-    // Initialize carousels when page loads
-    document.addEventListener('DOMContentLoaded', function() {
-        initCarousels();
-    });
-    
-    // Re-initialize carousels for dynamically loaded content (if using AJAX)
+    document.addEventListener('DOMContentLoaded', initCarousels);
     if (typeof Livewire !== 'undefined') {
-        Livewire.hook('message.processed', () => {
-            initCarousels();
-        });
+        Livewire.hook('message.processed', () => initCarousels());
     }
 </script>
 
